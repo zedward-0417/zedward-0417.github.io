@@ -4,11 +4,73 @@
   
     
     <entry>
-      <title>抓娃娃</title>
-      <link href="/2026/02/03/15.%E6%8A%93%E5%A8%83%E5%A8%83/"/>
-      <url>/2026/02/03/15.%E6%8A%93%E5%A8%83%E5%A8%83/</url>
+      <title>区间翻转区间异或和</title>
+      <link href="/2026/02/05/16.%E5%8C%BA%E9%97%B4%E7%BF%BB%E8%BD%AC%E5%8C%BA%E9%97%B4%E5%BC%82%E6%88%96%E5%92%8C/"/>
+      <url>/2026/02/05/16.%E5%8C%BA%E9%97%B4%E7%BF%BB%E8%BD%AC%E5%8C%BA%E9%97%B4%E5%BC%82%E6%88%96%E5%92%8C/</url>
       
-        <content type="html"><![CDATA[<h3 id="题目名称：抓娃娃"><a href="#题目名称：抓娃娃" class="headerlink" title="题目名称：抓娃娃"></a>题目名称：抓娃娃</h3><p><strong>【问题描述】</strong><br>小明拿了 $n$ 条线段练习抓娃娃。他将所有线段铺在数轴上，第 $i$ 条线段的左端点在 $l_i$，右端点在 $r_i$。<br>小明用 $m$ 个区间去框这些线段，第 $i$ 个区间的范围是 $[L_i, R_i]$。<br>如果一个线段有 <strong>至少一半</strong> 的长度被包含在某个区间内，则将其视为被这个区间框住。<br>请计算出每个区间框住了多少个线段？<br><strong>【输入格式】</strong><br>输入共 $n+m+1$ 行。<br>第一行为两个正整数 $n, m$。<br>后面 $n$ 行，每行两个整数 $l_i, r_i$。<br>后面 $m$ 行，每行两个整数 $L_i, R_i$。<br><strong>【输出格式】</strong><br>输出共 $m$ 行，每行一个整数。<br><strong>【样例输入】</strong><br>Plaintext<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">3 2</span><br><span class="line">1 2</span><br><span class="line">1 3</span><br><span class="line">3 4</span><br><span class="line">1 4</span><br><span class="line">2 4</span><br></pre></td></tr></table></figure><br><strong>【样例输出】</strong><br>Plaintext<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">3</span><br><span class="line">2</span><br></pre></td></tr></table></figure></p><p><strong>【评测用例规模与约定】</strong><br>对于 $20\%$ 的数据，保证 $n, m \le 10^3$。<br>对于 $100\%$ 的数据，保证 $n, m \le 10^5$， $l_i &lt; r_i$，$0 &lt; l_i, r_i, L_i, R_i \le 10^6$，$\max{r_i - l_i} \le \min{R_i - L_i}$。</p><p>$\max{r_i - l_i} \le \min{R_i - L_i}$。<br>这个条件说明所有线段的长度都小于或等于区间的长度<br>一个线段一半要被区间包住,说明线段的中点要在区间的范围里面。<br>要计算一个区间里面可以包住多少线段就转化成了有多少线段中点在区间里面。<br>由于l和r取中点可能为小数,我们将范围扩大两倍则中点就为l+r,就不能担心小数问题了。同样要注释咱们包住区间的范围也要扩大两倍<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> MAX_COORD = <span class="number">2000005</span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> m,n;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt;<span class="built_in">arr</span>(MAX_COORD,<span class="number">0</span>);</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt;<span class="built_in">result</span>(MAX_COORD,<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> a,b;</span><br><span class="line">        cin&gt;&gt;a&gt;&gt;b;</span><br><span class="line">        arr[a+b]+=<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=MAX_COORD;i++)</span><br><span class="line">    arr[i]+=arr[i<span class="number">-1</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> a,b;</span><br><span class="line">        cin&gt;&gt;a&gt;&gt;b;</span><br><span class="line">        result[i]=arr[<span class="number">2</span>*b]-arr[<span class="number">2</span>*a<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">    cout&lt;&lt;result[i]&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
+        <content type="html"><![CDATA[<h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>符卡有一个长度为 $n$ 的整数数组 $a$，符卡认为一个区间 $[l, r]$ 是灵异区间当且仅当 $\bigoplus<em>{i=l}^r a_i = 0$，或者说这个区间内所有数字异或起来刚好等于 $0$。<br>符卡有特殊的魔法，可以把任意一个灵异区间翻转。具体来说，如果 $[l, r]$ 区间是灵异区间，那么符卡就可以对这个区间使用魔法，整个数组就会变成 $a_1, a_2, \dots, a</em>{l-1}, a<em>r, a</em>{r-1}, \dots, a<em>l, a</em>{r+1}, a_{r+2}, \dots, a_n$。<br>现在符卡可以使用任意次数的魔法，符卡希望最后得到的数组的灵异区间数量能够尽可能多，你能告诉她最后最多有多少个灵异区间吗？</p><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>第一行一个正整数 $n$，表示数组长度。<br>第二行 $n$ 个非负整数 $a_1, a_2, \dots, a_n$ 表示整个数组。</p><h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h3><p>输出一行一个整数，表示符卡使用任意次魔法后灵异区间最多有多少个。</p><h3 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h3><p><strong>输入 #1</strong><br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">3</span><br><span class="line">1 1 1</span><br></pre></td></tr></table></figure><br><strong>输出 #1</strong><br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">2</span><br></pre></td></tr></table></figure><br><strong>输入 #2</strong><br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">4</span><br><span class="line">3 1 2 3</span><br></pre></td></tr></table></figure><br><strong>输出 #2</strong><br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">2</span><br></pre></td></tr></table></figure></p><p>对于如何找到灵异区间我们前面说到过,对整个数组求前缀异或,如果一个区间左右两端的数相等那么这段区间异或和为0。现在对于每个灵异区间要对它翻转,我们要考虑翻转过后对整个数组的应该。每个灵异区间的位置有三种可能。第一种:一个灵异完整地包裹在另一个灵异区间里面,第二种:一个灵异区间部分地包裹在另一个灵异区间里面,第三种:一个灵异区间独立存在,不与其他灵异区间相交。<br>![[Pasted image 20260205161852.png]]<br>所以灵异区间翻转不会产生新的灵异区间或者使灵异区间减少,所以只用统计灵异区间的个数,不用考虑翻转<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;unordered_map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;map&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> n,sum=<span class="number">0</span>;</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt;<span class="built_in">arr</span>(n<span class="number">+1</span>,<span class="number">0</span>);</span><br><span class="line">    unordered_map&lt;<span class="type">int</span>,<span class="type">int</span>&gt;cnt;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin&gt;&gt;arr[i];</span><br><span class="line">        arr[i]^=arr[i<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> &amp;x:arr)</span><br><span class="line">    cnt[x]++;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> &amp;[_,c]:cnt)</span><br><span class="line">    sum+=c*(c<span class="number">-1</span>)/<span class="number">2</span>;</span><br><span class="line">    cout&lt;&lt;sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法学习 </category>
+          
+          <category> 枚举 </category>
+          
+          <category> 前缀和题目 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 编程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>K倍区间</title>
+      <link href="/2026/02/05/17.K%E5%80%8D%E5%8C%BA%E9%97%B4/"/>
+      <url>/2026/02/05/17.K%E5%80%8D%E5%8C%BA%E9%97%B4/</url>
+      
+        <content type="html"><![CDATA[<h3 id="k倍区间"><a href="#k倍区间" class="headerlink" title="k倍区间"></a>k倍区间</h3><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定一个长度为 $N$ 的数列， $A<em>1, A_2, \cdots A_N$。如果其中一段连续的子序列 $A_i, A</em>{i+1}, \cdots A_j (i \le j)$ 之和是 $K$ 的倍数，我们就称这个区间 $[i, j]$ 是 K 倍区间。<br>你能求出数列中总共有多少个 $K$ 倍区间吗？</p><h4 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述"></a>输入描述</h4><p>第一行包含两个整数 $N$ 和 $K$ $(1 \le N, K \le 10^5)$。<br>以下 $N$ 行每行包含一个整数 $A_i$ $(1 \le A_i \le 10^5)$。</p><h4 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述"></a>输出描述</h4><p>输出一个整数，代表 K 倍区间的数目。</p><h4 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h4><p><strong>示例</strong><br><strong>输入</strong><br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">5 2</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td></tr></table></figure><br><strong>输出</strong><br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">6</span><br></pre></td></tr></table></figure></p><p>![[Pasted image 20260205192148.png]]</p><ul><li><strong>前缀和</strong>：计算数组的前缀和 $S$。</li><li><strong>同余定理</strong>：如果区间 $[i, j]$ 的和是 $K$ 的倍数，即 $(S<em>j - S</em>{i-1}) \% K == 0$，这意味着 $S<em>j \% K == S</em>{i-1} \% K$。</li><li><strong>转化</strong>：只需要计算前缀和模 $K$ 的余数。如果有 $c$ 个前缀和的余数相同（比如都是 1），那么从这 $c$ 个位置中任选 2 个（$C_c^2$），它们之间的区间和就是 $K$ 的倍数。</li></ul><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> N,K,sum=<span class="number">0</span>;</span><br><span class="line">    cin&gt;&gt;N&gt;&gt;K;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt;<span class="built_in">arr</span>(N<span class="number">+1</span>,<span class="number">0</span>);</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt;<span class="built_in">cnt</span>(K,<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=N;i++)</span><br><span class="line">    cin&gt;&gt;arr[i];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=N;i++)</span><br><span class="line">    arr[i]=(arr[i<span class="number">-1</span>]+arr[i])%K;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> &amp;x:arr)</span><br><span class="line">    cnt[x]++;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> &amp;c:cnt)</span><br><span class="line">    sum+=(c<span class="number">-1</span>)*c/<span class="number">2</span>;</span><br><span class="line">    cout&lt;&lt;sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法学习 </category>
+          
+          <category> 枚举 </category>
+          
+          <category> 前缀和题目 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 编程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>拔河</title>
+      <link href="/2026/02/05/18.%E6%8B%94%E6%B2%B3/"/>
+      <url>/2026/02/05/18.%E6%8B%94%E6%B2%B3/</url>
+      
+        <content type="html"><![CDATA[<h4 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h4><p>小明是学校里的一名老师，他带的班级共有 $n$ 名同学，第 $i$ 名同学力量值为 $a<em>i$。在闲暇之余，小明决定在班级里组织一场拔河比赛。<br>为了保证比赛双方实力尽可能相近，需要在这 $n$ 名同学中挑选出两个队伍，队伍内的同学编号连续：${a</em>{l<em>1}, a</em>{l<em>1+1}, \dots, a</em>{r<em>1}}$ 和 ${a</em>{l<em>2}, a</em>{l<em>2+1}, \dots, a</em>{r_2}}$，其中 $l_1 \le r_1 &lt; l_2 \le r_2$。<br>两个队伍的人数不必相同，但是需要让队伍内的同学们的力量值之和尽可能相近。请计算出力量值之和差距最小的挑选队伍的方式。</p><h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>输入共两行。<br>第一行为一个正整数 $n$。<br>第二行为 $n$ 个正整数 $a_i$。</p><h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出共一行，一个非负整数，表示两个队伍力量值之和的最小差距。</p><h4 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">5</span><br><span class="line">10 9 8 12 14</span><br></pre></td></tr></table></figure><h4 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1</span><br></pre></td></tr></table></figure><h4 id="样例说明"><a href="#样例说明" class="headerlink" title="样例说明"></a>样例说明</h4><p>其中一种最优选择方式：<br>队伍 1：${a_1, a_2, a_3}$，队伍 2：${a_4, a_5}$，力量值和分别为 $10+9+8=27$，$12+14=26$，差距为 $|27-26|=1$。</p><p>![[Pasted image 20260205220037.png]]</p><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;set&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n,ans=<span class="number">9999999</span>;</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt;<span class="built_in">arr</span>(n<span class="number">+1</span>,<span class="number">0</span>);</span><br><span class="line">    set&lt;<span class="type">int</span>&gt; s;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    cin&gt;&gt;arr[i];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    arr[i]+=arr[i<span class="number">-1</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> r1=n<span class="number">-1</span>;r1&gt;=<span class="number">1</span>;r1--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=r1<span class="number">+1</span>;i&lt;=n;i++)</span><br><span class="line">        s.<span class="built_in">insert</span>(arr[i]-arr[r1]);</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> l1=<span class="number">1</span>;l1&lt;=r1;l1++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="type">int</span> left_sum=arr[r1]-arr[l1<span class="number">-1</span>];</span><br><span class="line">            <span class="comment">// 3. 在 Set 里找最接近 left_sum 的值</span></span><br><span class="line">            <span class="comment">// lower_bound 找到第一个 &gt;= left_sum 的位置</span></span><br><span class="line">            <span class="keyword">auto</span> it = s.<span class="built_in">lower_bound</span>(left_sum);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 情况 A: 找到了 &gt;= left_sum 的值，算一下差值</span></span><br><span class="line">            <span class="keyword">if</span> (it != s.<span class="built_in">end</span>()) &#123;</span><br><span class="line">                ans = <span class="built_in">min</span>(ans, <span class="built_in">abs</span>(*it - left_sum));</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 情况 B: 它前面的那个值（即 &lt; left_sum 的最大值），也要算一下</span></span><br><span class="line">            <span class="comment">// 因为最接近的值可能是比它大的，也可能是比它小的</span></span><br><span class="line">            <span class="keyword">if</span> (it != s.<span class="built_in">begin</span>()) &#123;</span><br><span class="line">                <span class="keyword">auto</span> prev_it = <span class="built_in">prev</span>(it); <span class="comment">// 获取迭代器的前一个位置</span></span><br><span class="line">                ans = <span class="built_in">min</span>(ans, <span class="built_in">abs</span>(*prev_it - left_sum));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">cout&lt;&lt;ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       
       
       <categories>
@@ -40,6 +102,37 @@
       <url>/2026/02/03/14.%E6%8C%96%E7%9F%BF/</url>
       
         <content type="html"><![CDATA[<h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>小蓝正在数轴上挖矿，数轴上一共有 $n$ 个矿洞，第 $i$ 个矿洞的坐标为 $a_i$。小蓝从 $0$ 出发，每次可以向左或向右移动 $1$ 的距离。当路过一个矿洞时，就会进行挖矿作业，获得 $1$ 单位矿石。但一个矿洞不能被多次挖掘。小蓝想知道在移动距离不超过 $m$ 的前提下，最多能获得多少单位矿石？</p><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>输入的第一行包含两个正整数 $n, m$，用一个空格分隔。<br>第二行包含 $n$ 个整数 $a_1, a_2, \cdots, a_n$，相邻整数之间使用一个空格分隔。</p><h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h3><p>输出一行包含一个整数表示答案。</p><h3 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h3><p>Plaintext<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">5 4</span><br><span class="line">0 -3 -1 1 2</span><br></pre></td></tr></table></figure></p><h3 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h3><p>Plaintext<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">4</span><br></pre></td></tr></table></figure></p><h3 id="样例说明"><a href="#样例说明" class="headerlink" title="样例说明"></a>样例说明</h3><p>路径：$0 \to -1 \to 0 \to 1 \to 2$，可以对 $0, -1, 1, 2$ 四个矿洞挖掘并获得最多 $4$ 块矿石。<br><em>(注：距离计算为 $0 \to -1$ (1) $\to 0$ (1) $\to 1$ (1) $\to 2$ (1)，总距离 4，不超过 $m=4$)</em></p><h3 id="评测用例规模与约定"><a href="#评测用例规模与约定" class="headerlink" title="评测用例规模与约定"></a>评测用例规模与约定</h3><p>对于 $20\%$ 的评测用例，$1 \le n \le 10^3$。<br>对于所有评测用例，$1 \le n \le 10^5$，$-10^6 \le a_i \le 10^6$，$1 \le m \le 2 \times 10^6$。</p><p>枚举尽可能往左走和尽可能往右走的情况<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> MAX_COORD = <span class="number">2000005</span>;</span><br><span class="line">vector&lt;<span class="type">int</span>&gt;<span class="built_in">arr</span>(<span class="number">4000011</span>,<span class="number">0</span>);</span><br><span class="line"><span class="type">int</span> minlocation=<span class="number">2000005</span>,maxlocation=<span class="number">2000005</span>,lmaxvalue=<span class="number">0</span>,rmaxvalue=<span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> m,n;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> a;</span><br><span class="line">        cin&gt;&gt;a;</span><br><span class="line">        arr[a+MAX_COORD]+=<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">4000010</span>;i++)</span><br><span class="line">        arr[i]+=arr[i<span class="number">-1</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;=m/<span class="number">2</span>;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>((arr[MAX_COORD]-arr[MAX_COORD -i<span class="number">-1</span>]+arr[MAX_COORD+m<span class="number">-2</span>*i]-arr[MAX_COORD])&gt;lmaxvalue)</span><br><span class="line">            lmaxvalue=arr[MAX_COORD]-arr[MAX_COORD -i<span class="number">-1</span>]+arr[MAX_COORD+m<span class="number">-2</span>*i]-arr[MAX_COORD];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;=m/<span class="number">2</span>;i++)</span><br><span class="line">        &#123;</span><br><span class="line">             <span class="keyword">if</span>((arr[MAX_COORD+i]-arr[MAX_COORD<span class="number">-1</span>]+arr[MAX_COORD<span class="number">-1</span>]-arr[MAX_COORD-m<span class="number">+2</span>*i<span class="number">-1</span>])&gt;rmaxvalue)</span><br><span class="line">            rmaxvalue=arr[MAX_COORD+i]-arr[MAX_COORD<span class="number">-1</span>]+arr[MAX_COORD<span class="number">-1</span>]-arr[MAX_COORD-m<span class="number">+2</span>*i<span class="number">-1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        cout&lt;&lt;<span class="built_in">max</span>(lmaxvalue,rmaxvalue);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法学习 </category>
+          
+          <category> 枚举 </category>
+          
+          <category> 前缀和题目 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 编程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>抓娃娃</title>
+      <link href="/2026/02/03/15.%E6%8A%93%E5%A8%83%E5%A8%83/"/>
+      <url>/2026/02/03/15.%E6%8A%93%E5%A8%83%E5%A8%83/</url>
+      
+        <content type="html"><![CDATA[<h3 id="题目名称：抓娃娃"><a href="#题目名称：抓娃娃" class="headerlink" title="题目名称：抓娃娃"></a>题目名称：抓娃娃</h3><p><strong>【问题描述】</strong><br>小明拿了 $n$ 条线段练习抓娃娃。他将所有线段铺在数轴上，第 $i$ 条线段的左端点在 $l_i$，右端点在 $r_i$。<br>小明用 $m$ 个区间去框这些线段，第 $i$ 个区间的范围是 $[L_i, R_i]$。<br>如果一个线段有 <strong>至少一半</strong> 的长度被包含在某个区间内，则将其视为被这个区间框住。<br>请计算出每个区间框住了多少个线段？<br><strong>【输入格式】</strong><br>输入共 $n+m+1$ 行。<br>第一行为两个正整数 $n, m$。<br>后面 $n$ 行，每行两个整数 $l_i, r_i$。<br>后面 $m$ 行，每行两个整数 $L_i, R_i$。<br><strong>【输出格式】</strong><br>输出共 $m$ 行，每行一个整数。<br><strong>【样例输入】</strong><br>Plaintext<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">3 2</span><br><span class="line">1 2</span><br><span class="line">1 3</span><br><span class="line">3 4</span><br><span class="line">1 4</span><br><span class="line">2 4</span><br></pre></td></tr></table></figure><br><strong>【样例输出】</strong><br>Plaintext<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">3</span><br><span class="line">2</span><br></pre></td></tr></table></figure></p><p><strong>【评测用例规模与约定】</strong><br>对于 $20\%$ 的数据，保证 $n, m \le 10^3$。<br>对于 $100\%$ 的数据，保证 $n, m \le 10^5$， $l_i &lt; r_i$，$0 &lt; l_i, r_i, L_i, R_i \le 10^6$，$\max{r_i - l_i} \le \min{R_i - L_i}$。</p><p>$\max{r_i - l_i} \le \min{R_i - L_i}$。<br>这个条件说明所有线段的长度都小于或等于区间的长度<br>一个线段一半要被区间包住,说明线段的中点要在区间的范围里面。<br>要计算一个区间里面可以包住多少线段就转化成了有多少线段中点在区间里面。<br>由于l和r取中点可能为小数,我们将范围扩大两倍则中点就为l+r,就不能担心小数问题了。同样要注释咱们包住区间的范围也要扩大两倍<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> MAX_COORD = <span class="number">2000005</span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> m,n;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt;<span class="built_in">arr</span>(MAX_COORD,<span class="number">0</span>);</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt;<span class="built_in">result</span>(MAX_COORD,<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> a,b;</span><br><span class="line">        cin&gt;&gt;a&gt;&gt;b;</span><br><span class="line">        arr[a+b]+=<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=MAX_COORD;i++)</span><br><span class="line">    arr[i]+=arr[i<span class="number">-1</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> a,b;</span><br><span class="line">        cin&gt;&gt;a&gt;&gt;b;</span><br><span class="line">        result[i]=arr[<span class="number">2</span>*b]-arr[<span class="number">2</span>*a<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">    cout&lt;&lt;result[i]&lt;&lt;endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
       
       
       <categories>
@@ -122,37 +215,6 @@
     
     
     <entry>
-      <title>领地选择</title>
-      <link href="/2026/02/01/12.%E9%A2%86%E5%9C%B0%E9%80%89%E6%8B%A9/"/>
-      <url>/2026/02/01/12.%E9%A2%86%E5%9C%B0%E9%80%89%E6%8B%A9/</url>
-      
-        <content type="html"><![CDATA[<p>作为在虚拟世界里统帅千军万马的领袖，小 Z 认为天时、地利、人和三者是缺一不可的。所以，谨慎地选择首都的位置对于小 Z 来说是非常重要的。<br>首都都被认为是一个占地 $C \times C$ 的正方形。小 Z 希望你找到一个合适的位置，使得首都所占领的位置的土地价值总和最高。</p><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a><strong>输入格式</strong></h3><ul><li>第一行三个整数 $N, M, C$，表示地图的宽和长以及首都的边长。</li><li>接下来 $N$ 行每行 $M$ 个整数，表示地图上每个地块的价值。价值可能为负数。<h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a><strong>输出格式</strong></h3></li><li>一行两个整数 $X, Y$，表示首都左上角的坐标。<h3 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a><strong>输入输出样例</strong></h3></li><li><strong>输入 #1</strong>：<br>  Plaintext  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">3 4 2</span><br><span class="line">1 2 3 1</span><br><span class="line">-1 9 0 2</span><br><span class="line">2 0 1 1</span><br></pre></td></tr></table></figure></li><li><strong>输出 #1</strong>：<br>  Plaintext  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1 2</span><br></pre></td></tr></table></figure></li></ul><p>二维前缀和<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> N,M,C,X,Y,MAXVAULE=<span class="number">0</span>;</span><br><span class="line">    cin&gt;&gt;N&gt;&gt;M&gt;&gt;C;</span><br><span class="line">    <span class="type">int</span> arr[N<span class="number">+1</span>][M<span class="number">+1</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;=M;i++)</span><br><span class="line">    arr[<span class="number">0</span>][i]=<span class="number">-2e18</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;=N;i++)</span><br><span class="line">    arr[i][<span class="number">0</span>]=<span class="number">-2e18</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=N;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=M;j++)</span><br><span class="line">        cin&gt;&gt;arr[i][j];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=N;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">2</span>;j&lt;=M;j++)</span><br><span class="line">        arr[i][j]+=arr[i][j<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=M;j++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;j&lt;=N;j++)</span><br><span class="line">        arr[i][j]+=arr[i<span class="number">-1</span>][j];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=C;i&lt;=N;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=C;j&lt;=M;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(arr[i][j]-arr[i][j-C]-arr[i-C][j]+arr[i+C][j+C]&gt;MAXVAULE)</span><br><span class="line">            &#123;</span><br><span class="line">                MAXVAULE=arr[i][j]-arr[i][j-C]-arr[i-C][j]+arr[i+C][j+C];</span><br><span class="line">                X=i-C<span class="number">+1</span>,Y=j-C<span class="number">+1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;X&lt;&lt;<span class="string">&quot; &quot;</span>&lt;&lt;Y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 算法学习 </category>
-          
-          <category> 枚举 </category>
-          
-          <category> 前缀和题目 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 算法 </tag>
-            
-            <tag> 编程 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>接雨水</title>
       <link href="/2026/02/01/13.%E6%8E%A5%E9%9B%A8%E6%B0%B4/"/>
       <url>/2026/02/01/13.%E6%8E%A5%E9%9B%A8%E6%B0%B4/</url>
@@ -184,11 +246,11 @@
     
     
     <entry>
-      <title>弹珠堆放</title>
-      <link href="/2026/01/31/10.%E5%BC%B9%E7%8F%A0%E5%A0%86%E6%94%BE/"/>
-      <url>/2026/01/31/10.%E5%BC%B9%E7%8F%A0%E5%A0%86%E6%94%BE/</url>
+      <title>领地选择</title>
+      <link href="/2026/02/01/12.%E9%A2%86%E5%9C%B0%E9%80%89%E6%8B%A9/"/>
+      <url>/2026/02/01/12.%E9%A2%86%E5%9C%B0%E9%80%89%E6%8B%A9/</url>
       
-        <content type="html"><![CDATA[<p> 小蓝有 20230610 颗弹珠，想摆成一个金字塔。<br>高度 1：1 颗<br>高度 2：4 颗<br>高度 3：10 颗<br>高度 4：20 颗<br>问：手里的弹珠最多能摆多高？                                                                                                                           <img src="/3.png" alt="2222"><br>观察可知,从上往下,每层数量是以1为首项,公差为以2为首项1为公差的等差数列的等差数列<br>枚举每层数量相加即可<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> sum=<span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> pre=<span class="number">1</span>;</span><br><span class="line">    <span class="type">int</span> high=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(sum&lt;=<span class="number">20230610</span>)&#123;</span><br><span class="line">        sum+=pre;</span><br><span class="line">        high+=<span class="number">1</span>;</span><br><span class="line">        pre=pre+high<span class="number">+1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;high<span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br><img src="/4.png" alt="222333"><br>这是每层的数量以及高度为N的总数量和前缀和的关系<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> prefix[<span class="number">1001</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">1000</span>;i++)</span><br><span class="line">    prefix[i]=i;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">2</span>;j&lt;=<span class="number">1000</span>;j++)</span><br><span class="line">    prefix[j]=prefix[j]+prefix[j<span class="number">-1</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> k=<span class="number">2</span>;k&lt;=<span class="number">1000</span>;k++)</span><br><span class="line">    &#123;</span><br><span class="line">        prefix[k]=prefix[k]+prefix[k<span class="number">-1</span>];</span><br><span class="line">        <span class="keyword">if</span>(prefix[k]&gt;<span class="number">20230610</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            cout&lt;&lt;k<span class="number">-1</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(prefix[k]==<span class="number">20230610</span>)</span><br><span class="line">        &#123;</span><br><span class="line">        cout&lt;&lt;k;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
+        <content type="html"><![CDATA[<p>作为在虚拟世界里统帅千军万马的领袖，小 Z 认为天时、地利、人和三者是缺一不可的。所以，谨慎地选择首都的位置对于小 Z 来说是非常重要的。<br>首都都被认为是一个占地 $C \times C$ 的正方形。小 Z 希望你找到一个合适的位置，使得首都所占领的位置的土地价值总和最高。</p><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a><strong>输入格式</strong></h3><ul><li>第一行三个整数 $N, M, C$，表示地图的宽和长以及首都的边长。</li><li>接下来 $N$ 行每行 $M$ 个整数，表示地图上每个地块的价值。价值可能为负数。<h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a><strong>输出格式</strong></h3></li><li>一行两个整数 $X, Y$，表示首都左上角的坐标。<h3 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a><strong>输入输出样例</strong></h3></li><li><strong>输入 #1</strong>：<br>  Plaintext  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">3 4 2</span><br><span class="line">1 2 3 1</span><br><span class="line">-1 9 0 2</span><br><span class="line">2 0 1 1</span><br></pre></td></tr></table></figure></li><li><strong>输出 #1</strong>：<br>  Plaintext  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1 2</span><br></pre></td></tr></table></figure></li></ul><p>二维前缀和<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> N,M,C,X,Y,MAXVAULE=<span class="number">0</span>;</span><br><span class="line">    cin&gt;&gt;N&gt;&gt;M&gt;&gt;C;</span><br><span class="line">    <span class="type">int</span> arr[N<span class="number">+1</span>][M<span class="number">+1</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;=M;i++)</span><br><span class="line">    arr[<span class="number">0</span>][i]=<span class="number">-2e18</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;=N;i++)</span><br><span class="line">    arr[i][<span class="number">0</span>]=<span class="number">-2e18</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=N;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=M;j++)</span><br><span class="line">        cin&gt;&gt;arr[i][j];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=N;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">2</span>;j&lt;=M;j++)</span><br><span class="line">        arr[i][j]+=arr[i][j<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=M;j++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;j&lt;=N;j++)</span><br><span class="line">        arr[i][j]+=arr[i<span class="number">-1</span>][j];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=C;i&lt;=N;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=C;j&lt;=M;j++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(arr[i][j]-arr[i][j-C]-arr[i-C][j]+arr[i+C][j+C]&gt;MAXVAULE)</span><br><span class="line">            &#123;</span><br><span class="line">                MAXVAULE=arr[i][j]-arr[i][j-C]-arr[i-C][j]+arr[i+C][j+C];</span><br><span class="line">                X=i-C<span class="number">+1</span>,Y=j-C<span class="number">+1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;X&lt;&lt;<span class="string">&quot; &quot;</span>&lt;&lt;Y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>]]></content>
       
       
       <categories>
@@ -229,6 +291,37 @@
           <category> 枚举 </category>
           
           <category> 前缀和 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 编程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>弹珠堆放</title>
+      <link href="/2026/01/31/10.%E5%BC%B9%E7%8F%A0%E5%A0%86%E6%94%BE/"/>
+      <url>/2026/01/31/10.%E5%BC%B9%E7%8F%A0%E5%A0%86%E6%94%BE/</url>
+      
+        <content type="html"><![CDATA[<p> 小蓝有 20230610 颗弹珠，想摆成一个金字塔。<br>高度 1：1 颗<br>高度 2：4 颗<br>高度 3：10 颗<br>高度 4：20 颗<br>问：手里的弹珠最多能摆多高？                                                                                                                           <img src="/3.png" alt="2222"><br>观察可知,从上往下,每层数量是以1为首项,公差为以2为首项1为公差的等差数列的等差数列<br>枚举每层数量相加即可<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> sum=<span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> pre=<span class="number">1</span>;</span><br><span class="line">    <span class="type">int</span> high=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(sum&lt;=<span class="number">20230610</span>)&#123;</span><br><span class="line">        sum+=pre;</span><br><span class="line">        high+=<span class="number">1</span>;</span><br><span class="line">        pre=pre+high<span class="number">+1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;high<span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br><img src="/4.png" alt="222333"><br>这是每层的数量以及高度为N的总数量和前缀和的关系<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> prefix[<span class="number">1001</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">1000</span>;i++)</span><br><span class="line">    prefix[i]=i;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">2</span>;j&lt;=<span class="number">1000</span>;j++)</span><br><span class="line">    prefix[j]=prefix[j]+prefix[j<span class="number">-1</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> k=<span class="number">2</span>;k&lt;=<span class="number">1000</span>;k++)</span><br><span class="line">    &#123;</span><br><span class="line">        prefix[k]=prefix[k]+prefix[k<span class="number">-1</span>];</span><br><span class="line">        <span class="keyword">if</span>(prefix[k]&gt;<span class="number">20230610</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            cout&lt;&lt;k<span class="number">-1</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(prefix[k]==<span class="number">20230610</span>)</span><br><span class="line">        &#123;</span><br><span class="line">        cout&lt;&lt;k;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法学习 </category>
+          
+          <category> 枚举 </category>
+          
+          <category> 前缀和题目 </category>
           
       </categories>
       
@@ -291,6 +384,68 @@
           <category> 枚举 </category>
           
           <category> 枚举算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 编程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>卡片</title>
+      <link href="/2026/01/27/3.%E5%8D%A1%E7%89%87/"/>
+      <url>/2026/01/27/3.%E5%8D%A1%E7%89%87/</url>
+      
+        <content type="html"><![CDATA[<p>小蓝有很多数字卡片，每张卡片上标有 0到9 中的一个数字。<br>他想用这些卡片从 1 开始拼出连续的正整数，每拼一个数，就把用到的卡片保存起来，之后不能再用这些卡片拼其他数。<br>例如，如果小蓝手里有 30 张卡片，每个数字 0到9 各 3 张，他可以拼出 1到10，但是拼 11 时，数字 1 的卡片已经不够用了。<br>现在，小蓝手里有每个数字 0到9 的卡片各 2021 张（总共 20210 张），问他能够从 1 拼到的最大连续整数是多少？<br>这道题的思路也很简单,咱们准备一个十个空间大小的数组vec[10],都存储2021,代表0~9的卡片都有2021张,遍历从1开始的数,我们将它逐位分解,对于分解出的每一位x,vec[x]—，直到某个数分解出的某位i,vec[i]=0时,说明没有卡片去给它组成这个数了，那么答案就是这个数的上一个数。<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">vec</span><span class="params">(<span class="number">10</span>,<span class="number">2021</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">work</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> re=i;</span><br><span class="line">        <span class="keyword">while</span>(re)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="type">int</span> index=re%<span class="number">10</span>;</span><br><span class="line">            <span class="keyword">if</span>(vec[index]==<span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> i<span class="number">-1</span>;</span><br><span class="line">            vec[index]--;</span><br><span class="line">            re/=<span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  cout&lt;&lt;<span class="built_in">work</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法学习 </category>
+          
+          <category> 枚举 </category>
+          
+          <category> 枚举算法题目 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 编程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>小球反弹</title>
+      <link href="/2026/01/27/5.%E5%B0%8F%E7%90%83%E5%8F%8D%E5%BC%B9/"/>
+      <url>/2026/01/27/5.%E5%B0%8F%E7%90%83%E5%8F%8D%E5%BC%B9/</url>
+      
+        <content type="html"><![CDATA[<p>有一长方形，长为 343720 单位长度，宽为 233333 单位长度。 在其内部左上角顶点有一小球 (无视其体积)，其初速度如图所示且保持运动速率不变，分解到长宽两个方向上的速率之比为 dx:dy=15:17。 小球碰到长方形的边框时会发生反弹，每次反弹的入射角与反射角相等，因此小球会改变方向且保持速率不变（如果小球刚好射向角落，则按入射方向原路返回）。从小球出发到其第一次回到左上角顶点这段时间里，小球运动的路程为多少单位长度？答案四舍五入保留两位小数。<br>![[Pasted image 20260119121851.png]]<br>可以把小球每次反弹都投影到一个镜像世界里面<br>假设lenth=343720,wide=233333<br>![[未命名绘图.drawio.png]]<br>我们可以观察到原点在镜像世界中的投影点满足x为2 <em> lenth的整数倍数,y为2 </em> wide的整数倍数。小球每时每刻沿直线运动在x和y轴上的分量都满足15:17。<br>枚举t从1到正无穷,使得小球在t时刻的x和y运动分量满足到达原点所要求的条件。<br><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> dx=<span class="number">15</span>,dy=<span class="number">17</span>,wide=<span class="number">2</span>*<span class="number">233333</span>,lenth=<span class="number">2</span>*<span class="number">343720</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> t=<span class="number">1</span>;;t++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(t*dx%lenth==<span class="number">0</span>&amp;&amp;t*dy%wide==<span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            cout.<span class="built_in">precision</span>(<span class="number">2</span>);</span><br><span class="line">            cout&lt;&lt;fixed&lt;&lt;<span class="built_in">hypot</span>(t*dx,t*dy);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法学习 </category>
+          
+          <category> 枚举 </category>
+          
+          <category> 枚举算法题目 </category>
           
       </categories>
       
@@ -406,68 +561,6 @@
       <url>/2026/01/27/7.%E6%97%A5%E6%9C%9F%E7%BB%9F%E8%AE%A1/</url>
       
         <content type="html"><![CDATA[<p>小蓝现在有一个长度为100的数组，数组中的每个元素的值都在0 到9 的范围之内。数组中的元素从左至右如下所示<br>5 6 8 6 9 1 6 1 2 4 9 1 9 8 2 3 6 4 7 7 5 9 5 0 3 8 7 5 8 1 5 8 6 1 8 3 0 3 7 9 2 7 0 5 8 8 5 7 0 9 9 1 9 4 4 6 8 6 3 3 8 5 1 6 3 4 6 7 0 7 8 2 7 6 8 9 5 6 5 6 1 4 0 1 0 0 9 4 8 0 9 1 2 8 5 0 2 5 3 3<br>现在他想要从这个数组中寻找一些满足以下条件的子序列：<br>子序列的长度为8；<br>这个子序列可以按照下标顺序组成一个yyyymmdd 格式的日期，并且要求这个日期是2023 年中的某一天的日期，例如20230902，20231223。yyyy 表示年份，mm 表示月份，dd 表示天数，当月份或者天数的长度只有一位时需要一个前导零补充。<br>请你帮小蓝计算下按上述条件一共能找到多少个不同的2023 年的日期。<br>对于相同的日期你只需要统计一次即可。</p><p>枚举2023年的每一天进行子序列的匹配<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">daysmatch</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp;numbers,vector&lt;<span class="type">int</span>&gt;&amp;match)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="type">int</span> idx=<span class="number">0</span>;</span><br><span class="line">   <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;=<span class="number">99</span>;i++)</span><br><span class="line">   &#123;</span><br><span class="line">      <span class="keyword">if</span>(numbers[i]==match[idx])</span><br><span class="line">      idx++;</span><br><span class="line">      <span class="keyword">if</span>(idx==match.<span class="built_in">size</span>())</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"> vector &lt;<span class="type">int</span>&gt; numbers=&#123;<span class="number">5</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">6</span>, <span class="number">9</span>, <span class="number">1</span>, <span class="number">6</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">9</span>, <span class="number">1</span>, <span class="number">9</span>, <span class="number">8</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">6</span>, <span class="number">4</span>, <span class="number">7</span>, <span class="number">7</span>, <span class="number">5</span>, <span class="number">9</span>, <span class="number">5</span>, <span class="number">0</span>, <span class="number">3</span>, <span class="number">8</span>, <span class="number">7</span>, <span class="number">5</span>, <span class="number">8</span>, <span class="number">1</span>, <span class="number">5</span>,</span><br><span class="line"> <span class="number">8</span>, <span class="number">6</span>, <span class="number">1</span>, <span class="number">8</span>, <span class="number">3</span>, <span class="number">0</span>, <span class="number">3</span>, <span class="number">7</span>, <span class="number">9</span>, <span class="number">2</span>, <span class="number">7</span>, <span class="number">0</span>, <span class="number">5</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">0</span>, <span class="number">9</span>, <span class="number">9</span>, <span class="number">1</span>, <span class="number">9</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">8</span>, <span class="number">5</span>,</span><br><span class="line"> <span class="number">1</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">0</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">2</span>, <span class="number">7</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">9</span>, <span class="number">4</span>, <span class="number">8</span>, <span class="number">0</span>, <span class="number">9</span>, <span class="number">1</span>, <span class="number">2</span>,</span><br><span class="line"> <span class="number">8</span>, <span class="number">5</span>, <span class="number">0</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">3</span>&#125;;</span><br><span class="line"></span><br><span class="line"> <span class="type">int</span> MonthDay[<span class="number">12</span>]=&#123;<span class="number">31</span>,<span class="number">28</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> cnt=<span class="number">0</span>;</span><br><span class="line"> <span class="keyword">for</span>(<span class="type">int</span> month=<span class="number">1</span>;month&lt;=<span class="number">12</span>;month++)</span><br><span class="line"> &#123;</span><br><span class="line">   <span class="keyword">for</span>(<span class="type">int</span> day=<span class="number">1</span>;day&lt;=MonthDay[month<span class="number">-1</span>];day++)</span><br><span class="line">   &#123;</span><br><span class="line">      vector &lt;<span class="type">int</span>&gt; match=&#123;<span class="number">2</span>,<span class="number">0</span>,<span class="number">2</span>,<span class="number">3</span>,month/<span class="number">10</span>,month%<span class="number">10</span>,day/<span class="number">10</span>,day%<span class="number">10</span>&#125;;</span><br><span class="line">      cnt+=<span class="built_in">daysmatch</span>(numbers,match);</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> cout&lt;&lt;cnt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 算法学习 </category>
-          
-          <category> 枚举 </category>
-          
-          <category> 枚举算法题目 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 算法 </tag>
-            
-            <tag> 编程 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>卡片</title>
-      <link href="/2026/01/27/3.%E5%8D%A1%E7%89%87/"/>
-      <url>/2026/01/27/3.%E5%8D%A1%E7%89%87/</url>
-      
-        <content type="html"><![CDATA[<p>小蓝有很多数字卡片，每张卡片上标有 0到9 中的一个数字。<br>他想用这些卡片从 1 开始拼出连续的正整数，每拼一个数，就把用到的卡片保存起来，之后不能再用这些卡片拼其他数。<br>例如，如果小蓝手里有 30 张卡片，每个数字 0到9 各 3 张，他可以拼出 1到10，但是拼 11 时，数字 1 的卡片已经不够用了。<br>现在，小蓝手里有每个数字 0到9 的卡片各 2021 张（总共 20210 张），问他能够从 1 拼到的最大连续整数是多少？<br>这道题的思路也很简单,咱们准备一个十个空间大小的数组vec[10],都存储2021,代表0~9的卡片都有2021张,遍历从1开始的数,我们将它逐位分解,对于分解出的每一位x,vec[x]—，直到某个数分解出的某位i,vec[i]=0时,说明没有卡片去给它组成这个数了，那么答案就是这个数的上一个数。<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">vec</span><span class="params">(<span class="number">10</span>,<span class="number">2021</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">work</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> re=i;</span><br><span class="line">        <span class="keyword">while</span>(re)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="type">int</span> index=re%<span class="number">10</span>;</span><br><span class="line">            <span class="keyword">if</span>(vec[index]==<span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> i<span class="number">-1</span>;</span><br><span class="line">            vec[index]--;</span><br><span class="line">            re/=<span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  cout&lt;&lt;<span class="built_in">work</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 算法学习 </category>
-          
-          <category> 枚举 </category>
-          
-          <category> 枚举算法题目 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 算法 </tag>
-            
-            <tag> 编程 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>小球反弹</title>
-      <link href="/2026/01/27/5.%E5%B0%8F%E7%90%83%E5%8F%8D%E5%BC%B9/"/>
-      <url>/2026/01/27/5.%E5%B0%8F%E7%90%83%E5%8F%8D%E5%BC%B9/</url>
-      
-        <content type="html"><![CDATA[<p>有一长方形，长为 343720 单位长度，宽为 233333 单位长度。 在其内部左上角顶点有一小球 (无视其体积)，其初速度如图所示且保持运动速率不变，分解到长宽两个方向上的速率之比为 dx:dy=15:17。 小球碰到长方形的边框时会发生反弹，每次反弹的入射角与反射角相等，因此小球会改变方向且保持速率不变（如果小球刚好射向角落，则按入射方向原路返回）。从小球出发到其第一次回到左上角顶点这段时间里，小球运动的路程为多少单位长度？答案四舍五入保留两位小数。<br>![[Pasted image 20260119121851.png]]<br>可以把小球每次反弹都投影到一个镜像世界里面<br>假设lenth=343720,wide=233333<br>![[未命名绘图.drawio.png]]<br>我们可以观察到原点在镜像世界中的投影点满足x为2 <em> lenth的整数倍数,y为2 </em> wide的整数倍数。小球每时每刻沿直线运动在x和y轴上的分量都满足15:17。<br>枚举t从1到正无穷,使得小球在t时刻的x和y运动分量满足到达原点所要求的条件。<br><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> dx=<span class="number">15</span>,dy=<span class="number">17</span>,wide=<span class="number">2</span>*<span class="number">233333</span>,lenth=<span class="number">2</span>*<span class="number">343720</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> t=<span class="number">1</span>;;t++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(t*dx%lenth==<span class="number">0</span>&amp;&amp;t*dy%wide==<span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            cout.<span class="built_in">precision</span>(<span class="number">2</span>);</span><br><span class="line">            cout&lt;&lt;fixed&lt;&lt;<span class="built_in">hypot</span>(t*dx,t*dy);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
       
       
       <categories>

@@ -1,0 +1,370 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>拔河 | Zedward'Blog</title><meta name="author" content="Zedward"><meta name="copyright" content="Zedward"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="问题描述小明是学校里的一名老师，他带的班级共有 $n$ 名同学，第 $i$ 名同学力量值为 $ai$。在闲暇之余，小明决定在班级里组织一场拔河比赛。为了保证比赛双方实力尽可能相近，需要在这 $n$ 名同学中挑选出两个队伍，队伍内的同学编号连续：${a{l1}, a{l1+1}, \dots, a{r1}}$ 和 ${a{l2}, a{l2+1}, \dots, a{r_2}}$，其中 $l_1 \">
+<meta property="og:type" content="article">
+<meta property="og:title" content="拔河">
+<meta property="og:url" content="https://zedward-0417.github.io/2026/02/05/18.%E6%8B%94%E6%B2%B3/index.html">
+<meta property="og:site_name" content="Zedward&#39;Blog">
+<meta property="og:description" content="问题描述小明是学校里的一名老师，他带的班级共有 $n$ 名同学，第 $i$ 名同学力量值为 $ai$。在闲暇之余，小明决定在班级里组织一场拔河比赛。为了保证比赛双方实力尽可能相近，需要在这 $n$ 名同学中挑选出两个队伍，队伍内的同学编号连续：${a{l1}, a{l1+1}, \dots, a{r1}}$ 和 ${a{l2}, a{l2+1}, \dots, a{r_2}}$，其中 $l_1 \">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zedward-0417.github.io/2.png">
+<meta property="article:published_time" content="2026-02-04T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-02-05T14:47:53.716Z">
+<meta property="article:author" content="Zedward">
+<meta property="article:tag" content="算法">
+<meta property="article:tag" content="编程">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zedward-0417.github.io/2.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "拔河",
+  "url": "https://zedward-0417.github.io/2026/02/05/18.%E6%8B%94%E6%B2%B3/",
+  "image": "https://zedward-0417.github.io/2.png",
+  "datePublished": "2026-02-04T16:00:00.000Z",
+  "dateModified": "2026-02-05T14:47:53.716Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Zedward",
+      "url": "https://zedward-0417.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://zedward-0417.github.io/2026/02/05/18.%E6%8B%94%E6%B2%B3/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '拔河',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><style>
+  /* (1) 看板娘整体位置：固定在右下角，稍微离开边缘一点更美观 */
+  #waifu { 
+    left: auto !important; 
+    right: 10px !important; 
+    bottom: 0 !important; 
+    z-index: 100 !important;
+  }
+
+  /* (2) 看板娘功能按钮：强制显示在身体左侧，避免被屏幕边缘遮挡 */
+  #waifu-tool {
+    right: auto !important;
+    left: -35px !important; /* 核心修改：让按键弹出到板娘左边 */
+  }
+
+  /* (3) 对话框位置微调 */
+  .waifu-tips {
+    right: 10px !important;
+    left: auto !important;
+  }
+
+  /* (4) 音乐播放器极简美化 */
+  .aplayer.aplayer-fixed {
+    box-shadow: none !important; /* 去除阴影，更干净 */
+    background: rgba(255, 255, 255, 0.4) !important; /* 低透明度背景 */
+    border-radius: 8px !important;
+  }
+  
+  /* 移动端优化：隐藏看板娘 */
+  @media (max-width: 768px) {
+    #waifu { display: none !important; }
+  }
+</style>
+<meta name="generator" content="Hexo 8.1.1"><link rel="stylesheet" href="/css/prism.css" type="text/css"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/2.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-comments-o"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/o_250818083133_19.webp);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Zedward'Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">拔河</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-comments-o"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">拔河</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-02-04T16:00:00.000Z" title="发表于 2026-02-05 00:00:00">2026-02-05</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-02-05T14:47:53.716Z" title="更新于 2026-02-05 22:47:53">2026-02-05</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/">算法学习</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/%E6%9E%9A%E4%B8%BE/">枚举</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/%E6%9E%9A%E4%B8%BE/%E5%89%8D%E7%BC%80%E5%92%8C%E9%A2%98%E7%9B%AE/">前缀和题目</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">540</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>2分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h4 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h4><p>小明是学校里的一名老师，他带的班级共有 $n$ 名同学，第 $i$ 名同学力量值为 $a<em>i$。在闲暇之余，小明决定在班级里组织一场拔河比赛。<br>为了保证比赛双方实力尽可能相近，需要在这 $n$ 名同学中挑选出两个队伍，队伍内的同学编号连续：${a</em>{l<em>1}, a</em>{l<em>1+1}, \dots, a</em>{r<em>1}}$ 和 ${a</em>{l<em>2}, a</em>{l<em>2+1}, \dots, a</em>{r_2}}$，其中 $l_1 \le r_1 &lt; l_2 \le r_2$。<br>两个队伍的人数不必相同，但是需要让队伍内的同学们的力量值之和尽可能相近。请计算出力量值之和差距最小的挑选队伍的方式。</p>
+<h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>输入共两行。<br>第一行为一个正整数 $n$。<br>第二行为 $n$ 个正整数 $a_i$。</p>
+<h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出共一行，一个非负整数，表示两个队伍力量值之和的最小差距。</p>
+<h4 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">5</span><br><span class="line">10 9 8 12 14</span><br></pre></td></tr></table></figure>
+<h4 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1</span><br></pre></td></tr></table></figure>
+<h4 id="样例说明"><a href="#样例说明" class="headerlink" title="样例说明"></a>样例说明</h4><p>其中一种最优选择方式：<br>队伍 1：${a_1, a_2, a_3}$，队伍 2：${a_4, a_5}$，力量值和分别为 $10+9+8=27$，$12+14=26$，差距为 $|27-26|=1$。</p>
+<p>![[Pasted image 20260205220037.png]]</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;set&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n,ans=<span class="number">9999999</span>;</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt;<span class="built_in">arr</span>(n<span class="number">+1</span>,<span class="number">0</span>);</span><br><span class="line">    set&lt;<span class="type">int</span>&gt; s;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    cin&gt;&gt;arr[i];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    arr[i]+=arr[i<span class="number">-1</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> r1=n<span class="number">-1</span>;r1&gt;=<span class="number">1</span>;r1--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=r1<span class="number">+1</span>;i&lt;=n;i++)</span><br><span class="line">        s.<span class="built_in">insert</span>(arr[i]-arr[r1]);</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> l1=<span class="number">1</span>;l1&lt;=r1;l1++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="type">int</span> left_sum=arr[r1]-arr[l1<span class="number">-1</span>];</span><br><span class="line">            <span class="comment">// 3. 在 Set 里找最接近 left_sum 的值</span></span><br><span class="line">            <span class="comment">// lower_bound 找到第一个 &gt;= left_sum 的位置</span></span><br><span class="line">            <span class="keyword">auto</span> it = s.<span class="built_in">lower_bound</span>(left_sum);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 情况 A: 找到了 &gt;= left_sum 的值，算一下差值</span></span><br><span class="line">            <span class="keyword">if</span> (it != s.<span class="built_in">end</span>()) &#123;</span><br><span class="line">                ans = <span class="built_in">min</span>(ans, <span class="built_in">abs</span>(*it - left_sum));</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 情况 B: 它前面的那个值（即 &lt; left_sum 的最大值），也要算一下</span></span><br><span class="line">            <span class="comment">// 因为最接近的值可能是比它大的，也可能是比它小的</span></span><br><span class="line">            <span class="keyword">if</span> (it != s.<span class="built_in">begin</span>()) &#123;</span><br><span class="line">                <span class="keyword">auto</span> prev_it = <span class="built_in">prev</span>(it); <span class="comment">// 获取迭代器的前一个位置</span></span><br><span class="line">                ans = <span class="built_in">min</span>(ans, <span class="built_in">abs</span>(*prev_it - left_sum));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">cout&lt;&lt;ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://zedward-0417.github.io">Zedward</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://zedward-0417.github.io/2026/02/05/18.%E6%8B%94%E6%B2%B3/">https://zedward-0417.github.io/2026/02/05/18.%E6%8B%94%E6%B2%B3/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://zedward-0417.github.io" target="_blank">Zedward'Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%AE%97%E6%B3%95/">算法</a><a class="post-meta__tags" href="/tags/%E7%BC%96%E7%A8%8B/">编程</a></div><div class="post-share"><div class="social-share" data-image="/2.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2026/02/05/17.K%E5%80%8D%E5%8C%BA%E9%97%B4/" title="K倍区间"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">K倍区间</div></div><div class="info-2"><div class="info-item-1">k倍区间题目描述给定一个长度为 $N$ 的数列， $A1, A_2, \cdots A_N$。如果其中一段连续的子序列 $A_i, A{i+1}, \cdots A_j (i \le j)$ 之和是 $K$ 的倍数，我们就称这个区间 $[i, j]$ 是 K 倍区间。你能求出数列中总共有多少个 $K$ 倍区间吗？ 输入描述第一行包含两个整数 $N$ 和 $K$ $(1 \le N, K \le 10^5)$。以下 $N$ 行每行包含一个整数 $A_i$ $(1 \le A_i \le 10^5)$。 输出描述输出一个整数，代表 K 倍区间的数目。 输入输出样例示例输入5 212345输出6 ![[Pasted image 20260205192148.png]]  前缀和：计算数组的前缀和 $S$。 同余定理：如果区间 $[i, j]$ 的和是 $K$ 的倍数，即 $(Sj - S{i-1}) \% K == 0$，这意味着 $Sj \% K == S{i-1} \% K$。 转化：只需要计算前缀和模 $K$ 的余数。如果有 $c$ 个前缀和的余数相同（比如都是 1），那么从这 ...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2026/02/03/14.%E6%8C%96%E7%9F%BF/" title="挖矿"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-02-03</div><div class="info-item-2">挖矿</div></div><div class="info-2"><div class="info-item-1">问题描述小蓝正在数轴上挖矿，数轴上一共有 $n$ 个矿洞，第 $i$ 个矿洞的坐标为 $a_i$。小蓝从 $0$ 出发，每次可以向左或向右移动 $1$ 的距离。当路过一个矿洞时，就会进行挖矿作业，获得 $1$ 单位矿石。但一个矿洞不能被多次挖掘。小蓝想知道在移动距离不超过 $m$ 的前提下，最多能获得多少单位矿石？ 输入格式输入的第一行包含两个正整数 $n, m$，用一个空格分隔。第二行包含 $n$ 个整数 $a_1, a_2, \cdots, a_n$，相邻整数之间使用一个空格分隔。 输出格式输出一行包含一个整数表示答案。 样例输入Plaintext5 40 -3 -1 1 2 样例输出Plaintext4 样例说明路径：$0 \to -1 \to 0 \to 1 \to 2$，可以对 $0, -1, 1, 2$ 四个矿洞挖掘并获得最多 $4$ 块矿石。(注：距离计算为 $0 \to -1$ (1) $\to 0$ (1) $\to 1$ (1) $\to 2$ (1)，总距离 4，不超过 $m=4$) 评测用例规模与约定对于 $20\%$ 的评测用例，$1 \le n \le...</div></div></div></a><a class="pagination-related" href="/2026/01/27/2.%E5%B9%B8%E8%BF%90%E6%95%B0/" title="幸运数"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-01-27</div><div class="info-item-2">幸运数</div></div><div class="info-2"><div class="info-item-1">小蓝认为如果一个数含有偶数个数位，并且前面一半的数位之和等于后面 一半的数位之和，则这个数是他的幸运数字。例如2314是一个幸运数字，因为 它有4个数位，并且2+3=1+4。现在请你帮他计算从1至100000000之间 共有多少个不同的幸运数字？ 这道题思路比较简单,一个数对10取对数然后向上取整可以得到它的位数,对于位数为偶数的数,按位枚举,前一半相加后一半相加。#include&lt;iostream&gt;#include&lt;cmath&gt;using namespace std;bool IsLucky(int n)&#123;   int m=log10(n)+1,sum1=0,sum2=0,index=1;   if(m%2!=0)   return false;   while(n)   &#123;      int dight=n%10;      if(index&gt;m/2)      sum2+=dight;      else      sum1+=dight;      n/=10;      index++;   &#125;   retur...</div></div></div></a><a class="pagination-related" href="/2026/01/27/5.%E5%B0%8F%E7%90%83%E5%8F%8D%E5%BC%B9/" title="小球反弹"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-01-27</div><div class="info-item-2">小球反弹</div></div><div class="info-2"><div class="info-item-1">有一长方形，长为 343720 单位长度，宽为 233333 单位长度。 在其内部左上角顶点有一小球 (无视其体积)，其初速度如图所示且保持运动速率不变，分解到长宽两个方向上的速率之比为 dx:dy=15:17。 小球碰到长方形的边框时会发生反弹，每次反弹的入射角与反射角相等，因此小球会改变方向且保持速率不变（如果小球刚好射向角落，则按入射方向原路返回）。从小球出发到其第一次回到左上角顶点这段时间里，小球运动的路程为多少单位长度？答案四舍五入保留两位小数。![[Pasted image 20260119121851.png]]可以把小球每次反弹都投影到一个镜像世界里面假设lenth=343720,wide=233333![[未命名绘图.drawio.png]]我们可以观察到原点在镜像世界中的投影点满足x为2  lenth的整数倍数,y为2  wide的整数倍数。小球每时每刻沿直线运动在x和y轴上的分量都满足15:17。枚举t从1到正无穷,使得小球在t时刻的x和y运动分量满足到达原点所要求的条件。#include&lt;iostream&gt;#include&lt;cmath&g...</div></div></div></a><a class="pagination-related" href="/2026/02/05/16.%E5%8C%BA%E9%97%B4%E7%BF%BB%E8%BD%AC%E5%8C%BA%E9%97%B4%E5%BC%82%E6%88%96%E5%92%8C/" title="区间翻转区间异或和"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-02-05</div><div class="info-item-2">区间翻转区间异或和</div></div><div class="info-2"><div class="info-item-1">题目描述符卡有一个长度为 $n$ 的整数数组 $a$，符卡认为一个区间 $[l, r]$ 是灵异区间当且仅当 $\bigoplus{i=l}^r a_i = 0$，或者说这个区间内所有数字异或起来刚好等于 $0$。符卡有特殊的魔法，可以把任意一个灵异区间翻转。具体来说，如果 $[l, r]$ 区间是灵异区间，那么符卡就可以对这个区间使用魔法，整个数组就会变成 $a_1, a_2, \dots, a{l-1}, ar, a{r-1}, \dots, al, a{r+1}, a_{r+2}, \dots, a_n$。现在符卡可以使用任意次数的魔法，符卡希望最后得到的数组的灵异区间数量能够尽可能多，你能告诉她最后最多有多少个灵异区间吗？ 输入格式第一行一个正整数 $n$，表示数组长度。第二行 $n$ 个非负整数 $a_1, a_2, \dots, a_n$ 表示整个数组。 输出格式输出一行一个整数，表示符卡使用任意次魔法后灵异区间最多有多少个。 输入输出样例输入 #131 1 1输出 #12输入 #243 1 2 3输出 #22 对于如何找到灵异区间我们前面说到过,对整个数组求前缀异或...</div></div></div></a><a class="pagination-related" href="/2026/02/01/11.%E5%85%89%E9%AA%93%E8%80%85%E7%9A%84%E8%8D%A3%E8%80%80/" title="光骓者的荣耀"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-02-01</div><div class="info-item-2">光骓者的荣耀</div></div><div class="info-2"><div class="info-item-1">小 K 打下的江山一共有 $n$ 个城市，城市 $i$ 和城市 $i+1$ 有一条双向高速公路连接，走这条路要耗费时间 $a_i$。小 K 为了关心人民生活，决定定期进行走访。他每一次会从 $1$ 号城市到 $n$ 号城市并在经过的城市进行访问。其中终点必须为城市 $n$。不仅如此，他还有一个传送器，传送半径为 $k$，也就是说可以传送到 $i-k$ 和 $i+k$。如果目标城市编号小于 $1$ 则为 $1$，大于 $n$ 则为 $n$。但是他的传送器电量不足，只能传送一次，况且由于一些原因，他想尽量快地完成访问，于是就想问交通部部长您最快的时间是多少。注意： 他可以不访问所有的城市，使用传送器不耗费时间。  输入格式 两行：第一行包含两个整数 $n, k$。 第二行：包含 $n-1$ 个整数，第 $i$ 个整数表示 $a_i$（即城市 $i$ 到 $i+1$ 之间的耗时）。   输出格式 输出一个整数，表示从 $1$ 号城市到 $n$ 号城市的最短时间。  我们想要尽可能的少走,传送的距离尽可能的多用一个数组存储相邻两个城市之间的距离然后计算这个数组的前缀和,计算arr[i+k...</div></div></div></a><a class="pagination-related" href="/2026/02/01/12.%E9%A2%86%E5%9C%B0%E9%80%89%E6%8B%A9/" title="领地选择"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-02-01</div><div class="info-item-2">领地选择</div></div><div class="info-2"><div class="info-item-1">作为在虚拟世界里统帅千军万马的领袖，小 Z 认为天时、地利、人和三者是缺一不可的。所以，谨慎地选择首都的位置对于小 Z 来说是非常重要的。首都都被认为是一个占地 $C \times C$ 的正方形。小 Z 希望你找到一个合适的位置，使得首都所占领的位置的土地价值总和最高。 输入格式 第一行三个整数 $N, M, C$，表示地图的宽和长以及首都的边长。 接下来 $N$ 行每行 $M$ 个整数，表示地图上每个地块的价值。价值可能为负数。输出格式 一行两个整数 $X, Y$，表示首都左上角的坐标。输入输出样例 输入 #1：  Plaintext  3 4 21 2 3 1-1 9 0 22 0 1 1 输出 #1：  Plaintext  1 2   二维前缀和#include&lt;iostream&gt;using namespace std;int main()&#123;    int N,M,C,X,Y,MAXVAULE=0;    cin&gt;&gt;N&gt;&gt;M&gt;&gt;C;    int arr[N+1][M+1];    for(int i=0;i&l...</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="giscus-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/2.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Zedward</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/zedward-0417" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="http://wpa.qq.com/msgrd?v=3&amp;uin=3195990032&amp;site=qq&amp;menu=yes" target="_blank" title="QQ"><i class="fab fa-qq" style="color: #12B7F5;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎光临zedward的博客 <br> QQ：3195990032</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="toc-number">1.</span> <span class="toc-text">问题描述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A0%BC%E5%BC%8F"><span class="toc-number">2.</span> <span class="toc-text">输入格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E6%A0%BC%E5%BC%8F"><span class="toc-number">3.</span> <span class="toc-text">输出格式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%B7%E4%BE%8B%E8%BE%93%E5%85%A5"><span class="toc-number">4.</span> <span class="toc-text">样例输入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%B7%E4%BE%8B%E8%BE%93%E5%87%BA"><span class="toc-number">5.</span> <span class="toc-text">样例输出</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A0%B7%E4%BE%8B%E8%AF%B4%E6%98%8E"><span class="toc-number">6.</span> <span class="toc-text">样例说明</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/02/05/16.%E5%8C%BA%E9%97%B4%E7%BF%BB%E8%BD%AC%E5%8C%BA%E9%97%B4%E5%BC%82%E6%88%96%E5%92%8C/" title="区间翻转区间异或和">区间翻转区间异或和</a><time datetime="2026-02-04T16:00:00.000Z" title="发表于 2026-02-05 00:00:00">2026-02-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/02/05/17.K%E5%80%8D%E5%8C%BA%E9%97%B4/" title="K倍区间">K倍区间</a><time datetime="2026-02-04T16:00:00.000Z" title="发表于 2026-02-05 00:00:00">2026-02-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/02/05/18.%E6%8B%94%E6%B2%B3/" title="拔河">拔河</a><time datetime="2026-02-04T16:00:00.000Z" title="发表于 2026-02-05 00:00:00">2026-02-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/02/03/14.%E6%8C%96%E7%9F%BF/" title="挖矿">挖矿</a><time datetime="2026-02-02T16:00:00.000Z" title="发表于 2026-02-03 00:00:00">2026-02-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/02/03/15.%E6%8A%93%E5%A8%83%E5%A8%83/" title="抓娃娃">抓娃娃</a><time datetime="2026-02-02T16:00:00.000Z" title="发表于 2026-02-03 00:00:00">2026-02-03</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Zedward</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.4</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        loader: {
+          load: [
+            // Four font extension packages (optional)
+            //- '[tex]/bbm',
+            //- '[tex]/bboldx',
+            //- '[tex]/dsfont',
+            '[tex]/mhchem'
+          ],
+          paths: {
+            'mathjax-newcm': '[mathjax]/../@mathjax/mathjax-newcm-font',
+
+            //- // Four font extension packages (optional)
+            //- 'mathjax-bbm-extension': '[mathjax]/../@mathjax/mathjax-bbm-font-extension',
+            //- 'mathjax-bboldx-extension': '[mathjax]/../@mathjax/mathjax-bboldx-font-extension',
+            //- 'mathjax-dsfont-extension': '[mathjax]/../@mathjax/mathjax-dsfont-font-extension',
+            'mathjax-mhchem-extension': '[mathjax]/../@mathjax/mathjax-mhchem-font-extension'
+          }
+        },
+        output: {
+          font: 'mathjax-newcm',
+        },
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+          packages: {
+            '[+]': [
+              'mhchem'
+            ]
+          }
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          menuOptions: {
+            settings: {
+              enrich: false  // Turn off Braille and voice narration text automatic generation
+            }
+          },
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@4.1.0/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+
+  const getGiscusTheme = theme => theme === 'dark' ? 'dark' : 'light'
+
+  const createScriptElement = config => {
+    const ele = document.createElement('script')
+    Object.entries(config).forEach(([key, value]) => {
+      ele.setAttribute(key, value)
+    })
+    return ele
+  }
+
+  const loadGiscus = (el = document, key) => {
+    const mappingConfig = isShuoshuo
+      ? { 'data-mapping': 'specific', 'data-term': key }
+      : { 'data-mapping': (option && option['data-mapping']) || 'pathname' }
+
+    const giscusConfig = {
+      src: 'https://giscus.app/client.js',
+      'data-repo': 'zedward-0417/zedward-0417.github.io',
+      'data-repo-id': 'R_kgDORCZa9Q',
+      'data-category-id': 'DIC_kwDORCZa9c4C1iNa',
+      'data-theme': getGiscusTheme(document.documentElement.getAttribute('data-theme')),
+      'data-reactions-enabled': '1',
+      crossorigin: 'anonymous',
+      async: true,
+      ...option,
+      ...mappingConfig
+    }
+
+    const scriptElement = createScriptElement(giscusConfig)
+
+    el.querySelector('#giscus-wrap').appendChild(scriptElement)
+
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyGiscus = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+  }
+
+  const changeGiscusTheme = theme => {
+    const iframe = document.querySelector('#giscus-wrap iframe')
+    if (iframe) {
+      const message = {
+        giscus: {
+          setConfig: {
+            theme: getGiscusTheme(theme)
+          }
+        }
+      }
+      iframe.contentWindow.postMessage(message, 'https://giscus.app')
+    }
+  }
+
+  btf.addGlobalFn('themeChange', changeGiscusTheme, 'giscus')
+
+  if (isShuoshuo) {
+    'Giscus' === 'Giscus'
+      ? window.shuoshuoComment = { loadComment: loadGiscus }
+      : window.loadOtherComment = loadGiscus
+    return
+  }
+
+  if ('Giscus' === 'Giscus' || !false) {
+    if (false) btf.loadComment(document.getElementById('giscus-wrap'), loadGiscus)
+    else loadGiscus()
+  } else {
+    window.loadOtherComment = loadGiscus
+  }
+})()</script></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/meting@2.0.1/dist/Meting.min.js"></script><meting-js 
+  server="netease"
+  type="playlist" 
+  id="3136952023"
+  fixed="true" 
+  mini="true"
+  list-folded="true"
+  order="random"
+  preload="auto"
+  volume="0.5"
+  mutex="true"
+  lrc-type="0">
+</meting-js>
+<div id="waifu"></div><script src="https://fastly.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="Search Posts" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.4"></script></div></div></body></html>
