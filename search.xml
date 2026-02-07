@@ -64,37 +64,6 @@
     
     
     <entry>
-      <title>拔河</title>
-      <link href="/2026/02/05/18.%E6%8B%94%E6%B2%B3/"/>
-      <url>/2026/02/05/18.%E6%8B%94%E6%B2%B3/</url>
-      
-        <content type="html"><![CDATA[<h4 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h4><p>小明是学校里的一名老师，他带的班级共有 $n$ 名同学，第 $i$ 名同学力量值为 $a_i$。在闲暇之余，小明决定在班级里组织一场拔河比赛。<br>为了保证比赛双方实力尽可能相近，需要在这 $n$ 名同学中挑选出两个队伍，队伍内的同学编号连续：${a_{l_1}, a_{l_1+1}, \dots, a_{r_1}}$ 和 ${a_{l_2}, a_{l_2+1}, \dots, a_{r_2}}$，其中 $l_1 \le r_1 &lt; l_2 \le r_2$。<br>两个队伍的人数不必相同，但是需要让队伍内的同学们的力量值之和尽可能相近。请计算出力量值之和差距最小的挑选队伍的方式。</p><h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>输入共两行。<br>第一行为一个正整数 $n$。<br>第二行为 $n$ 个正整数 $a_i$。</p><h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出共一行，一个非负整数，表示两个队伍力量值之和的最小差距。</p><h4 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">5</span><br><span class="line">10 9 8 12 14</span><br></pre></td></tr></table></figure><h4 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1</span><br></pre></td></tr></table></figure><h4 id="样例说明"><a href="#样例说明" class="headerlink" title="样例说明"></a>样例说明</h4><p>其中一种最优选择方式：<br>队伍 1：${a_1, a_2, a_3}$，队伍 2：${a_4, a_5}$，力量值和分别为 $10+9+8=27$，$12+14=26$，差距为 $|27-26|=1$。</p><p><img src="/img/7.png" alt="7"></p><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;set&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n,ans=<span class="number">9999999</span>;</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt;<span class="built_in">arr</span>(n<span class="number">+1</span>,<span class="number">0</span>);</span><br><span class="line">    set&lt;<span class="type">int</span>&gt; s;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    cin&gt;&gt;arr[i];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    arr[i]+=arr[i<span class="number">-1</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> r1=n<span class="number">-1</span>;r1&gt;=<span class="number">1</span>;r1--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=r1<span class="number">+1</span>;i&lt;=n;i++)</span><br><span class="line">        s.<span class="built_in">insert</span>(arr[i]-arr[r1]);</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> l1=<span class="number">1</span>;l1&lt;=r1;l1++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="type">int</span> left_sum=arr[r1]-arr[l1<span class="number">-1</span>];</span><br><span class="line">            <span class="comment">// 3. 在 Set 里找最接近 left_sum 的值</span></span><br><span class="line">            <span class="comment">// lower_bound 找到第一个 &gt;= left_sum 的位置</span></span><br><span class="line">            <span class="keyword">auto</span> it = s.<span class="built_in">lower_bound</span>(left_sum);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 情况 A: 找到了 &gt;= left_sum 的值，算一下差值</span></span><br><span class="line">            <span class="keyword">if</span> (it != s.<span class="built_in">end</span>()) &#123;</span><br><span class="line">                ans = <span class="built_in">min</span>(ans, <span class="built_in">abs</span>(*it - left_sum));</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 情况 B: 它前面的那个值（即 &lt; left_sum 的最大值），也要算一下</span></span><br><span class="line">            <span class="comment">// 因为最接近的值可能是比它大的，也可能是比它小的</span></span><br><span class="line">            <span class="keyword">if</span> (it != s.<span class="built_in">begin</span>()) &#123;</span><br><span class="line">                <span class="keyword">auto</span> prev_it = <span class="built_in">prev</span>(it); <span class="comment">// 获取迭代器的前一个位置</span></span><br><span class="line">                ans = <span class="built_in">min</span>(ans, <span class="built_in">abs</span>(*prev_it - left_sum));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">cout&lt;&lt;ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
-      <categories>
-          
-          <category> 算法学习 </category>
-          
-          <category> 枚举 </category>
-          
-          <category> 前缀和题目 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 算法 </tag>
-            
-            <tag> 编程 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>区间翻转区间异或和</title>
       <link href="/2026/02/05/16.%E5%8C%BA%E9%97%B4%E7%BF%BB%E8%BD%AC%E5%8C%BA%E9%97%B4%E5%BC%82%E6%88%96%E5%92%8C/"/>
       <url>/2026/02/05/16.%E5%8C%BA%E9%97%B4%E7%BF%BB%E8%BD%AC%E5%8C%BA%E9%97%B4%E5%BC%82%E6%88%96%E5%92%8C/</url>
@@ -131,6 +100,37 @@
       <url>/2026/02/05/17.K%E5%80%8D%E5%8C%BA%E9%97%B4/</url>
       
         <content type="html"><![CDATA[<h3 id="k倍区间"><a href="#k倍区间" class="headerlink" title="k倍区间"></a>k倍区间</h3><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定一个长度为 $N$ 的数列， $A_1, A_2, \cdots A_N$。如果其中一段连续的子序列 $A_i, A_{i+1}, \cdots A_j (i \le j)$ 之和是 $K$ 的倍数，我们就称这个区间 $[i, j]$ 是 K 倍区间。<br>你能求出数列中总共有多少个 $K$ 倍区间吗？</p><h4 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述"></a>输入描述</h4><p>第一行包含两个整数 $N$ 和 $K$ $(1 \le N, K \le 10^5)$。<br>以下 $N$ 行每行包含一个整数 $A_i$ $(1 \le A_i \le 10^5)$。</p><h4 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述"></a>输出描述</h4><p>输出一个整数，代表 K 倍区间的数目。</p><h4 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h4><p><strong>示例</strong><br><strong>输入</strong></p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">5 2</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line"></span><br></pre></td></tr></table></figure><p><strong>输出</strong></p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">6</span><br><span class="line"></span><br></pre></td></tr></table></figure><p><img src="/img/8.png" alt="8"></p><ul><li><strong>前缀和</strong>：计算数组的前缀和 $S$。</li><li><strong>同余定理</strong>：如果区间 $[i, j]$ 的和是 $K$ 的倍数，即 $(S_j - S_{i-1}) \% K == 0$，这意味着 $S_j \% K == S_{i-1} \% K$。</li><li><strong>转化</strong>：只需要计算前缀和模 $K$ 的余数。如果有 $c$ 个前缀和的余数相同（比如都是 1），那么从这 $c$ 个位置中任选 2 个（$C_c^2$），它们之间的区间和就是 $K$ 的倍数。</li></ul><p>```cpp</p><h1 id="include"><a href="#include" class="headerlink" title="include"></a>include<iostream></h1><h1 id="include-1"><a href="#include-1" class="headerlink" title="include"></a>include<vector></h1><p>using namespace std;<br>int main()<br>{<br>    int N,K,sum=0;<br>    cin&gt;&gt;N&gt;&gt;K;<br>    vector<int>arr(N+1,0);<br>    vector<int>cnt(K,0);<br>    for(int i=1;i&lt;=N;i++)<br>    cin&gt;&gt;arr[i];<br>    for(int i=1;i&lt;=N;i++)<br>    arr[i]=(arr[i-1]+arr[i])%K;<br>    for(auto &amp;x:arr)<br>    cnt[x]++;<br>    for(auto &amp;c:cnt)<br>    sum+=(c-1)*c/2;<br>    cout&lt;&lt;sum;<br>}</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法学习 </category>
+          
+          <category> 枚举 </category>
+          
+          <category> 前缀和题目 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 编程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>拔河</title>
+      <link href="/2026/02/05/18.%E6%8B%94%E6%B2%B3/"/>
+      <url>/2026/02/05/18.%E6%8B%94%E6%B2%B3/</url>
+      
+        <content type="html"><![CDATA[<h4 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h4><p>小明是学校里的一名老师，他带的班级共有 $n$ 名同学，第 $i$ 名同学力量值为 $a_i$。在闲暇之余，小明决定在班级里组织一场拔河比赛。<br>为了保证比赛双方实力尽可能相近，需要在这 $n$ 名同学中挑选出两个队伍，队伍内的同学编号连续：${a_{l_1}, a_{l_1+1}, \dots, a_{r_1}}$ 和 ${a_{l_2}, a_{l_2+1}, \dots, a_{r_2}}$，其中 $l_1 \le r_1 &lt; l_2 \le r_2$。<br>两个队伍的人数不必相同，但是需要让队伍内的同学们的力量值之和尽可能相近。请计算出力量值之和差距最小的挑选队伍的方式。</p><h4 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h4><p>输入共两行。<br>第一行为一个正整数 $n$。<br>第二行为 $n$ 个正整数 $a_i$。</p><h4 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h4><p>输出共一行，一个非负整数，表示两个队伍力量值之和的最小差距。</p><h4 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a>样例输入</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">5</span><br><span class="line">10 9 8 12 14</span><br></pre></td></tr></table></figure><h4 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a>样例输出</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1</span><br></pre></td></tr></table></figure><h4 id="样例说明"><a href="#样例说明" class="headerlink" title="样例说明"></a>样例说明</h4><p>其中一种最优选择方式：<br>队伍 1：${a_1, a_2, a_3}$，队伍 2：${a_4, a_5}$，力量值和分别为 $10+9+8=27$，$12+14=26$，差距为 $|27-26|=1$。</p><p><img src="/img/7.png" alt="7"></p><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;set&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n,ans=<span class="number">9999999</span>;</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt;<span class="built_in">arr</span>(n<span class="number">+1</span>,<span class="number">0</span>);</span><br><span class="line">    set&lt;<span class="type">int</span>&gt; s;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    cin&gt;&gt;arr[i];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    arr[i]+=arr[i<span class="number">-1</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> r1=n<span class="number">-1</span>;r1&gt;=<span class="number">1</span>;r1--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=r1<span class="number">+1</span>;i&lt;=n;i++)</span><br><span class="line">        s.<span class="built_in">insert</span>(arr[i]-arr[r1]);</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> l1=<span class="number">1</span>;l1&lt;=r1;l1++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="type">int</span> left_sum=arr[r1]-arr[l1<span class="number">-1</span>];</span><br><span class="line">            <span class="comment">// 3. 在 Set 里找最接近 left_sum 的值</span></span><br><span class="line">            <span class="comment">// lower_bound 找到第一个 &gt;= left_sum 的位置</span></span><br><span class="line">            <span class="keyword">auto</span> it = s.<span class="built_in">lower_bound</span>(left_sum);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 情况 A: 找到了 &gt;= left_sum 的值，算一下差值</span></span><br><span class="line">            <span class="keyword">if</span> (it != s.<span class="built_in">end</span>()) &#123;</span><br><span class="line">                ans = <span class="built_in">min</span>(ans, <span class="built_in">abs</span>(*it - left_sum));</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 情况 B: 它前面的那个值（即 &lt; left_sum 的最大值），也要算一下</span></span><br><span class="line">            <span class="comment">// 因为最接近的值可能是比它大的，也可能是比它小的</span></span><br><span class="line">            <span class="keyword">if</span> (it != s.<span class="built_in">begin</span>()) &#123;</span><br><span class="line">                <span class="keyword">auto</span> prev_it = <span class="built_in">prev</span>(it); <span class="comment">// 获取迭代器的前一个位置</span></span><br><span class="line">                ans = <span class="built_in">min</span>(ans, <span class="built_in">abs</span>(*prev_it - left_sum));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">cout&lt;&lt;ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       
       
       <categories>
@@ -461,68 +461,6 @@
     
     
     <entry>
-      <title>幸运数</title>
-      <link href="/2026/01/27/2.%E5%B9%B8%E8%BF%90%E6%95%B0/"/>
-      <url>/2026/01/27/2.%E5%B9%B8%E8%BF%90%E6%95%B0/</url>
-      
-        <content type="html"><![CDATA[<p>小蓝认为如果一个数含有偶数个数位，并且前面一半的数位之和等于后面 一半的数位之和，则这个数是他的幸运数字。例如2314是一个幸运数字，因为 它有4个数位，并且2+3=1+4。现在请你帮他计算从1至100000000之间 共有多少个不同的幸运数字？</p><p>这道题思路比较简单,一个数对10取对数然后向上取整可以得到它的位数,对于位数为偶数的数,按位枚举,前一半相加后一半相加。<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">IsLucky</span><span class="params">(<span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="type">int</span> m=<span class="built_in">log10</span>(n)<span class="number">+1</span>,sum1=<span class="number">0</span>,sum2=<span class="number">0</span>,index=<span class="number">1</span>;</span><br><span class="line">   <span class="keyword">if</span>(m%<span class="number">2</span>!=<span class="number">0</span>)</span><br><span class="line">   <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">   <span class="keyword">while</span>(n)</span><br><span class="line">   &#123;</span><br><span class="line">      <span class="type">int</span> dight=n%<span class="number">10</span>;</span><br><span class="line">      <span class="keyword">if</span>(index&gt;m/<span class="number">2</span>)</span><br><span class="line">      sum2+=dight;</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">      sum1+=dight;</span><br><span class="line">      n/=<span class="number">10</span>;</span><br><span class="line">      index++;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> sum1==sum2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> sum=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">100000000</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">IsLucky</span>(i))</span><br><span class="line">        sum++;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 算法学习 </category>
-          
-          <category> 枚举 </category>
-          
-          <category> 枚举算法题目 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 算法 </tag>
-            
-            <tag> 编程 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>卡片</title>
-      <link href="/2026/01/27/3.%E5%8D%A1%E7%89%87/"/>
-      <url>/2026/01/27/3.%E5%8D%A1%E7%89%87/</url>
-      
-        <content type="html"><![CDATA[<p>小蓝有很多数字卡片，每张卡片上标有 0到9 中的一个数字。<br>他想用这些卡片从 1 开始拼出连续的正整数，每拼一个数，就把用到的卡片保存起来，之后不能再用这些卡片拼其他数。<br>例如，如果小蓝手里有 30 张卡片，每个数字 0到9 各 3 张，他可以拼出 1到10，但是拼 11 时，数字 1 的卡片已经不够用了。<br>现在，小蓝手里有每个数字 0到9 的卡片各 2021 张（总共 20210 张），问他能够从 1 拼到的最大连续整数是多少？<br>这道题的思路也很简单,咱们准备一个十个空间大小的数组vec[10],都存储2021,代表0~9的卡片都有2021张,遍历从1开始的数,我们将它逐位分解,对于分解出的每一位x,vec[x]—，直到某个数分解出的某位i,vec[i]=0时,说明没有卡片去给它组成这个数了，那么答案就是这个数的上一个数。<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">vec</span><span class="params">(<span class="number">10</span>,<span class="number">2021</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">work</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> re=i;</span><br><span class="line">        <span class="keyword">while</span>(re)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="type">int</span> index=re%<span class="number">10</span>;</span><br><span class="line">            <span class="keyword">if</span>(vec[index]==<span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> i<span class="number">-1</span>;</span><br><span class="line">            vec[index]--;</span><br><span class="line">            re/=<span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  cout&lt;&lt;<span class="built_in">work</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 算法学习 </category>
-          
-          <category> 枚举 </category>
-          
-          <category> 枚举算法题目 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 算法 </tag>
-            
-            <tag> 编程 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>寻找2020</title>
       <link href="/2026/01/27/4.%E5%AF%BB%E6%89%BE2020/"/>
       <url>/2026/01/27/4.%E5%AF%BB%E6%89%BE2020/</url>
@@ -585,37 +523,6 @@
     
     
     <entry>
-      <title>日期统计</title>
-      <link href="/2026/01/27/7.%E6%97%A5%E6%9C%9F%E7%BB%9F%E8%AE%A1/"/>
-      <url>/2026/01/27/7.%E6%97%A5%E6%9C%9F%E7%BB%9F%E8%AE%A1/</url>
-      
-        <content type="html"><![CDATA[<p>小蓝现在有一个长度为100的数组，数组中的每个元素的值都在0 到9 的范围之内。数组中的元素从左至右如下所示<br>5 6 8 6 9 1 6 1 2 4 9 1 9 8 2 3 6 4 7 7 5 9 5 0 3 8 7 5 8 1 5 8 6 1 8 3 0 3 7 9 2 7 0 5 8 8 5 7 0 9 9 1 9 4 4 6 8 6 3 3 8 5 1 6 3 4 6 7 0 7 8 2 7 6 8 9 5 6 5 6 1 4 0 1 0 0 9 4 8 0 9 1 2 8 5 0 2 5 3 3<br>现在他想要从这个数组中寻找一些满足以下条件的子序列：<br>子序列的长度为8；<br>这个子序列可以按照下标顺序组成一个yyyymmdd 格式的日期，并且要求这个日期是2023 年中的某一天的日期，例如20230902，20231223。yyyy 表示年份，mm 表示月份，dd 表示天数，当月份或者天数的长度只有一位时需要一个前导零补充。<br>请你帮小蓝计算下按上述条件一共能找到多少个不同的2023 年的日期。<br>对于相同的日期你只需要统计一次即可。</p><p>枚举2023年的每一天进行子序列的匹配<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">daysmatch</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp;numbers,vector&lt;<span class="type">int</span>&gt;&amp;match)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="type">int</span> idx=<span class="number">0</span>;</span><br><span class="line">   <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;=<span class="number">99</span>;i++)</span><br><span class="line">   &#123;</span><br><span class="line">      <span class="keyword">if</span>(numbers[i]==match[idx])</span><br><span class="line">      idx++;</span><br><span class="line">      <span class="keyword">if</span>(idx==match.<span class="built_in">size</span>())</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"> vector &lt;<span class="type">int</span>&gt; numbers=&#123;<span class="number">5</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">6</span>, <span class="number">9</span>, <span class="number">1</span>, <span class="number">6</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">9</span>, <span class="number">1</span>, <span class="number">9</span>, <span class="number">8</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">6</span>, <span class="number">4</span>, <span class="number">7</span>, <span class="number">7</span>, <span class="number">5</span>, <span class="number">9</span>, <span class="number">5</span>, <span class="number">0</span>, <span class="number">3</span>, <span class="number">8</span>, <span class="number">7</span>, <span class="number">5</span>, <span class="number">8</span>, <span class="number">1</span>, <span class="number">5</span>,</span><br><span class="line"> <span class="number">8</span>, <span class="number">6</span>, <span class="number">1</span>, <span class="number">8</span>, <span class="number">3</span>, <span class="number">0</span>, <span class="number">3</span>, <span class="number">7</span>, <span class="number">9</span>, <span class="number">2</span>, <span class="number">7</span>, <span class="number">0</span>, <span class="number">5</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">0</span>, <span class="number">9</span>, <span class="number">9</span>, <span class="number">1</span>, <span class="number">9</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">8</span>, <span class="number">5</span>,</span><br><span class="line"> <span class="number">1</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">0</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">2</span>, <span class="number">7</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">9</span>, <span class="number">4</span>, <span class="number">8</span>, <span class="number">0</span>, <span class="number">9</span>, <span class="number">1</span>, <span class="number">2</span>,</span><br><span class="line"> <span class="number">8</span>, <span class="number">5</span>, <span class="number">0</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">3</span>&#125;;</span><br><span class="line"></span><br><span class="line"> <span class="type">int</span> MonthDay[<span class="number">12</span>]=&#123;<span class="number">31</span>,<span class="number">28</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> cnt=<span class="number">0</span>;</span><br><span class="line"> <span class="keyword">for</span>(<span class="type">int</span> month=<span class="number">1</span>;month&lt;=<span class="number">12</span>;month++)</span><br><span class="line"> &#123;</span><br><span class="line">   <span class="keyword">for</span>(<span class="type">int</span> day=<span class="number">1</span>;day&lt;=MonthDay[month<span class="number">-1</span>];day++)</span><br><span class="line">   &#123;</span><br><span class="line">      vector &lt;<span class="type">int</span>&gt; match=&#123;<span class="number">2</span>,<span class="number">0</span>,<span class="number">2</span>,<span class="number">3</span>,month/<span class="number">10</span>,month%<span class="number">10</span>,day/<span class="number">10</span>,day%<span class="number">10</span>&#125;;</span><br><span class="line">      cnt+=<span class="built_in">daysmatch</span>(numbers,match);</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> cout&lt;&lt;cnt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 算法学习 </category>
-          
-          <category> 枚举 </category>
-          
-          <category> 枚举算法题目 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 算法 </tag>
-            
-            <tag> 编程 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>特殊日期</title>
       <link href="/2026/01/27/6.%E7%89%B9%E6%AE%8A%E6%97%A5%E6%9C%9F/"/>
       <url>/2026/01/27/6.%E7%89%B9%E6%AE%8A%E6%97%A5%E6%9C%9F/</url>
@@ -647,11 +554,104 @@
     
     
     <entry>
+      <title>卡片</title>
+      <link href="/2026/01/27/3.%E5%8D%A1%E7%89%87/"/>
+      <url>/2026/01/27/3.%E5%8D%A1%E7%89%87/</url>
+      
+        <content type="html"><![CDATA[<p>小蓝有很多数字卡片，每张卡片上标有 0到9 中的一个数字。<br>他想用这些卡片从 1 开始拼出连续的正整数，每拼一个数，就把用到的卡片保存起来，之后不能再用这些卡片拼其他数。<br>例如，如果小蓝手里有 30 张卡片，每个数字 0到9 各 3 张，他可以拼出 1到10，但是拼 11 时，数字 1 的卡片已经不够用了。<br>现在，小蓝手里有每个数字 0到9 的卡片各 2021 张（总共 20210 张），问他能够从 1 拼到的最大连续整数是多少？<br>这道题的思路也很简单,咱们准备一个十个空间大小的数组vec[10],都存储2021,代表0~9的卡片都有2021张,遍历从1开始的数,我们将它逐位分解,对于分解出的每一位x,vec[x]—，直到某个数分解出的某位i,vec[i]=0时,说明没有卡片去给它组成这个数了，那么答案就是这个数的上一个数。<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">vec</span><span class="params">(<span class="number">10</span>,<span class="number">2021</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">work</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> re=i;</span><br><span class="line">        <span class="keyword">while</span>(re)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="type">int</span> index=re%<span class="number">10</span>;</span><br><span class="line">            <span class="keyword">if</span>(vec[index]==<span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> i<span class="number">-1</span>;</span><br><span class="line">            vec[index]--;</span><br><span class="line">            re/=<span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  cout&lt;&lt;<span class="built_in">work</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法学习 </category>
+          
+          <category> 枚举 </category>
+          
+          <category> 枚举算法题目 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 编程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>神奇闹钟</title>
       <link href="/2026/01/27/8.%E7%A5%9E%E5%A5%87%E9%97%B9%E9%92%9F/"/>
       <url>/2026/01/27/8.%E7%A5%9E%E5%A5%87%E9%97%B9%E9%92%9F/</url>
       
         <content type="html"><![CDATA[<p>小蓝发现了一个神奇的闹钟, 从纪元时间（1970 年 1月 1日 00: 00: 00）开始, 每经过 x 分钟, 这个闹钟便会触发一次闹铃 (纪元时间也会响铃). 这引起了小蓝的兴趣, 他想要好好研究下这个闹钟.<br>对于给出的时间一个格式为 yyyy-MM-dd HH:mm:ss 的时间, 小蓝想要知道在这个时间点之前(包含这个时间点)最近的一次闹铃是什么时间?<br>注意,你不必考虑时区问题。<br>输入格式<br>输入的第一行包含一个整数 T , 表示每次输入包含 T 组数据.<br>接下来依次描述 T 组数据.<br>每组数据一行。包含一个时间（格式为 yyyy-MM-dd HH:mm:ss）和一个整数 x ，其中 x表示闹铃时间间隔（单位为分钟）.<br>输出格式<br>输出 T 行. 每行包含一个时间（格式为 yyyy-MM-dd HH:mm:ss），依次表示每组数据的答案。</p><p>首先把从1970年到输入时间之间的秒数long long res算出来,再计算出可以触发闹铃的次数n= (res / (x <em> 60)) ,从而计算出从1970年开始到最后一次闹铃之间的秒数res= (res / (x</em>60)) <em> x </em> 60,再把这个秒数转化为题目要求的时间格式<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">long</span> <span class="type">long</span> <span class="title">gettimestamp</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b,<span class="type">int</span> c,<span class="type">int</span> d,<span class="type">int</span> e,<span class="type">int</span> f)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> IsLeapYear=((a%<span class="number">4</span>==<span class="number">0</span> &amp;&amp; a%<span class="number">100</span>!=<span class="number">0</span>) || (a%<span class="number">400</span>==<span class="number">0</span>));</span><br><span class="line">    <span class="type">int</span> MonthDay[<span class="number">12</span>]=&#123;<span class="number">31</span>,<span class="number">28</span>+IsLeapYear,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>&#125;;</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> res=<span class="number">0</span>;</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> commonyear=<span class="number">365</span>*<span class="number">24</span>*<span class="number">60</span>*<span class="number">60</span>;</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> leapyear=<span class="number">366</span>*<span class="number">24</span>*<span class="number">60</span>*<span class="number">60</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1970</span>;i&lt;a;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>((i%<span class="number">4</span>==<span class="number">0</span> &amp;&amp; i%<span class="number">100</span>!=<span class="number">0</span>) || (i%<span class="number">400</span>==<span class="number">0</span>))</span><br><span class="line">        res+=leapyear;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        res+=commonyear;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;b;j++)</span><br><span class="line">    res+=MonthDay[j<span class="number">-1</span>]*<span class="number">24</span>*<span class="number">60</span>*<span class="number">60</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> k=<span class="number">1</span>;k&lt;c;k++)</span><br><span class="line">    res+=<span class="number">24</span>*<span class="number">60</span>*<span class="number">60</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> l=<span class="number">1</span>;l&lt;=d;l++)</span><br><span class="line">    res+=<span class="number">60</span>*<span class="number">60</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> m=<span class="number">1</span>;m&lt;=e;m++)</span><br><span class="line">    res+=<span class="number">60</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> n=<span class="number">1</span>;n&lt;=f;n++)</span><br><span class="line">    res+=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">PrintTime</span><span class="params">(<span class="type">long</span> <span class="type">long</span> res)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> year=<span class="number">1970</span>;</span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">true</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">long</span> <span class="type">long</span> secyear=(<span class="number">365</span>+((year%<span class="number">4</span>==<span class="number">0</span> &amp;&amp; year%<span class="number">100</span>!=<span class="number">0</span>) || (year%<span class="number">400</span>==<span class="number">0</span>)))*<span class="number">24</span>*<span class="number">60</span>*<span class="number">60</span>;</span><br><span class="line">        <span class="keyword">if</span>(res&gt;=secyear)</span><br><span class="line">        &#123;</span><br><span class="line">            year++;</span><br><span class="line">            res-=secyear;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> MonthDay[<span class="number">12</span>]=&#123;<span class="number">31</span>,<span class="number">28</span>+((year%<span class="number">4</span>==<span class="number">0</span> &amp;&amp; year%<span class="number">100</span>!=<span class="number">0</span>) || (year%<span class="number">400</span>==<span class="number">0</span>)),<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>&#125;;</span><br><span class="line">    <span class="type">int</span> month=<span class="number">1</span>,i=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">true</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(res&gt;=MonthDay[i]*<span class="number">24</span>*<span class="number">60</span>*<span class="number">60</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            res-=MonthDay[i]*<span class="number">24</span>*<span class="number">60</span>*<span class="number">60</span>;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            month+=i;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> day=<span class="number">1</span>,j=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(<span class="literal">true</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(res&gt;=<span class="number">24</span>*<span class="number">60</span>*<span class="number">60</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            res-=<span class="number">24</span>*<span class="number">60</span>*<span class="number">60</span>;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            day+=j;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> hour = res/<span class="number">3600</span>; res%= <span class="number">3600</span>;</span><br><span class="line">    <span class="type">int</span> minute = res/<span class="number">60</span>; res%= <span class="number">60</span>;</span><br><span class="line">    <span class="type">int</span> second = res;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%04d-%02d-%02d %02d:%02d:%02d\n&quot;</span>, year, month, day, hour, minute, second);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> T;</span><br><span class="line">    cin&gt;&gt;T;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=T;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> a,b,c,d,e,f,x;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d-%d-%d %d:%d:%d %d&quot;</span>,&amp;a,&amp;b,&amp;c,&amp;d,&amp;e,&amp;f,&amp;x);</span><br><span class="line">        <span class="type">long</span> <span class="type">long</span> res=<span class="built_in">gettimestamp</span>(a,b,c,d,e,f);</span><br><span class="line">        res= (res / (x*<span class="number">60</span>)) * x * <span class="number">60</span>;</span><br><span class="line">        <span class="built_in">PrintTime</span>(res);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法学习 </category>
+          
+          <category> 枚举 </category>
+          
+          <category> 枚举算法题目 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 编程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>幸运数</title>
+      <link href="/2026/01/27/2.%E5%B9%B8%E8%BF%90%E6%95%B0/"/>
+      <url>/2026/01/27/2.%E5%B9%B8%E8%BF%90%E6%95%B0/</url>
+      
+        <content type="html"><![CDATA[<p>小蓝认为如果一个数含有偶数个数位，并且前面一半的数位之和等于后面 一半的数位之和，则这个数是他的幸运数字。例如2314是一个幸运数字，因为 它有4个数位，并且2+3=1+4。现在请你帮他计算从1至100000000之间 共有多少个不同的幸运数字？</p><p>这道题思路比较简单,一个数对10取对数然后向上取整可以得到它的位数,对于位数为偶数的数,按位枚举,前一半相加后一半相加。<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">IsLucky</span><span class="params">(<span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="type">int</span> m=<span class="built_in">log10</span>(n)<span class="number">+1</span>,sum1=<span class="number">0</span>,sum2=<span class="number">0</span>,index=<span class="number">1</span>;</span><br><span class="line">   <span class="keyword">if</span>(m%<span class="number">2</span>!=<span class="number">0</span>)</span><br><span class="line">   <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">   <span class="keyword">while</span>(n)</span><br><span class="line">   &#123;</span><br><span class="line">      <span class="type">int</span> dight=n%<span class="number">10</span>;</span><br><span class="line">      <span class="keyword">if</span>(index&gt;m/<span class="number">2</span>)</span><br><span class="line">      sum2+=dight;</span><br><span class="line">      <span class="keyword">else</span></span><br><span class="line">      sum1+=dight;</span><br><span class="line">      n/=<span class="number">10</span>;</span><br><span class="line">      index++;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> sum1==sum2;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> sum=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">100000000</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">IsLucky</span>(i))</span><br><span class="line">        sum++;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法学习 </category>
+          
+          <category> 枚举 </category>
+          
+          <category> 枚举算法题目 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 编程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>日期统计</title>
+      <link href="/2026/01/27/7.%E6%97%A5%E6%9C%9F%E7%BB%9F%E8%AE%A1/"/>
+      <url>/2026/01/27/7.%E6%97%A5%E6%9C%9F%E7%BB%9F%E8%AE%A1/</url>
+      
+        <content type="html"><![CDATA[<p>小蓝现在有一个长度为100的数组，数组中的每个元素的值都在0 到9 的范围之内。数组中的元素从左至右如下所示<br>5 6 8 6 9 1 6 1 2 4 9 1 9 8 2 3 6 4 7 7 5 9 5 0 3 8 7 5 8 1 5 8 6 1 8 3 0 3 7 9 2 7 0 5 8 8 5 7 0 9 9 1 9 4 4 6 8 6 3 3 8 5 1 6 3 4 6 7 0 7 8 2 7 6 8 9 5 6 5 6 1 4 0 1 0 0 9 4 8 0 9 1 2 8 5 0 2 5 3 3<br>现在他想要从这个数组中寻找一些满足以下条件的子序列：<br>子序列的长度为8；<br>这个子序列可以按照下标顺序组成一个yyyymmdd 格式的日期，并且要求这个日期是2023 年中的某一天的日期，例如20230902，20231223。yyyy 表示年份，mm 表示月份，dd 表示天数，当月份或者天数的长度只有一位时需要一个前导零补充。<br>请你帮小蓝计算下按上述条件一共能找到多少个不同的2023 年的日期。<br>对于相同的日期你只需要统计一次即可。</p><p>枚举2023年的每一天进行子序列的匹配<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">daysmatch</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp;numbers,vector&lt;<span class="type">int</span>&gt;&amp;match)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="type">int</span> idx=<span class="number">0</span>;</span><br><span class="line">   <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;=<span class="number">99</span>;i++)</span><br><span class="line">   &#123;</span><br><span class="line">      <span class="keyword">if</span>(numbers[i]==match[idx])</span><br><span class="line">      idx++;</span><br><span class="line">      <span class="keyword">if</span>(idx==match.<span class="built_in">size</span>())</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"> vector &lt;<span class="type">int</span>&gt; numbers=&#123;<span class="number">5</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">6</span>, <span class="number">9</span>, <span class="number">1</span>, <span class="number">6</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">9</span>, <span class="number">1</span>, <span class="number">9</span>, <span class="number">8</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">6</span>, <span class="number">4</span>, <span class="number">7</span>, <span class="number">7</span>, <span class="number">5</span>, <span class="number">9</span>, <span class="number">5</span>, <span class="number">0</span>, <span class="number">3</span>, <span class="number">8</span>, <span class="number">7</span>, <span class="number">5</span>, <span class="number">8</span>, <span class="number">1</span>, <span class="number">5</span>,</span><br><span class="line"> <span class="number">8</span>, <span class="number">6</span>, <span class="number">1</span>, <span class="number">8</span>, <span class="number">3</span>, <span class="number">0</span>, <span class="number">3</span>, <span class="number">7</span>, <span class="number">9</span>, <span class="number">2</span>, <span class="number">7</span>, <span class="number">0</span>, <span class="number">5</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">0</span>, <span class="number">9</span>, <span class="number">9</span>, <span class="number">1</span>, <span class="number">9</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">8</span>, <span class="number">5</span>,</span><br><span class="line"> <span class="number">1</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">0</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">2</span>, <span class="number">7</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">9</span>, <span class="number">4</span>, <span class="number">8</span>, <span class="number">0</span>, <span class="number">9</span>, <span class="number">1</span>, <span class="number">2</span>,</span><br><span class="line"> <span class="number">8</span>, <span class="number">5</span>, <span class="number">0</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">3</span>&#125;;</span><br><span class="line"></span><br><span class="line"> <span class="type">int</span> MonthDay[<span class="number">12</span>]=&#123;<span class="number">31</span>,<span class="number">28</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> cnt=<span class="number">0</span>;</span><br><span class="line"> <span class="keyword">for</span>(<span class="type">int</span> month=<span class="number">1</span>;month&lt;=<span class="number">12</span>;month++)</span><br><span class="line"> &#123;</span><br><span class="line">   <span class="keyword">for</span>(<span class="type">int</span> day=<span class="number">1</span>;day&lt;=MonthDay[month<span class="number">-1</span>];day++)</span><br><span class="line">   &#123;</span><br><span class="line">      vector &lt;<span class="type">int</span>&gt; match=&#123;<span class="number">2</span>,<span class="number">0</span>,<span class="number">2</span>,<span class="number">3</span>,month/<span class="number">10</span>,month%<span class="number">10</span>,day/<span class="number">10</span>,day%<span class="number">10</span>&#125;;</span><br><span class="line">      cnt+=<span class="built_in">daysmatch</span>(numbers,match);</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> cout&lt;&lt;cnt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
       
       
       <categories>
