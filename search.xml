@@ -4,6 +4,99 @@
   
     
     <entry>
+      <title>油漆</title>
+      <link href="/2026/02/08/20.%E6%B2%B9%E6%BC%86/"/>
+      <url>/2026/02/08/20.%E6%B2%B9%E6%BC%86/</url>
+      
+        <content type="html"><![CDATA[<h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a><strong>输入格式</strong></h3><p>第一行两个整数 $n, m$，分别表示油漆的罐数和专家进行的操作数。<br>接下来 $m$ 行，每行三个整数 $l_i, r_i, k_i$，表示在第 $i$ 次操作中向编号在 $l_i$ 到 $r_i$ 之间（包括两端）的罐子中加入颜料。加入的颜料是黄色（$k_i=1$），蓝色（$k_i=2$）或红色（$k_i=3$）中的一种。</p><h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a><strong>输出格式</strong></h3><p>输出一行一个整数，表示在所有操作之后绿色油漆的罐数。</p><h3 id="说明-提示"><a href="#说明-提示" class="headerlink" title="说明/提示"></a><strong>说明/提示</strong></h3><p>判断一罐油漆最后是不是<strong>绿色</strong>，必须<strong>同时满足</strong>以下三个条件：</p><ol><li><strong>必有黄色</strong> ($Yellow &gt; 0$)</li><li><strong>必须有蓝色</strong> ($Blue &gt; 0$)</li><li><strong>绝对不能有红色</strong> ($Red == 0$)</li></ol><p>开辟三个数组统计每个位置上各种颜色颜料的数量<br>通过差分数组来模拟在区间上加入颜料的操作<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> m,n,cnt=<span class="number">0</span>;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt;<span class="built_in">yellow</span>(n<span class="number">+1</span>,<span class="number">0</span>);</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt;<span class="built_in">blue</span>(n<span class="number">+1</span>,<span class="number">0</span>);</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt;<span class="built_in">red</span>(n<span class="number">+1</span>,<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> l,r,k;</span><br><span class="line">        cin&gt;&gt;l&gt;&gt;r&gt;&gt;k;</span><br><span class="line">        <span class="keyword">if</span>(k==<span class="number">1</span>)</span><br><span class="line">        yellow[l<span class="number">-1</span>]+=<span class="number">1</span>,yellow[r]-=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(k==<span class="number">2</span>)</span><br><span class="line">        blue[l<span class="number">-1</span>]+=<span class="number">1</span>,blue[r]-=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(k==<span class="number">3</span>)</span><br><span class="line">        red[l<span class="number">-1</span>]+=<span class="number">1</span>,red[r]-=<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;n;i++)</span><br><span class="line">    yellow[i]+=yellow[i<span class="number">-1</span>],blue[i]+=blue[i<span class="number">-1</span>],red[i]+=red[i<span class="number">-1</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n;i++)</span><br><span class="line">    <span class="keyword">if</span>(yellow[i]&gt;<span class="number">0</span>&amp;&amp;blue[i]&gt;<span class="number">0</span>&amp;&amp;red[i]==<span class="number">0</span>)</span><br><span class="line">    cnt++;</span><br><span class="line">    cout&lt;&lt;cnt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法学习 </category>
+          
+          <category> 枚举 </category>
+          
+          <category> 差分题目 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 编程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>棋盘</title>
+      <link href="/2026/02/08/21.%E6%A3%8B%E7%9B%98/"/>
+      <url>/2026/02/08/21.%E6%A3%8B%E7%9B%98/</url>
+      
+        <content type="html"><![CDATA[<h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a><strong>问题描述</strong></h3><p>小蓝拥有 $n \times n$ 大小的棋盘，一开始棋盘上全都是白子。小蓝进行了 $m$ 次操作，每次操作会将棋盘上某个范围内的所有棋子的颜色取反（也就是白色棋子变为黑色，黑色棋子变为白色）。请输出所有操作做完后棋盘上每个棋子的颜色。</p><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a><strong>输入格式</strong></h3><p>输入的第一行包含两个整数 $n, m$，用一个空格分隔，表示棋盘大小与操作数。<br>接下来 $m$ 行每行包含四个整数 $x_1, y_1, x_2, y_2$，相邻整数之间使用一个空格分隔，表示将在 $x_1$ 至 $x_2$ 行和 $y_1$ 至 $y_2$ 列中的棋子颜色取反。</p><h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a><strong>输出格式</strong></h3><p>输出 $n$ 行，每行 $n$ 个 0 或 1 表示该位置棋子的颜色。如果是白色则输出 0，否则输出 1。</p><h3 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a><strong>样例输入</strong></h3><p>Plaintext<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">3 3</span><br><span class="line">1 1 2 2</span><br><span class="line">2 2 3 3</span><br><span class="line">1 1 3 3</span><br></pre></td></tr></table></figure></p><h3 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a><strong>样例输出</strong></h3><p>Plaintext<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">001</span><br><span class="line">010</span><br><span class="line">100</span><br></pre></td></tr></table></figure></p><h3 id="评测用例规模与约定"><a href="#评测用例规模与约定" class="headerlink" title="评测用例规模与约定"></a><strong>评测用例规模与约定</strong></h3><p>对于 30% 的评测用例， $n, m \le 500$；<br>对于所有评测用例， $1 \le n, m \le 2000$，$1 \le x_1 \le x_2 \le n$，$1 \le y_1 \le y_2 \le m$。</p><p>二维异或差分,每次取反就相当于异或1<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> n,m;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;<span class="built_in">arr</span>(n<span class="number">+2</span>,<span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;(n<span class="number">+2</span>,<span class="number">0</span>));</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> x1,y1,x2,y2;</span><br><span class="line">        cin&gt;&gt;x1&gt;&gt;y1&gt;&gt;x2&gt;&gt;y2;</span><br><span class="line">        arr[x1][y1]^=<span class="number">1</span>,arr[x1][y2<span class="number">+1</span>]^=<span class="number">1</span>;</span><br><span class="line">        arr[x2<span class="number">+1</span>][y1]^=<span class="number">1</span>,arr[x2<span class="number">+1</span>][y2<span class="number">+1</span>]^=<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">2</span>;j&lt;=n;j++)</span><br><span class="line">        arr[i][j]^=arr[i][j<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">      <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">2</span>;j&lt;=n;j++)</span><br><span class="line">        arr[j][i]^=arr[j<span class="number">-1</span>][i];</span><br><span class="line">    &#125;</span><br><span class="line">       <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=n;j++)</span><br><span class="line">        cout&lt;&lt;arr[i][j];</span><br><span class="line">        cout&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法学习 </category>
+          
+          <category> 枚举 </category>
+          
+          <category> 差分题目 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 编程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>重新排序</title>
+      <link href="/2026/02/08/22.%E9%87%8D%E6%96%B0%E6%8E%92%E5%BA%8F/"/>
+      <url>/2026/02/08/22.%E9%87%8D%E6%96%B0%E6%8E%92%E5%BA%8F/</url>
+      
+        <content type="html"><![CDATA[<h3 id="题目：重新排序"><a href="#题目：重新排序" class="headerlink" title="题目：重新排序"></a>题目：重新排序</h3><p><strong>【问题描述】</strong><br>给定一个数组 $A$ 和一些查询 $L_i, R_i$，求数组中第 $L_i$ 至第 $R_i$ 个元素之和。<br>小蓝觉得这个问题很无聊，于是他想重新排列一下数组，使得最终每个查询结果的和尽可能地大。小蓝想知道相比原数组，所有查询结果的总和最多可以增加多少？<br><strong>【输入格式】</strong><br>输入第一行包含一个整数 $n$。<br>第二行包含 $n$ 个整数 $A_1, A_2, \cdots, A_n$。相邻两个整数之间用一个空格分隔。<br>第三行包含一个整数 $m$ 表示查询的数目。<br>接下来 $m$ 行，每行包含两个整数 $L_i, R_i$。相邻两个整数之间用一个空格分隔。<br><strong>【输出格式】</strong><br>输出一行包含一个整数表示答案。<br><strong>【样例输入】</strong><br>Plaintext<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">5</span><br><span class="line">1 2 3 4 5</span><br><span class="line">2</span><br><span class="line">1 3</span><br><span class="line">2 5</span><br></pre></td></tr></table></figure><br><strong>【样例输出】</strong><br>Plaintext<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">4</span><br></pre></td></tr></table></figure><br><strong>【样例说明】</strong><br>原来的和为 $6 + 14 = 20$，重新排列为 $(1, 4, 5, 2, 3)$ 后和为 $10 + 14 = 24$，增加了 4。<br><strong>【评测用例规模与约定】</strong><br>对于所有评测用例，$1 \le n, m \le 10^5, 1 \le A_i \le 10^6, 1 \le L_i \le R_i \le 10^6$。</p><p>想要查询的部分和最大,我们可以统计每个位置被统计的次数然后被查询次数越多的位置放的数越大,这样就可以使查询部分和最大。<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n,m,total=<span class="number">0</span>,atotal=<span class="number">0</span>;</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt;<span class="built_in">arr</span>(n<span class="number">+1</span>,<span class="number">0</span>);</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt;<span class="built_in">sum</span>(n<span class="number">+1</span>,<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin&gt;&gt;arr[i];</span><br><span class="line">        sum[i]=arr[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=n;i++)</span><br><span class="line">    sum[i]+=sum[i<span class="number">-1</span>];</span><br><span class="line">    cin&gt;&gt;m;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt;<span class="built_in">num</span>(n<span class="number">+2</span>,<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> l,r;</span><br><span class="line">        cin&gt;&gt;l&gt;&gt;r;</span><br><span class="line">        num[l]+=<span class="number">1</span>;</span><br><span class="line">        num[r<span class="number">+1</span>]-=<span class="number">1</span>;</span><br><span class="line">        total+=sum[r]-sum[l<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=n;i++)</span><br><span class="line">    num[i]+=num[i<span class="number">-1</span>];</span><br><span class="line">    <span class="built_in">sort</span>(num.<span class="built_in">begin</span>()<span class="number">+1</span>,num.<span class="built_in">end</span>()<span class="number">-1</span>);</span><br><span class="line">    <span class="built_in">sort</span>(arr.<span class="built_in">begin</span>()<span class="number">+1</span>,arr.<span class="built_in">end</span>());</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    atotal+=num[i]*arr[i];</span><br><span class="line">    cout&lt;&lt;atotal-total;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法学习 </category>
+          
+          <category> 枚举 </category>
+          
+          <category> 差分题目 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 编程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>差分</title>
       <link href="/2026/02/07/19.%E5%B7%AE%E5%88%86/"/>
       <url>/2026/02/07/19.%E5%B7%AE%E5%88%86/</url>
@@ -244,37 +337,6 @@
     
     
     <entry>
-      <title>光骓者的荣耀</title>
-      <link href="/2026/02/01/11.%E5%85%89%E9%AA%93%E8%80%85%E7%9A%84%E8%8D%A3%E8%80%80/"/>
-      <url>/2026/02/01/11.%E5%85%89%E9%AA%93%E8%80%85%E7%9A%84%E8%8D%A3%E8%80%80/</url>
-      
-        <content type="html"><![CDATA[<p>小 K 打下的江山一共有 $n$ 个城市，城市 $i$ 和城市 $i+1$ 有一条双向高速公路连接，走这条路要耗费时间 $a_i$。小 K 为了关心人民生活，决定定期进行走访。他每一次会从 $1$ 号城市到 $n$ 号城市并在经过的城市进行访问。其中终点必须为城市 $n$。<br>不仅如此，他还有一个传送器，传送半径为 $k$，也就是说可以传送到 $i-k$ 和 $i+k$。如果目标城市编号小于 $1$ 则为 $1$，大于 $n$ 则为 $n$。<br>但是他的传送器电量不足，<strong>只能传送一次</strong>，况且由于一些原因，他想尽量快地完成访问，于是就想问交通部部长您最快的时间是多少。<br><strong>注意：</strong> 他可以不访问所有的城市，使用传送器不耗费时间。</p><hr><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a><strong>输入格式</strong></h3><ul><li><strong>两行</strong>：第一行包含两个整数 $n, k$。</li><li><strong>第二行</strong>：包含 $n-1$ 个整数，第 $i$ 个整数表示 $a_i$（即城市 $i$ 到 $i+1$ 之间的耗时）。</li></ul><hr><h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a><strong>输出格式</strong></h3><ul><li>输出一个整数，表示从 $1$ 号城市到 $n$ 号城市的最短时间。</li></ul><p>我们想要尽可能的少走,传送的距离尽可能的多<br>用一个数组存储相邻两个城市之间的距离然后计算这个数组的前缀和,计算arr[i+k]-arr[i]的最大值,就可以找到传送的最大距离,以及对应的传送点i<br>用总距离减去这个传送的最大距离就可以得到最短路程<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> n,k,maxdistance=<span class="number">0</span>,maxstation=<span class="number">0</span>;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;k;</span><br><span class="line">    <span class="keyword">if</span>(k&gt;=n<span class="number">-1</span>)</span><br><span class="line">    cout&lt;&lt;<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="type">int</span> prefix[n];</span><br><span class="line">    prefix[<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;n;i++)</span><br><span class="line">    cin&gt;&gt;prefix[i];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;n;i++)</span><br><span class="line">    prefix[i]+=prefix[i<span class="number">-1</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n-k;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(prefix[i+k]-prefix[i]&gt;maxdistance)</span><br><span class="line">        &#123;</span><br><span class="line">            maxdistance=prefix[i+k]-prefix[i];</span><br><span class="line">            maxstation=i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;maxstation&lt;&lt;endl&lt;&lt;prefix[n<span class="number">-1</span>]-maxdistance;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 算法学习 </category>
-          
-          <category> 枚举 </category>
-          
-          <category> 前缀和题目 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 算法 </tag>
-            
-            <tag> 编程 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>领地选择</title>
       <link href="/2026/02/01/12.%E9%A2%86%E5%9C%B0%E9%80%89%E6%8B%A9/"/>
       <url>/2026/02/01/12.%E9%A2%86%E5%9C%B0%E9%80%89%E6%8B%A9/</url>
@@ -311,6 +373,37 @@
       <url>/2026/02/01/13.%E6%8E%A5%E9%9B%A8%E6%B0%B4/</url>
       
         <content type="html"><![CDATA[<p>题目描述<br>给定 $n$ 个非负整数表示每个柱子的高度，每个柱子的宽度为 1，计算按此排列的柱子，下雨之后能接多少雨水。<br>输入格式</p><ul><li>第一行包含一个整数 $n$，表示柱子的数量。</li><li>接下来的 $n$ 行（或一行内），每行一个非负整数，表示每个位置柱子的高度 $height[i]$。<br>输出格式</li><li>输出一个整数，表示能够接住的雨水总量。</li></ul><p><img src="/img/10.png" alt="10"><br>对于每一个单位的我们只需要找到它左边的最大值和右边的最大值,取二者的最小值,再减去这个单位的柱子长度。<br>用前缀最大值数组存储左边最大值,后缀最大值数组存储右边最大值<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> n,sum=<span class="number">0</span>;</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    <span class="type">int</span> arr[n<span class="number">+1</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    cin&gt;&gt;arr[i];</span><br><span class="line">    <span class="type">int</span> left_max[n<span class="number">+1</span>];</span><br><span class="line">    <span class="type">int</span> right_max[n<span class="number">+1</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(i==<span class="number">1</span>)</span><br><span class="line">        left_max[i]=arr[i];</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            left_max[i]=<span class="built_in">max</span>(arr[i],left_max[i<span class="number">-1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">     <span class="keyword">for</span>(<span class="type">int</span> i=n;i&gt;=<span class="number">1</span>;i--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(i==n)</span><br><span class="line">        right_max[i]=arr[i];</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            right_max[i]=<span class="built_in">max</span>(arr[i],right_max[i<span class="number">+1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">min</span>(right_max[i],left_max[i])&lt;=arr[i])</span><br><span class="line">        sum+=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        sum+=<span class="built_in">min</span>(right_max[i],left_max[i])-arr[i];</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p><img src="/img/11.png" alt="11"><br>先找到最高的柱子,对它左边的每个柱子,用它左侧的最大高度减去自身高度,对它右边的每个柱子,<br>用它右侧的最大高度减去自身高度。<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">     <span class="type">int</span> n,sum=<span class="number">0</span>,index=<span class="number">1</span>;</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    <span class="type">int</span> arr[n<span class="number">+1</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    cin&gt;&gt;arr[i];</span><br><span class="line">    <span class="type">int</span> maxhigh=arr[<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=n;i++)</span><br><span class="line">        <span class="keyword">if</span>(arr[i]&gt;maxhigh)</span><br><span class="line">        &#123;</span><br><span class="line">            maxhigh=arr[i];</span><br><span class="line">            index=i;</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="type">int</span> maxleft=arr[<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;index;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(arr[i]&gt;maxleft)</span><br><span class="line">        maxleft=arr[i];</span><br><span class="line">        sum+=maxleft-arr[i];</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> maxright=arr[n]; </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=n<span class="number">-1</span>;i&gt;index;i--) </span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(arr[i]&gt;maxright)</span><br><span class="line">        maxright=arr[i];</span><br><span class="line">        sum+=maxright-arr[i];</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;sum;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法学习 </category>
+          
+          <category> 枚举 </category>
+          
+          <category> 前缀和题目 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 编程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>光骓者的荣耀</title>
+      <link href="/2026/02/01/11.%E5%85%89%E9%AA%93%E8%80%85%E7%9A%84%E8%8D%A3%E8%80%80/"/>
+      <url>/2026/02/01/11.%E5%85%89%E9%AA%93%E8%80%85%E7%9A%84%E8%8D%A3%E8%80%80/</url>
+      
+        <content type="html"><![CDATA[<p>小 K 打下的江山一共有 $n$ 个城市，城市 $i$ 和城市 $i+1$ 有一条双向高速公路连接，走这条路要耗费时间 $a_i$。小 K 为了关心人民生活，决定定期进行走访。他每一次会从 $1$ 号城市到 $n$ 号城市并在经过的城市进行访问。其中终点必须为城市 $n$。<br>不仅如此，他还有一个传送器，传送半径为 $k$，也就是说可以传送到 $i-k$ 和 $i+k$。如果目标城市编号小于 $1$ 则为 $1$，大于 $n$ 则为 $n$。<br>但是他的传送器电量不足，<strong>只能传送一次</strong>，况且由于一些原因，他想尽量快地完成访问，于是就想问交通部部长您最快的时间是多少。<br><strong>注意：</strong> 他可以不访问所有的城市，使用传送器不耗费时间。</p><hr><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a><strong>输入格式</strong></h3><ul><li><strong>两行</strong>：第一行包含两个整数 $n, k$。</li><li><strong>第二行</strong>：包含 $n-1$ 个整数，第 $i$ 个整数表示 $a_i$（即城市 $i$ 到 $i+1$ 之间的耗时）。</li></ul><hr><h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a><strong>输出格式</strong></h3><ul><li>输出一个整数，表示从 $1$ 号城市到 $n$ 号城市的最短时间。</li></ul><p>我们想要尽可能的少走,传送的距离尽可能的多<br>用一个数组存储相邻两个城市之间的距离然后计算这个数组的前缀和,计算arr[i+k]-arr[i]的最大值,就可以找到传送的最大距离,以及对应的传送点i<br>用总距离减去这个传送的最大距离就可以得到最短路程<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> n,k,maxdistance=<span class="number">0</span>,maxstation=<span class="number">0</span>;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;k;</span><br><span class="line">    <span class="keyword">if</span>(k&gt;=n<span class="number">-1</span>)</span><br><span class="line">    cout&lt;&lt;<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="type">int</span> prefix[n];</span><br><span class="line">    prefix[<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;n;i++)</span><br><span class="line">    cin&gt;&gt;prefix[i];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;n;i++)</span><br><span class="line">    prefix[i]+=prefix[i<span class="number">-1</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;n-k;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(prefix[i+k]-prefix[i]&gt;maxdistance)</span><br><span class="line">        &#123;</span><br><span class="line">            maxdistance=prefix[i+k]-prefix[i];</span><br><span class="line">            maxstation=i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cout&lt;&lt;maxstation&lt;&lt;endl&lt;&lt;prefix[n<span class="number">-1</span>]-maxdistance;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
       
       
       <categories>
