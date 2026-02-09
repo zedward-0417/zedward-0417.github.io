@@ -407,76 +407,11 @@
     
     
     <entry>
-      <title></title>
-      <link href="/2026/02/09/Linux%E5%9F%BA%E7%A1%80/%E5%88%9D%E8%AF%86Linux/4.%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5Linux%E7%B3%BB%E7%BB%9F/"/>
-      <url>/2026/02/09/Linux%E5%9F%BA%E7%A1%80/%E5%88%9D%E8%AF%86Linux/4.%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5Linux%E7%B3%BB%E7%BB%9F/</url>
-      
-        <content type="html"><![CDATA[<p>对于操作系统的使用，有2种使用形式：<br>•图形化页面使用操作系统<br>•以命令的形式使用操作系统<br>不论是Windows还是Linux亦或是MacOS系统，都是支持这两种使用形式。<br>•图形化：使用操作系统提供的图形化页面，以获得图形化反馈的形式去使用操作系统。<br>•命令行：使用操作系统提供的各类命令，以获得字符反馈的形式去使用操作系统。</p><p>对于Linux系统我们更多的是去使用命令的形式去使用。</p><p>既然决定使用命令行去学习Linux操作系统，那么就必须丰富一下工具的使用。<br>我们使用VMware可以得到Linux虚拟机，但是在VMware中操作Linux的命令行页面不太方便，主要是：<br>•内容的复制、粘贴跨越VMware不方便<br>•文件的上传、下载跨越VMware不方便<br>•也就是和Linux系统的各类交互，跨越VMware不方便<br>我们可以通过第三方软件，FinalShell，远程连接到Linux操作系统之上。并通过FinalShell去操作Linux系统。这样各类操作都会十分的方便。</p><p>FinalShell下载教程:<a href="https://blog.csdn.net/2503_91826368/article/details/147596825?ops_request_misc=elastic_search_misc&amp;request_id=8e0f252917027f3e957ec06c76115758&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-147596825-null-null.142^v102^pc_search_result_base2&amp;utm_term=finalshell%E4%B8%8B%E8%BD%BD&amp;spm=1018.2226.3001.4187">超级详细的 FinalShell下载安装 及使用教程（附安装包）-CSDN博客</a></p>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/2026/02/09/Linux%E5%9F%BA%E7%A1%80/%E5%88%9D%E8%AF%86Linux/6.%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%BF%AB%E7%85%A7/"/>
-      <url>/2026/02/09/Linux%E5%9F%BA%E7%A1%80/%E5%88%9D%E8%AF%86Linux/6.%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%BF%AB%E7%85%A7/</url>
-      
-        <content type="html"><![CDATA[<p>VMware虚拟机（Workstation和Funsion）支持为虚拟机制作快照。<br>通过快照将当前虚拟机的状态保存下来，在以后可以通过快照恢复虚拟机到保存的状态。</p>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/2026/02/09/Linux%E5%9F%BA%E7%A1%80/%E5%88%9D%E8%AF%86Linux/3.%E8%99%9A%E6%8B%9F%E6%9C%BA/"/>
-      <url>/2026/02/09/Linux%E5%9F%BA%E7%A1%80/%E5%88%9D%E8%AF%86Linux/3.%E8%99%9A%E6%8B%9F%E6%9C%BA/</url>
-      
-        <content type="html"><![CDATA[<ul><li>虚拟机是借助虚拟化技术，我们可以在系统中，通过软件：模拟计算机硬件，并给虚拟硬件安装真实的操作系统。这样，就可以在电脑中，虚拟出一个完整的电脑。</li><li>通过虚拟机的形式，得到可以用的Linux系统环境。</li></ul><p>我们知道了可以通过虚拟化技术得到虚拟化的硬件,如何实现?<br>可以通过虚拟化的软件去获得虚拟机。<br>虚拟化的软件包括很多,这里推荐VMware。我们有了虚拟化的硬件,还需要一个操作系统,需要下载Centos,Ubuntu等。<br>下载教程可以看CSDN里面的博客:<br>VMware下载教程:<a href="https://blog.csdn.net/2301_76831056/article/details/142767172?ops_request_misc=elastic_search_misc&amp;request_id=7269cc644701a300f8719f9ae60cb5dc&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-142767172-null-null.142^v102^pc_search_result_base2&amp;utm_term=VMware%E4%B8%8B%E8%BD%BD&amp;spm=1018.2226.3001.4187">VMware虚拟机17.6版本下载与安装(宝宝级攻略)_vmware17.6-CSDN博客</a></p><p>Centos操作系统下载教程:<a href="https://blog.csdn.net/m0_62854966/article/details/147264214">Linux：安装 CentOS 7（完整教程）_centos7-CSDN博客</a></p><p>Ubuntu操作系统下载教程:<a href="https://blog.csdn.net/weixin_52799373/article/details/139055794?ops_request_misc=elastic_search_misc&amp;request_id=5c1acf8973de63587aa32cca54e9a7ab&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-139055794-null-null.142^v102^pc_search_result_base2&amp;utm_term=Ubuntu&amp;spm=1018.2226.3001.4187">VMware虚拟机安装Ubuntu教程(超详细)_vmware安装ubuntu-CSDN博客</a></p>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/2026/02/09/Linux%E5%9F%BA%E7%A1%80/%E5%88%9D%E8%AF%86Linux/5.WSL2/"/>
-      <url>/2026/02/09/Linux%E5%9F%BA%E7%A1%80/%E5%88%9D%E8%AF%86Linux/5.WSL2/</url>
-      
-        <content type="html"><![CDATA[<p>WSL：Windows Subsystem for Linux，是用于Windows系统之上的Linux子系统。<br>作用很简单，可以在Windows系统中获得Linux系统环境，并完全直连计算机硬件，无需通过虚拟机虚拟硬件。</p><p>下载使用教程:<a href="https://blog.csdn.net/l827893628/article/details/148927724?ops_request_misc=elastic_search_misc&amp;request_id=15e86d427fa90565cf00a804cfc1115f&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-2-148927724-null-null.142^v102^pc_search_result_base2&amp;utm_term=WSL&amp;spm=1018.2226.3001.4187">2025最新 WSL（Windows Subsystem for Linux）安装教程 （保姆级，图文讲解，带安装包）_wsl安装-CSDN博客</a></p>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="/2026/02/09/Linux%E5%9F%BA%E7%A1%80/%E5%88%9D%E8%AF%86Linux/2.Linux%E5%88%9D%E8%AF%86/"/>
-      <url>/2026/02/09/Linux%E5%9F%BA%E7%A1%80/%E5%88%9D%E8%AF%86Linux/2.Linux%E5%88%9D%E8%AF%86/</url>
-      
-        <content type="html"><![CDATA[<h2 id="Linux系统的组成"><a href="#Linux系统的组成" class="headerlink" title="Linux系统的组成"></a>Linux系统的组成</h2><ul><li>Linux系统内核</li><li>系统级应用程序<br>其中我们的内核提供最核心的功能,比如调度CPU,调度内存等。<br>而系统级应用程序可以理解为出场自带程序,它们可以去调用系统内核实现相关功能。<br>![[Pasted image 20260115210547.png]]<br><a href="https://www.kernel.org">https://www.kernel.org</a> 可以看到内核的源码。<h2 id="Linux发行版"><a href="#Linux发行版" class="headerlink" title="Linux发行版"></a>Linux发行版</h2>内核是免费、开源的，这也就代表了：<br>•任何人都可以获得并修改内核，并且自行集成系统级程序<br>•提供了内核+系统级程序的完整封装，称之为Linux发行版<br>每个人都可以有自己的Linux发行版,目前主流的有:Centos,Ubuntu等。</li></ul>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>操作系统</title>
-      <link href="/2026/02/09/Linux%E5%9F%BA%E7%A1%80/1.%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
-      <url>/2026/02/09/Linux%E5%9F%BA%E7%A1%80/1.%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</url>
+      <link href="/2026/02/09/Linux%E5%9F%BA%E7%A1%80/%E5%88%9D%E8%AF%86Linux/1.%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+      <url>/2026/02/09/Linux%E5%9F%BA%E7%A1%80/%E5%88%9D%E8%AF%86Linux/1.%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</url>
       
-        <content type="html"><![CDATA[<ul><li>计算机由硬件和软件所组成。</li><li>操作系统是软件的一类,协助用户调度硬件工作,充当用户和计算机之间的桥梁。</li><li>当计算机拥有了操作系统，就相当于拥有了灵魂，操作系统可以：<br>1.调度CPU进行工作<br>2.调度内存进行工作<br>3.调度硬盘进行数据存储<br>4.调度网卡进行网络通讯<br>5.调度音响发出声音<br>6.调度打印机打印内容<br>![[Pasted image 20260115205230.png]]</li><li>常见的操作系统有：PC端：Windows、Linux、MacOS;<br>移动端：Android、IOS、鸿蒙系统。</li></ul>]]></content>
+        <content type="html"><![CDATA[<ul><li>计算机由硬件和软件所组成。</li><li>操作系统是软件的一类,协助用户调度硬件工作,充当用户和计算机之间的桥梁。</li><li>当计算机拥有了操作系统，就相当于拥有了灵魂，操作系统可以：<br>1.调度CPU进行工作<br>2.调度内存进行工作<br>3.调度硬盘进行数据存储<br>4.调度网卡进行网络通讯<br>5.调度音响发出声音<br>6.调度打印机打印内容<br><img src="/img/Linux (1" alt="1">.png)</li><li>常见的操作系统有：PC端：Windows、Linux、MacOS;<br>移动端：Android、IOS、鸿蒙系统。</li></ul>]]></content>
       
       
       <categories>
@@ -499,29 +434,133 @@
     
     
     <entry>
-      <title>重新排序</title>
-      <link href="/2026/02/08/%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/22.%E9%87%8D%E6%96%B0%E6%8E%92%E5%BA%8F/"/>
-      <url>/2026/02/08/%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/22.%E9%87%8D%E6%96%B0%E6%8E%92%E5%BA%8F/</url>
+      <title>Linux初识</title>
+      <link href="/2026/02/09/Linux%E5%9F%BA%E7%A1%80/%E5%88%9D%E8%AF%86Linux/2.Linux%E5%88%9D%E8%AF%86/"/>
+      <url>/2026/02/09/Linux%E5%9F%BA%E7%A1%80/%E5%88%9D%E8%AF%86Linux/2.Linux%E5%88%9D%E8%AF%86/</url>
       
-        <content type="html"><![CDATA[<h3 id="题目：重新排序"><a href="#题目：重新排序" class="headerlink" title="题目：重新排序"></a>题目：重新排序</h3><p><strong>【问题描述】</strong><br>给定一个数组 $A$ 和一些查询 $L_i, R_i$，求数组中第 $L_i$ 至第 $R_i$ 个元素之和。<br>小蓝觉得这个问题很无聊，于是他想重新排列一下数组，使得最终每个查询结果的和尽可能地大。小蓝想知道相比原数组，所有查询结果的总和最多可以增加多少？<br><strong>【输入格式】</strong><br>输入第一行包含一个整数 $n$。<br>第二行包含 $n$ 个整数 $A_1, A_2, \cdots, A_n$。相邻两个整数之间用一个空格分隔。<br>第三行包含一个整数 $m$ 表示查询的数目。<br>接下来 $m$ 行，每行包含两个整数 $L_i, R_i$。相邻两个整数之间用一个空格分隔。<br><strong>【输出格式】</strong><br>输出一行包含一个整数表示答案。<br><strong>【样例输入】</strong><br>Plaintext<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">5</span><br><span class="line">1 2 3 4 5</span><br><span class="line">2</span><br><span class="line">1 3</span><br><span class="line">2 5</span><br></pre></td></tr></table></figure><br><strong>【样例输出】</strong><br>Plaintext<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">4</span><br></pre></td></tr></table></figure><br><strong>【样例说明】</strong><br>原来的和为 $6 + 14 = 20$，重新排列为 $(1, 4, 5, 2, 3)$ 后和为 $10 + 14 = 24$，增加了 4。<br><strong>【评测用例规模与约定】</strong><br>对于所有评测用例，$1 \le n, m \le 10^5, 1 \le A_i \le 10^6, 1 \le L_i \le R_i \le 10^6$。</p><p>想要查询的部分和最大,我们可以统计每个位置被统计的次数然后被查询次数越多的位置放的数越大,这样就可以使查询部分和最大。<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n,m,total=<span class="number">0</span>,atotal=<span class="number">0</span>;</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt;<span class="built_in">arr</span>(n<span class="number">+1</span>,<span class="number">0</span>);</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt;<span class="built_in">sum</span>(n<span class="number">+1</span>,<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin&gt;&gt;arr[i];</span><br><span class="line">        sum[i]=arr[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=n;i++)</span><br><span class="line">    sum[i]+=sum[i<span class="number">-1</span>];</span><br><span class="line">    cin&gt;&gt;m;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt;<span class="built_in">num</span>(n<span class="number">+2</span>,<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> l,r;</span><br><span class="line">        cin&gt;&gt;l&gt;&gt;r;</span><br><span class="line">        num[l]+=<span class="number">1</span>;</span><br><span class="line">        num[r<span class="number">+1</span>]-=<span class="number">1</span>;</span><br><span class="line">        total+=sum[r]-sum[l<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=n;i++)</span><br><span class="line">    num[i]+=num[i<span class="number">-1</span>];</span><br><span class="line">    <span class="built_in">sort</span>(num.<span class="built_in">begin</span>()<span class="number">+1</span>,num.<span class="built_in">end</span>()<span class="number">-1</span>);</span><br><span class="line">    <span class="built_in">sort</span>(arr.<span class="built_in">begin</span>()<span class="number">+1</span>,arr.<span class="built_in">end</span>());</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    atotal+=num[i]*arr[i];</span><br><span class="line">    cout&lt;&lt;atotal-total;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
+        <content type="html"><![CDATA[<h2 id="Linux系统的组成"><a href="#Linux系统的组成" class="headerlink" title="Linux系统的组成"></a>Linux系统的组成</h2><ul><li>Linux系统内核</li><li>系统级应用程序<br>其中我们的内核提供最核心的功能,比如调度CPU,调度内存等。<br>而系统级应用程序可以理解为出场自带程序,它们可以去调用系统内核实现相关功能。<br><img src="/img/Linux (2" alt="2">.png)<br><a href="https://www.kernel.org">https://www.kernel.org</a> 可以看到内核的源码。<h2 id="Linux发行版"><a href="#Linux发行版" class="headerlink" title="Linux发行版"></a>Linux发行版</h2>内核是免费、开源的，这也就代表了：<br>•任何人都可以获得并修改内核，并且自行集成系统级程序<br>•提供了内核+系统级程序的完整封装，称之为Linux发行版<br>每个人都可以有自己的Linux发行版,目前主流的有:Centos,Ubuntu等。</li></ul>]]></content>
       
       
       <categories>
           
-          <category> 算法学习 </category>
+          <category> Linux基础 </category>
           
-          <category> 枚举 </category>
-          
-          <category> 差分题目 </category>
+          <category> 初识Linux </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 算法 </tag>
+            <tag> Linux </tag>
             
-            <tag> 编程 </tag>
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>虚拟机</title>
+      <link href="/2026/02/09/Linux%E5%9F%BA%E7%A1%80/%E5%88%9D%E8%AF%86Linux/3.%E8%99%9A%E6%8B%9F%E6%9C%BA/"/>
+      <url>/2026/02/09/Linux%E5%9F%BA%E7%A1%80/%E5%88%9D%E8%AF%86Linux/3.%E8%99%9A%E6%8B%9F%E6%9C%BA/</url>
+      
+        <content type="html"><![CDATA[<ul><li>虚拟机是借助虚拟化技术，我们可以在系统中，通过软件：模拟计算机硬件，并给虚拟硬件安装真实的操作系统。这样，就可以在电脑中，虚拟出一个完整的电脑。</li><li>通过虚拟机的形式，得到可以用的Linux系统环境。</li></ul><p>我们知道了可以通过虚拟化技术得到虚拟化的硬件,如何实现?<br>可以通过虚拟化的软件去获得虚拟机。<br>虚拟化的软件包括很多,这里推荐VMware。我们有了虚拟化的硬件,还需要一个操作系统,需要下载Centos,Ubuntu等。<br>下载教程可以看CSDN里面的博客:<br>VMware下载教程:<a href="https://blog.csdn.net/2301_76831056/article/details/142767172?ops_request_misc=elastic_search_misc&amp;request_id=7269cc644701a300f8719f9ae60cb5dc&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-142767172-null-null.142^v102^pc_search_result_base2&amp;utm_term=VMware%E4%B8%8B%E8%BD%BD&amp;spm=1018.2226.3001.4187">VMware虚拟机17.6版本下载与安装(宝宝级攻略)_vmware17.6-CSDN博客</a></p><p>Centos操作系统下载教程:<a href="https://blog.csdn.net/m0_62854966/article/details/147264214">Linux：安装 CentOS 7（完整教程）_centos7-CSDN博客</a></p><p>Ubuntu操作系统下载教程:<a href="https://blog.csdn.net/weixin_52799373/article/details/139055794?ops_request_misc=elastic_search_misc&amp;request_id=5c1acf8973de63587aa32cca54e9a7ab&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-139055794-null-null.142^v102^pc_search_result_base2&amp;utm_term=Ubuntu&amp;spm=1018.2226.3001.4187">VMware虚拟机安装Ubuntu教程(超详细)_vmware安装ubuntu-CSDN博客</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux基础 </category>
+          
+          <category> 初识Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>WSL2</title>
+      <link href="/2026/02/09/Linux%E5%9F%BA%E7%A1%80/%E5%88%9D%E8%AF%86Linux/5.WSL2/"/>
+      <url>/2026/02/09/Linux%E5%9F%BA%E7%A1%80/%E5%88%9D%E8%AF%86Linux/5.WSL2/</url>
+      
+        <content type="html"><![CDATA[<p>WSL：Windows Subsystem for Linux，是用于Windows系统之上的Linux子系统。<br>作用很简单，可以在Windows系统中获得Linux系统环境，并完全直连计算机硬件，无需通过虚拟机虚拟硬件。</p><p>下载使用教程:<a href="https://blog.csdn.net/l827893628/article/details/148927724?ops_request_misc=elastic_search_misc&amp;request_id=15e86d427fa90565cf00a804cfc1115f&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-2-148927724-null-null.142^v102^pc_search_result_base2&amp;utm_term=WSL&amp;spm=1018.2226.3001.4187">2025最新 WSL（Windows Subsystem for Linux）安装教程 （保姆级，图文讲解，带安装包）_wsl安装-CSDN博客</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux基础 </category>
+          
+          <category> 初识Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>虚拟机快照</title>
+      <link href="/2026/02/09/Linux%E5%9F%BA%E7%A1%80/%E5%88%9D%E8%AF%86Linux/6.%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%BF%AB%E7%85%A7/"/>
+      <url>/2026/02/09/Linux%E5%9F%BA%E7%A1%80/%E5%88%9D%E8%AF%86Linux/6.%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%BF%AB%E7%85%A7/</url>
+      
+        <content type="html"><![CDATA[<p>VMware虚拟机（Workstation和Funsion）支持为虚拟机制作快照。<br>通过快照将当前虚拟机的状态保存下来，在以后可以通过快照恢复虚拟机到保存的状态。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux基础 </category>
+          
+          <category> 初识Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>远程连接Linux系统</title>
+      <link href="/2026/02/09/Linux%E5%9F%BA%E7%A1%80/%E5%88%9D%E8%AF%86Linux/4.%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5Linux%E7%B3%BB%E7%BB%9F/"/>
+      <url>/2026/02/09/Linux%E5%9F%BA%E7%A1%80/%E5%88%9D%E8%AF%86Linux/4.%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5Linux%E7%B3%BB%E7%BB%9F/</url>
+      
+        <content type="html"><![CDATA[<p>对于操作系统的使用，有2种使用形式：<br>•图形化页面使用操作系统<br>•以命令的形式使用操作系统<br>不论是Windows还是Linux亦或是MacOS系统，都是支持这两种使用形式。<br>•图形化：使用操作系统提供的图形化页面，以获得图形化反馈的形式去使用操作系统。<br>•命令行：使用操作系统提供的各类命令，以获得字符反馈的形式去使用操作系统。</p><p>对于Linux系统我们更多的是去使用命令的形式去使用。</p><p>既然决定使用命令行去学习Linux操作系统，那么就必须丰富一下工具的使用。<br>我们使用VMware可以得到Linux虚拟机，但是在VMware中操作Linux的命令行页面不太方便，主要是：<br>•内容的复制、粘贴跨越VMware不方便<br>•文件的上传、下载跨越VMware不方便<br>•也就是和Linux系统的各类交互，跨越VMware不方便<br>我们可以通过第三方软件，FinalShell，远程连接到Linux操作系统之上。并通过FinalShell去操作Linux系统。这样各类操作都会十分的方便。</p><p>FinalShell下载教程:<a href="https://blog.csdn.net/2503_91826368/article/details/147596825?ops_request_misc=elastic_search_misc&amp;request_id=8e0f252917027f3e957ec06c76115758&amp;biz_id=0&amp;utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_positive~default-1-147596825-null-null.142^v102^pc_search_result_base2&amp;utm_term=finalshell%E4%B8%8B%E8%BD%BD&amp;spm=1018.2226.3001.4187">超级详细的 FinalShell下载安装 及使用教程（附安装包）-CSDN博客</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux基础 </category>
+          
+          <category> 初识Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
             
         </tags>
       
@@ -566,6 +605,37 @@
       <url>/2026/02/08/%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/21.%E6%A3%8B%E7%9B%98/</url>
       
         <content type="html"><![CDATA[<h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a><strong>问题描述</strong></h3><p>小蓝拥有 $n \times n$ 大小的棋盘，一开始棋盘上全都是白子。小蓝进行了 $m$ 次操作，每次操作会将棋盘上某个范围内的所有棋子的颜色取反（也就是白色棋子变为黑色，黑色棋子变为白色）。请输出所有操作做完后棋盘上每个棋子的颜色。</p><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a><strong>输入格式</strong></h3><p>输入的第一行包含两个整数 $n, m$，用一个空格分隔，表示棋盘大小与操作数。<br>接下来 $m$ 行每行包含四个整数 $x_1, y_1, x_2, y_2$，相邻整数之间使用一个空格分隔，表示将在 $x_1$ 至 $x_2$ 行和 $y_1$ 至 $y_2$ 列中的棋子颜色取反。</p><h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a><strong>输出格式</strong></h3><p>输出 $n$ 行，每行 $n$ 个 0 或 1 表示该位置棋子的颜色。如果是白色则输出 0，否则输出 1。</p><h3 id="样例输入"><a href="#样例输入" class="headerlink" title="样例输入"></a><strong>样例输入</strong></h3><p>Plaintext<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">3 3</span><br><span class="line">1 1 2 2</span><br><span class="line">2 2 3 3</span><br><span class="line">1 1 3 3</span><br></pre></td></tr></table></figure></p><h3 id="样例输出"><a href="#样例输出" class="headerlink" title="样例输出"></a><strong>样例输出</strong></h3><p>Plaintext<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">001</span><br><span class="line">010</span><br><span class="line">100</span><br></pre></td></tr></table></figure></p><h3 id="评测用例规模与约定"><a href="#评测用例规模与约定" class="headerlink" title="评测用例规模与约定"></a><strong>评测用例规模与约定</strong></h3><p>对于 30% 的评测用例， $n, m \le 500$；<br>对于所有评测用例， $1 \le n, m \le 2000$，$1 \le x_1 \le x_2 \le n$，$1 \le y_1 \le y_2 \le m$。</p><p>二维异或差分,每次取反就相当于异或1<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> n,m;</span><br><span class="line">    cin&gt;&gt;n&gt;&gt;m;</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;<span class="built_in">arr</span>(n<span class="number">+2</span>,<span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;(n<span class="number">+2</span>,<span class="number">0</span>));</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> x1,y1,x2,y2;</span><br><span class="line">        cin&gt;&gt;x1&gt;&gt;y1&gt;&gt;x2&gt;&gt;y2;</span><br><span class="line">        arr[x1][y1]^=<span class="number">1</span>,arr[x1][y2<span class="number">+1</span>]^=<span class="number">1</span>;</span><br><span class="line">        arr[x2<span class="number">+1</span>][y1]^=<span class="number">1</span>,arr[x2<span class="number">+1</span>][y2<span class="number">+1</span>]^=<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">2</span>;j&lt;=n;j++)</span><br><span class="line">        arr[i][j]^=arr[i][j<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">      <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">2</span>;j&lt;=n;j++)</span><br><span class="line">        arr[j][i]^=arr[j<span class="number">-1</span>][i];</span><br><span class="line">    &#125;</span><br><span class="line">       <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;=n;j++)</span><br><span class="line">        cout&lt;&lt;arr[i][j];</span><br><span class="line">        cout&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法学习 </category>
+          
+          <category> 枚举 </category>
+          
+          <category> 差分题目 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 编程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>重新排序</title>
+      <link href="/2026/02/08/%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/22.%E9%87%8D%E6%96%B0%E6%8E%92%E5%BA%8F/"/>
+      <url>/2026/02/08/%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/22.%E9%87%8D%E6%96%B0%E6%8E%92%E5%BA%8F/</url>
+      
+        <content type="html"><![CDATA[<h3 id="题目：重新排序"><a href="#题目：重新排序" class="headerlink" title="题目：重新排序"></a>题目：重新排序</h3><p><strong>【问题描述】</strong><br>给定一个数组 $A$ 和一些查询 $L_i, R_i$，求数组中第 $L_i$ 至第 $R_i$ 个元素之和。<br>小蓝觉得这个问题很无聊，于是他想重新排列一下数组，使得最终每个查询结果的和尽可能地大。小蓝想知道相比原数组，所有查询结果的总和最多可以增加多少？<br><strong>【输入格式】</strong><br>输入第一行包含一个整数 $n$。<br>第二行包含 $n$ 个整数 $A_1, A_2, \cdots, A_n$。相邻两个整数之间用一个空格分隔。<br>第三行包含一个整数 $m$ 表示查询的数目。<br>接下来 $m$ 行，每行包含两个整数 $L_i, R_i$。相邻两个整数之间用一个空格分隔。<br><strong>【输出格式】</strong><br>输出一行包含一个整数表示答案。<br><strong>【样例输入】</strong><br>Plaintext<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">5</span><br><span class="line">1 2 3 4 5</span><br><span class="line">2</span><br><span class="line">1 3</span><br><span class="line">2 5</span><br></pre></td></tr></table></figure><br><strong>【样例输出】</strong><br>Plaintext<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">4</span><br></pre></td></tr></table></figure><br><strong>【样例说明】</strong><br>原来的和为 $6 + 14 = 20$，重新排列为 $(1, 4, 5, 2, 3)$ 后和为 $10 + 14 = 24$，增加了 4。<br><strong>【评测用例规模与约定】</strong><br>对于所有评测用例，$1 \le n, m \le 10^5, 1 \le A_i \le 10^6, 1 \le L_i \le R_i \le 10^6$。</p><p>想要查询的部分和最大,我们可以统计每个位置被统计的次数然后被查询次数越多的位置放的数越大,这样就可以使查询部分和最大。<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> n,m,total=<span class="number">0</span>,atotal=<span class="number">0</span>;</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt;<span class="built_in">arr</span>(n<span class="number">+1</span>,<span class="number">0</span>);</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt;<span class="built_in">sum</span>(n<span class="number">+1</span>,<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin&gt;&gt;arr[i];</span><br><span class="line">        sum[i]=arr[i];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=n;i++)</span><br><span class="line">    sum[i]+=sum[i<span class="number">-1</span>];</span><br><span class="line">    cin&gt;&gt;m;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt;<span class="built_in">num</span>(n<span class="number">+2</span>,<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=m;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> l,r;</span><br><span class="line">        cin&gt;&gt;l&gt;&gt;r;</span><br><span class="line">        num[l]+=<span class="number">1</span>;</span><br><span class="line">        num[r<span class="number">+1</span>]-=<span class="number">1</span>;</span><br><span class="line">        total+=sum[r]-sum[l<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=n;i++)</span><br><span class="line">    num[i]+=num[i<span class="number">-1</span>];</span><br><span class="line">    <span class="built_in">sort</span>(num.<span class="built_in">begin</span>()<span class="number">+1</span>,num.<span class="built_in">end</span>()<span class="number">-1</span>);</span><br><span class="line">    <span class="built_in">sort</span>(arr.<span class="built_in">begin</span>()<span class="number">+1</span>,arr.<span class="built_in">end</span>());</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    atotal+=num[i]*arr[i];</span><br><span class="line">    cout&lt;&lt;atotal-total;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
       
       
       <categories>
@@ -652,11 +722,11 @@
     
     
     <entry>
-      <title>K倍区间</title>
-      <link href="/2026/02/05/%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/17.K%E5%80%8D%E5%8C%BA%E9%97%B4/"/>
-      <url>/2026/02/05/%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/17.K%E5%80%8D%E5%8C%BA%E9%97%B4/</url>
+      <title>区间翻转区间异或和</title>
+      <link href="/2026/02/05/%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/16.%E5%8C%BA%E9%97%B4%E7%BF%BB%E8%BD%AC%E5%8C%BA%E9%97%B4%E5%BC%82%E6%88%96%E5%92%8C/"/>
+      <url>/2026/02/05/%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/16.%E5%8C%BA%E9%97%B4%E7%BF%BB%E8%BD%AC%E5%8C%BA%E9%97%B4%E5%BC%82%E6%88%96%E5%92%8C/</url>
       
-        <content type="html"><![CDATA[<h3 id="k倍区间"><a href="#k倍区间" class="headerlink" title="k倍区间"></a>k倍区间</h3><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定一个长度为 $N$ 的数列， $A_1, A_2, \cdots A_N$。如果其中一段连续的子序列 $A_i, A_{i+1}, \cdots A_j (i \le j)$ 之和是 $K$ 的倍数，我们就称这个区间 $[i, j]$ 是 K 倍区间。<br>你能求出数列中总共有多少个 $K$ 倍区间吗？</p><h4 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述"></a>输入描述</h4><p>第一行包含两个整数 $N$ 和 $K$ $(1 \le N, K \le 10^5)$。<br>以下 $N$ 行每行包含一个整数 $A_i$ $(1 \le A_i \le 10^5)$。</p><h4 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述"></a>输出描述</h4><p>输出一个整数，代表 K 倍区间的数目。</p><h4 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h4><p><strong>示例</strong><br><strong>输入</strong></p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">5 2</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line"></span><br></pre></td></tr></table></figure><p><strong>输出</strong></p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">6</span><br><span class="line"></span><br></pre></td></tr></table></figure><p><img src="/img/8.png" alt="8"></p><ul><li><strong>前缀和</strong>：计算数组的前缀和 $S$。</li><li><strong>同余定理</strong>：如果区间 $[i, j]$ 的和是 $K$ 的倍数，即 $(S_j - S_{i-1}) \% K == 0$，这意味着 $S_j \% K == S_{i-1} \% K$。</li><li><strong>转化</strong>：只需要计算前缀和模 $K$ 的余数。如果有 $c$ 个前缀和的余数相同（比如都是 1），那么从这 $c$ 个位置中任选 2 个（$C_c^2$），它们之间的区间和就是 $K$ 的倍数。</li></ul><p>```cpp</p><h1 id="include"><a href="#include" class="headerlink" title="include"></a>include<iostream></h1><h1 id="include-1"><a href="#include-1" class="headerlink" title="include"></a>include<vector></h1><p>using namespace std;<br>int main()<br>{<br>    int N,K,sum=0;<br>    cin&gt;&gt;N&gt;&gt;K;<br>    vector<int>arr(N+1,0);<br>    vector<int>cnt(K,0);<br>    for(int i=1;i&lt;=N;i++)<br>    cin&gt;&gt;arr[i];<br>    for(int i=1;i&lt;=N;i++)<br>    arr[i]=(arr[i-1]+arr[i])%K;<br>    for(auto &amp;x:arr)<br>    cnt[x]++;<br>    for(auto &amp;c:cnt)<br>    sum+=(c-1)*c/2;<br>    cout&lt;&lt;sum;<br>}</p>]]></content>
+        <content type="html"><![CDATA[<h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>符卡有一个长度为 $n$ 的整数数组 $a$，符卡认为一个区间 $[l, r]$ 是灵异区间当且仅当 $\bigoplus_{i=l}^r a_i = 0$，或者说这个区间内所有数字异或起来刚好等于 $0$。<br>符卡有特殊的魔法，可以把任意一个灵异区间翻转。具体来说，如果 $[l, r]$ 区间是灵异区间，那么符卡就可以对这个区间使用魔法，整个数组就会变成 $a_1, a_2, \dots, a_{l-1}, a_r, a_{r-1}, \dots, a_l, a_{r+1}, a_{r+2}, \dots, a_n$。<br>现在符卡可以使用任意次数的魔法，符卡希望最后得到的数组的灵异区间数量能够尽可能多，你能告诉她最后最多有多少个灵异区间吗？</p><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>第一行一个正整数 $n$，表示数组长度。<br>第二行 $n$ 个非负整数 $a_1, a_2, \dots, a_n$ 表示整个数组。</p><h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h3><p>输出一行一个整数，表示符卡使用任意次魔法后灵异区间最多有多少个。</p><h3 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h3><p><strong>输入 #1</strong><br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">3</span><br><span class="line">1 1 1</span><br></pre></td></tr></table></figure><br><strong>输出 #1</strong><br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">2</span><br></pre></td></tr></table></figure><br><strong>输入 #2</strong><br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">4</span><br><span class="line">3 1 2 3</span><br></pre></td></tr></table></figure><br><strong>输出 #2</strong><br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">2</span><br></pre></td></tr></table></figure></p><p>对于如何找到灵异区间我们前面说到过,对整个数组求前缀异或,如果一个区间左右两端的数相等那么这段区间异或和为0。现在对于每个灵异区间要对它翻转,我们要考虑翻转过后对整个数组的应该。每个灵异区间的位置有三种可能。第一种:一个灵异完整地包裹在另一个灵异区间里面,第二种:一个灵异区间部分地包裹在另一个灵异区间里面,第三种:一个灵异区间独立存在,不与其他灵异区间相交。<br><img src="/img/9.png" alt="9"><br>所以灵异区间翻转不会产生新的灵异区间或者使灵异区间减少,所以只用统计灵异区间的个数,不用考虑翻转<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;unordered_map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;map&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> n,sum=<span class="number">0</span>;</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt;<span class="built_in">arr</span>(n<span class="number">+1</span>,<span class="number">0</span>);</span><br><span class="line">    unordered_map&lt;<span class="type">int</span>,<span class="type">int</span>&gt;cnt;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin&gt;&gt;arr[i];</span><br><span class="line">        arr[i]^=arr[i<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> &amp;x:arr)</span><br><span class="line">    cnt[x]++;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> &amp;[_,c]:cnt)</span><br><span class="line">    sum+=c*(c<span class="number">-1</span>)/<span class="number">2</span>;</span><br><span class="line">    cout&lt;&lt;sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
       
       
       <categories>
@@ -683,11 +753,11 @@
     
     
     <entry>
-      <title>区间翻转区间异或和</title>
-      <link href="/2026/02/05/%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/16.%E5%8C%BA%E9%97%B4%E7%BF%BB%E8%BD%AC%E5%8C%BA%E9%97%B4%E5%BC%82%E6%88%96%E5%92%8C/"/>
-      <url>/2026/02/05/%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/16.%E5%8C%BA%E9%97%B4%E7%BF%BB%E8%BD%AC%E5%8C%BA%E9%97%B4%E5%BC%82%E6%88%96%E5%92%8C/</url>
+      <title>K倍区间</title>
+      <link href="/2026/02/05/%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/17.K%E5%80%8D%E5%8C%BA%E9%97%B4/"/>
+      <url>/2026/02/05/%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/17.K%E5%80%8D%E5%8C%BA%E9%97%B4/</url>
       
-        <content type="html"><![CDATA[<h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>符卡有一个长度为 $n$ 的整数数组 $a$，符卡认为一个区间 $[l, r]$ 是灵异区间当且仅当 $\bigoplus_{i=l}^r a_i = 0$，或者说这个区间内所有数字异或起来刚好等于 $0$。<br>符卡有特殊的魔法，可以把任意一个灵异区间翻转。具体来说，如果 $[l, r]$ 区间是灵异区间，那么符卡就可以对这个区间使用魔法，整个数组就会变成 $a_1, a_2, \dots, a_{l-1}, a_r, a_{r-1}, \dots, a_l, a_{r+1}, a_{r+2}, \dots, a_n$。<br>现在符卡可以使用任意次数的魔法，符卡希望最后得到的数组的灵异区间数量能够尽可能多，你能告诉她最后最多有多少个灵异区间吗？</p><h3 id="输入格式"><a href="#输入格式" class="headerlink" title="输入格式"></a>输入格式</h3><p>第一行一个正整数 $n$，表示数组长度。<br>第二行 $n$ 个非负整数 $a_1, a_2, \dots, a_n$ 表示整个数组。</p><h3 id="输出格式"><a href="#输出格式" class="headerlink" title="输出格式"></a>输出格式</h3><p>输出一行一个整数，表示符卡使用任意次魔法后灵异区间最多有多少个。</p><h3 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h3><p><strong>输入 #1</strong><br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">3</span><br><span class="line">1 1 1</span><br></pre></td></tr></table></figure><br><strong>输出 #1</strong><br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">2</span><br></pre></td></tr></table></figure><br><strong>输入 #2</strong><br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">4</span><br><span class="line">3 1 2 3</span><br></pre></td></tr></table></figure><br><strong>输出 #2</strong><br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">2</span><br></pre></td></tr></table></figure></p><p>对于如何找到灵异区间我们前面说到过,对整个数组求前缀异或,如果一个区间左右两端的数相等那么这段区间异或和为0。现在对于每个灵异区间要对它翻转,我们要考虑翻转过后对整个数组的应该。每个灵异区间的位置有三种可能。第一种:一个灵异完整地包裹在另一个灵异区间里面,第二种:一个灵异区间部分地包裹在另一个灵异区间里面,第三种:一个灵异区间独立存在,不与其他灵异区间相交。<br><img src="/img/9.png" alt="9"><br>所以灵异区间翻转不会产生新的灵异区间或者使灵异区间减少,所以只用统计灵异区间的个数,不用考虑翻转<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;unordered_map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;map&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> n,sum=<span class="number">0</span>;</span><br><span class="line">    cin&gt;&gt;n;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt;<span class="built_in">arr</span>(n<span class="number">+1</span>,<span class="number">0</span>);</span><br><span class="line">    unordered_map&lt;<span class="type">int</span>,<span class="type">int</span>&gt;cnt;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        cin&gt;&gt;arr[i];</span><br><span class="line">        arr[i]^=arr[i<span class="number">-1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> &amp;x:arr)</span><br><span class="line">    cnt[x]++;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> &amp;[_,c]:cnt)</span><br><span class="line">    sum+=c*(c<span class="number">-1</span>)/<span class="number">2</span>;</span><br><span class="line">    cout&lt;&lt;sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
+        <content type="html"><![CDATA[<h3 id="k倍区间"><a href="#k倍区间" class="headerlink" title="k倍区间"></a>k倍区间</h3><h4 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h4><p>给定一个长度为 $N$ 的数列， $A_1, A_2, \cdots A_N$。如果其中一段连续的子序列 $A_i, A_{i+1}, \cdots A_j (i \le j)$ 之和是 $K$ 的倍数，我们就称这个区间 $[i, j]$ 是 K 倍区间。<br>你能求出数列中总共有多少个 $K$ 倍区间吗？</p><h4 id="输入描述"><a href="#输入描述" class="headerlink" title="输入描述"></a>输入描述</h4><p>第一行包含两个整数 $N$ 和 $K$ $(1 \le N, K \le 10^5)$。<br>以下 $N$ 行每行包含一个整数 $A_i$ $(1 \le A_i \le 10^5)$。</p><h4 id="输出描述"><a href="#输出描述" class="headerlink" title="输出描述"></a>输出描述</h4><p>输出一个整数，代表 K 倍区间的数目。</p><h4 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h4><p><strong>示例</strong><br><strong>输入</strong></p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">5 2</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line"></span><br></pre></td></tr></table></figure><p><strong>输出</strong></p><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">6</span><br><span class="line"></span><br></pre></td></tr></table></figure><p><img src="/img/8.png" alt="8"></p><ul><li><strong>前缀和</strong>：计算数组的前缀和 $S$。</li><li><strong>同余定理</strong>：如果区间 $[i, j]$ 的和是 $K$ 的倍数，即 $(S_j - S_{i-1}) \% K == 0$，这意味着 $S_j \% K == S_{i-1} \% K$。</li><li><strong>转化</strong>：只需要计算前缀和模 $K$ 的余数。如果有 $c$ 个前缀和的余数相同（比如都是 1），那么从这 $c$ 个位置中任选 2 个（$C_c^2$），它们之间的区间和就是 $K$ 的倍数。</li></ul><p>```cpp</p><h1 id="include"><a href="#include" class="headerlink" title="include"></a>include<iostream></h1><h1 id="include-1"><a href="#include-1" class="headerlink" title="include"></a>include<vector></h1><p>using namespace std;<br>int main()<br>{<br>    int N,K,sum=0;<br>    cin&gt;&gt;N&gt;&gt;K;<br>    vector<int>arr(N+1,0);<br>    vector<int>cnt(K,0);<br>    for(int i=1;i&lt;=N;i++)<br>    cin&gt;&gt;arr[i];<br>    for(int i=1;i&lt;=N;i++)<br>    arr[i]=(arr[i-1]+arr[i])%K;<br>    for(auto &amp;x:arr)<br>    cnt[x]++;<br>    for(auto &amp;c:cnt)<br>    sum+=(c-1)*c/2;<br>    cout&lt;&lt;sum;<br>}</p>]]></content>
       
       
       <categories>
@@ -1111,6 +1181,37 @@
     
     
     <entry>
+      <title>小球反弹</title>
+      <link href="/2026/01/27/%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/5.%E5%B0%8F%E7%90%83%E5%8F%8D%E5%BC%B9/"/>
+      <url>/2026/01/27/%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/5.%E5%B0%8F%E7%90%83%E5%8F%8D%E5%BC%B9/</url>
+      
+        <content type="html"><![CDATA[<p>有一长方形，长为 343720 单位长度，宽为 233333 单位长度。 在其内部左上角顶点有一小球 (无视其体积)，其初速度如图所示且保持运动速率不变，分解到长宽两个方向上的速率之比为 dx:dy=15:17。 小球碰到长方形的边框时会发生反弹，每次反弹的入射角与反射角相等，因此小球会改变方向且保持速率不变（如果小球刚好射向角落，则按入射方向原路返回）。从小球出发到其第一次回到左上角顶点这段时间里，小球运动的路程为多少单位长度？答案四舍五入保留两位小数。<br>![[Pasted image 20260119121851.png]]<br>可以把小球每次反弹都投影到一个镜像世界里面<br>假设lenth=343720,wide=233333<br>![[未命名绘图.drawio.png]]<br>我们可以观察到原点在镜像世界中的投影点满足x为2 <em> lenth的整数倍数,y为2 </em> wide的整数倍数。小球每时每刻沿直线运动在x和y轴上的分量都满足15:17。<br>枚举t从1到正无穷,使得小球在t时刻的x和y运动分量满足到达原点所要求的条件。<br><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> dx=<span class="number">15</span>,dy=<span class="number">17</span>,wide=<span class="number">2</span>*<span class="number">233333</span>,lenth=<span class="number">2</span>*<span class="number">343720</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> t=<span class="number">1</span>;;t++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(t*dx%lenth==<span class="number">0</span>&amp;&amp;t*dy%wide==<span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            cout.<span class="built_in">precision</span>(<span class="number">2</span>);</span><br><span class="line">            cout&lt;&lt;fixed&lt;&lt;<span class="built_in">hypot</span>(t*dx,t*dy);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法学习 </category>
+          
+          <category> 枚举 </category>
+          
+          <category> 枚举算法题目 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 编程 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>卡片</title>
       <link href="/2026/01/27/%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/3.%E5%8D%A1%E7%89%87/"/>
       <url>/2026/01/27/%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/3.%E5%8D%A1%E7%89%87/</url>
@@ -1173,37 +1274,6 @@
     
     
     <entry>
-      <title>神奇闹钟</title>
-      <link href="/2026/01/27/%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/8.%E7%A5%9E%E5%A5%87%E9%97%B9%E9%92%9F/"/>
-      <url>/2026/01/27/%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/8.%E7%A5%9E%E5%A5%87%E9%97%B9%E9%92%9F/</url>
-      
-        <content type="html"><![CDATA[<p>小蓝发现了一个神奇的闹钟, 从纪元时间（1970 年 1月 1日 00: 00: 00）开始, 每经过 x 分钟, 这个闹钟便会触发一次闹铃 (纪元时间也会响铃). 这引起了小蓝的兴趣, 他想要好好研究下这个闹钟.<br>对于给出的时间一个格式为 yyyy-MM-dd HH:mm:ss 的时间, 小蓝想要知道在这个时间点之前(包含这个时间点)最近的一次闹铃是什么时间?<br>注意,你不必考虑时区问题。<br>输入格式<br>输入的第一行包含一个整数 T , 表示每次输入包含 T 组数据.<br>接下来依次描述 T 组数据.<br>每组数据一行。包含一个时间（格式为 yyyy-MM-dd HH:mm:ss）和一个整数 x ，其中 x表示闹铃时间间隔（单位为分钟）.<br>输出格式<br>输出 T 行. 每行包含一个时间（格式为 yyyy-MM-dd HH:mm:ss），依次表示每组数据的答案。</p><p>首先把从1970年到输入时间之间的秒数long long res算出来,再计算出可以触发闹铃的次数n= (res / (x <em> 60)) ,从而计算出从1970年开始到最后一次闹铃之间的秒数res= (res / (x</em>60)) <em> x </em> 60,再把这个秒数转化为题目要求的时间格式<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">long</span> <span class="type">long</span> <span class="title">gettimestamp</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b,<span class="type">int</span> c,<span class="type">int</span> d,<span class="type">int</span> e,<span class="type">int</span> f)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> IsLeapYear=((a%<span class="number">4</span>==<span class="number">0</span> &amp;&amp; a%<span class="number">100</span>!=<span class="number">0</span>) || (a%<span class="number">400</span>==<span class="number">0</span>));</span><br><span class="line">    <span class="type">int</span> MonthDay[<span class="number">12</span>]=&#123;<span class="number">31</span>,<span class="number">28</span>+IsLeapYear,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>&#125;;</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> res=<span class="number">0</span>;</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> commonyear=<span class="number">365</span>*<span class="number">24</span>*<span class="number">60</span>*<span class="number">60</span>;</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> leapyear=<span class="number">366</span>*<span class="number">24</span>*<span class="number">60</span>*<span class="number">60</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1970</span>;i&lt;a;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>((i%<span class="number">4</span>==<span class="number">0</span> &amp;&amp; i%<span class="number">100</span>!=<span class="number">0</span>) || (i%<span class="number">400</span>==<span class="number">0</span>))</span><br><span class="line">        res+=leapyear;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        res+=commonyear;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;b;j++)</span><br><span class="line">    res+=MonthDay[j<span class="number">-1</span>]*<span class="number">24</span>*<span class="number">60</span>*<span class="number">60</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> k=<span class="number">1</span>;k&lt;c;k++)</span><br><span class="line">    res+=<span class="number">24</span>*<span class="number">60</span>*<span class="number">60</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> l=<span class="number">1</span>;l&lt;=d;l++)</span><br><span class="line">    res+=<span class="number">60</span>*<span class="number">60</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> m=<span class="number">1</span>;m&lt;=e;m++)</span><br><span class="line">    res+=<span class="number">60</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> n=<span class="number">1</span>;n&lt;=f;n++)</span><br><span class="line">    res+=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">PrintTime</span><span class="params">(<span class="type">long</span> <span class="type">long</span> res)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> year=<span class="number">1970</span>;</span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">true</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">long</span> <span class="type">long</span> secyear=(<span class="number">365</span>+((year%<span class="number">4</span>==<span class="number">0</span> &amp;&amp; year%<span class="number">100</span>!=<span class="number">0</span>) || (year%<span class="number">400</span>==<span class="number">0</span>)))*<span class="number">24</span>*<span class="number">60</span>*<span class="number">60</span>;</span><br><span class="line">        <span class="keyword">if</span>(res&gt;=secyear)</span><br><span class="line">        &#123;</span><br><span class="line">            year++;</span><br><span class="line">            res-=secyear;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> MonthDay[<span class="number">12</span>]=&#123;<span class="number">31</span>,<span class="number">28</span>+((year%<span class="number">4</span>==<span class="number">0</span> &amp;&amp; year%<span class="number">100</span>!=<span class="number">0</span>) || (year%<span class="number">400</span>==<span class="number">0</span>)),<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>&#125;;</span><br><span class="line">    <span class="type">int</span> month=<span class="number">1</span>,i=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">true</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(res&gt;=MonthDay[i]*<span class="number">24</span>*<span class="number">60</span>*<span class="number">60</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            res-=MonthDay[i]*<span class="number">24</span>*<span class="number">60</span>*<span class="number">60</span>;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            month+=i;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> day=<span class="number">1</span>,j=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(<span class="literal">true</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(res&gt;=<span class="number">24</span>*<span class="number">60</span>*<span class="number">60</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            res-=<span class="number">24</span>*<span class="number">60</span>*<span class="number">60</span>;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            day+=j;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> hour = res/<span class="number">3600</span>; res%= <span class="number">3600</span>;</span><br><span class="line">    <span class="type">int</span> minute = res/<span class="number">60</span>; res%= <span class="number">60</span>;</span><br><span class="line">    <span class="type">int</span> second = res;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%04d-%02d-%02d %02d:%02d:%02d\n&quot;</span>, year, month, day, hour, minute, second);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> T;</span><br><span class="line">    cin&gt;&gt;T;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=T;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> a,b,c,d,e,f,x;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d-%d-%d %d:%d:%d %d&quot;</span>,&amp;a,&amp;b,&amp;c,&amp;d,&amp;e,&amp;f,&amp;x);</span><br><span class="line">        <span class="type">long</span> <span class="type">long</span> res=<span class="built_in">gettimestamp</span>(a,b,c,d,e,f);</span><br><span class="line">        res= (res / (x*<span class="number">60</span>)) * x * <span class="number">60</span>;</span><br><span class="line">        <span class="built_in">PrintTime</span>(res);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 算法学习 </category>
-          
-          <category> 枚举 </category>
-          
-          <category> 枚举算法题目 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 算法 </tag>
-            
-            <tag> 编程 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>日期统计</title>
       <link href="/2026/01/27/%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/7.%E6%97%A5%E6%9C%9F%E7%BB%9F%E8%AE%A1/"/>
       <url>/2026/01/27/%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/7.%E6%97%A5%E6%9C%9F%E7%BB%9F%E8%AE%A1/</url>
@@ -1235,11 +1305,11 @@
     
     
     <entry>
-      <title>小球反弹</title>
-      <link href="/2026/01/27/%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/5.%E5%B0%8F%E7%90%83%E5%8F%8D%E5%BC%B9/"/>
-      <url>/2026/01/27/%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/5.%E5%B0%8F%E7%90%83%E5%8F%8D%E5%BC%B9/</url>
+      <title>神奇闹钟</title>
+      <link href="/2026/01/27/%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/8.%E7%A5%9E%E5%A5%87%E9%97%B9%E9%92%9F/"/>
+      <url>/2026/01/27/%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/8.%E7%A5%9E%E5%A5%87%E9%97%B9%E9%92%9F/</url>
       
-        <content type="html"><![CDATA[<p>有一长方形，长为 343720 单位长度，宽为 233333 单位长度。 在其内部左上角顶点有一小球 (无视其体积)，其初速度如图所示且保持运动速率不变，分解到长宽两个方向上的速率之比为 dx:dy=15:17。 小球碰到长方形的边框时会发生反弹，每次反弹的入射角与反射角相等，因此小球会改变方向且保持速率不变（如果小球刚好射向角落，则按入射方向原路返回）。从小球出发到其第一次回到左上角顶点这段时间里，小球运动的路程为多少单位长度？答案四舍五入保留两位小数。<br>![[Pasted image 20260119121851.png]]<br>可以把小球每次反弹都投影到一个镜像世界里面<br>假设lenth=343720,wide=233333<br>![[未命名绘图.drawio.png]]<br>我们可以观察到原点在镜像世界中的投影点满足x为2 <em> lenth的整数倍数,y为2 </em> wide的整数倍数。小球每时每刻沿直线运动在x和y轴上的分量都满足15:17。<br>枚举t从1到正无穷,使得小球在t时刻的x和y运动分量满足到达原点所要求的条件。<br><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> dx=<span class="number">15</span>,dy=<span class="number">17</span>,wide=<span class="number">2</span>*<span class="number">233333</span>,lenth=<span class="number">2</span>*<span class="number">343720</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> t=<span class="number">1</span>;;t++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(t*dx%lenth==<span class="number">0</span>&amp;&amp;t*dy%wide==<span class="number">0</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            cout.<span class="built_in">precision</span>(<span class="number">2</span>);</span><br><span class="line">            cout&lt;&lt;fixed&lt;&lt;<span class="built_in">hypot</span>(t*dx,t*dy);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>]]></content>
+        <content type="html"><![CDATA[<p>小蓝发现了一个神奇的闹钟, 从纪元时间（1970 年 1月 1日 00: 00: 00）开始, 每经过 x 分钟, 这个闹钟便会触发一次闹铃 (纪元时间也会响铃). 这引起了小蓝的兴趣, 他想要好好研究下这个闹钟.<br>对于给出的时间一个格式为 yyyy-MM-dd HH:mm:ss 的时间, 小蓝想要知道在这个时间点之前(包含这个时间点)最近的一次闹铃是什么时间?<br>注意,你不必考虑时区问题。<br>输入格式<br>输入的第一行包含一个整数 T , 表示每次输入包含 T 组数据.<br>接下来依次描述 T 组数据.<br>每组数据一行。包含一个时间（格式为 yyyy-MM-dd HH:mm:ss）和一个整数 x ，其中 x表示闹铃时间间隔（单位为分钟）.<br>输出格式<br>输出 T 行. 每行包含一个时间（格式为 yyyy-MM-dd HH:mm:ss），依次表示每组数据的答案。</p><p>首先把从1970年到输入时间之间的秒数long long res算出来,再计算出可以触发闹铃的次数n= (res / (x <em> 60)) ,从而计算出从1970年开始到最后一次闹铃之间的秒数res= (res / (x</em>60)) <em> x </em> 60,再把这个秒数转化为题目要求的时间格式<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">long</span> <span class="type">long</span> <span class="title">gettimestamp</span><span class="params">(<span class="type">int</span> a,<span class="type">int</span> b,<span class="type">int</span> c,<span class="type">int</span> d,<span class="type">int</span> e,<span class="type">int</span> f)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> IsLeapYear=((a%<span class="number">4</span>==<span class="number">0</span> &amp;&amp; a%<span class="number">100</span>!=<span class="number">0</span>) || (a%<span class="number">400</span>==<span class="number">0</span>));</span><br><span class="line">    <span class="type">int</span> MonthDay[<span class="number">12</span>]=&#123;<span class="number">31</span>,<span class="number">28</span>+IsLeapYear,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>&#125;;</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> res=<span class="number">0</span>;</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> commonyear=<span class="number">365</span>*<span class="number">24</span>*<span class="number">60</span>*<span class="number">60</span>;</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> leapyear=<span class="number">366</span>*<span class="number">24</span>*<span class="number">60</span>*<span class="number">60</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1970</span>;i&lt;a;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>((i%<span class="number">4</span>==<span class="number">0</span> &amp;&amp; i%<span class="number">100</span>!=<span class="number">0</span>) || (i%<span class="number">400</span>==<span class="number">0</span>))</span><br><span class="line">        res+=leapyear;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        res+=commonyear;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">1</span>;j&lt;b;j++)</span><br><span class="line">    res+=MonthDay[j<span class="number">-1</span>]*<span class="number">24</span>*<span class="number">60</span>*<span class="number">60</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> k=<span class="number">1</span>;k&lt;c;k++)</span><br><span class="line">    res+=<span class="number">24</span>*<span class="number">60</span>*<span class="number">60</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> l=<span class="number">1</span>;l&lt;=d;l++)</span><br><span class="line">    res+=<span class="number">60</span>*<span class="number">60</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> m=<span class="number">1</span>;m&lt;=e;m++)</span><br><span class="line">    res+=<span class="number">60</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> n=<span class="number">1</span>;n&lt;=f;n++)</span><br><span class="line">    res+=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">PrintTime</span><span class="params">(<span class="type">long</span> <span class="type">long</span> res)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> year=<span class="number">1970</span>;</span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">true</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">long</span> <span class="type">long</span> secyear=(<span class="number">365</span>+((year%<span class="number">4</span>==<span class="number">0</span> &amp;&amp; year%<span class="number">100</span>!=<span class="number">0</span>) || (year%<span class="number">400</span>==<span class="number">0</span>)))*<span class="number">24</span>*<span class="number">60</span>*<span class="number">60</span>;</span><br><span class="line">        <span class="keyword">if</span>(res&gt;=secyear)</span><br><span class="line">        &#123;</span><br><span class="line">            year++;</span><br><span class="line">            res-=secyear;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> MonthDay[<span class="number">12</span>]=&#123;<span class="number">31</span>,<span class="number">28</span>+((year%<span class="number">4</span>==<span class="number">0</span> &amp;&amp; year%<span class="number">100</span>!=<span class="number">0</span>) || (year%<span class="number">400</span>==<span class="number">0</span>)),<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>&#125;;</span><br><span class="line">    <span class="type">int</span> month=<span class="number">1</span>,i=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(<span class="literal">true</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(res&gt;=MonthDay[i]*<span class="number">24</span>*<span class="number">60</span>*<span class="number">60</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            res-=MonthDay[i]*<span class="number">24</span>*<span class="number">60</span>*<span class="number">60</span>;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            month+=i;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> day=<span class="number">1</span>,j=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(<span class="literal">true</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(res&gt;=<span class="number">24</span>*<span class="number">60</span>*<span class="number">60</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            res-=<span class="number">24</span>*<span class="number">60</span>*<span class="number">60</span>;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            day+=j;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> hour = res/<span class="number">3600</span>; res%= <span class="number">3600</span>;</span><br><span class="line">    <span class="type">int</span> minute = res/<span class="number">60</span>; res%= <span class="number">60</span>;</span><br><span class="line">    <span class="type">int</span> second = res;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;%04d-%02d-%02d %02d:%02d:%02d\n&quot;</span>, year, month, day, hour, minute, second);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> T;</span><br><span class="line">    cin&gt;&gt;T;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=T;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> a,b,c,d,e,f,x;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d-%d-%d %d:%d:%d %d&quot;</span>,&amp;a,&amp;b,&amp;c,&amp;d,&amp;e,&amp;f,&amp;x);</span><br><span class="line">        <span class="type">long</span> <span class="type">long</span> res=<span class="built_in">gettimestamp</span>(a,b,c,d,e,f);</span><br><span class="line">        res= (res / (x*<span class="number">60</span>)) * x * <span class="number">60</span>;</span><br><span class="line">        <span class="built_in">PrintTime</span>(res);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>]]></content>
       
       
       <categories>
