@@ -1,0 +1,364 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>日期统计 | Zedward'Blog</title><meta name="author" content="Zedward"><meta name="copyright" content="Zedward"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="小蓝现在有一个长度为100的数组，数组中的每个元素的值都在0 到9 的范围之内。数组中的元素从左至右如下所示5 6 8 6 9 1 6 1 2 4 9 1 9 8 2 3 6 4 7 7 5 9 5 0 3 8 7 5 8 1 5 8 6 1 8 3 0 3 7 9 2 7 0 5 8 8 5 7 0 9 9 1 9 4 4 6 8 6 3 3 8 5 1 6 3 4 6 7 0 7 8 2 7">
+<meta property="og:type" content="article">
+<meta property="og:title" content="日期统计">
+<meta property="og:url" content="https://zedward-0417.github.io/2026/01/27/%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/7.%E6%97%A5%E6%9C%9F%E7%BB%9F%E8%AE%A1/index.html">
+<meta property="og:site_name" content="Zedward&#39;Blog">
+<meta property="og:description" content="小蓝现在有一个长度为100的数组，数组中的每个元素的值都在0 到9 的范围之内。数组中的元素从左至右如下所示5 6 8 6 9 1 6 1 2 4 9 1 9 8 2 3 6 4 7 7 5 9 5 0 3 8 7 5 8 1 5 8 6 1 8 3 0 3 7 9 2 7 0 5 8 8 5 7 0 9 9 1 9 4 4 6 8 6 3 3 8 5 1 6 3 4 6 7 0 7 8 2 7">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://zedward-0417.github.io/img/16.png">
+<meta property="article:published_time" content="2026-01-26T16:00:00.000Z">
+<meta property="article:modified_time" content="2026-01-27T15:39:00.402Z">
+<meta property="article:author" content="Zedward">
+<meta property="article:tag" content="算法">
+<meta property="article:tag" content="编程">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://zedward-0417.github.io/img/16.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "日期统计",
+  "url": "https://zedward-0417.github.io/2026/01/27/%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/7.%E6%97%A5%E6%9C%9F%E7%BB%9F%E8%AE%A1/",
+  "image": "https://zedward-0417.github.io/img/16.png",
+  "datePublished": "2026-01-26T16:00:00.000Z",
+  "dateModified": "2026-01-27T15:39:00.402Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Zedward",
+      "url": "https://zedward-0417.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://zedward-0417.github.io/2026/01/27/%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/7.%E6%97%A5%E6%9C%9F%E7%BB%9F%E8%AE%A1/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.4"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.9/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.13.0/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '日期统计',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'post'
+}</script><style>
+  /* (1) 看板娘整体位置：固定在右下角，稍微离开边缘一点更美观 */
+  #waifu { 
+    left: auto !important; 
+    right: 10px !important; 
+    bottom: 0 !important; 
+    z-index: 100 !important;
+  }
+
+  /* (2) 看板娘功能按钮：强制显示在身体左侧，避免被屏幕边缘遮挡 */
+  #waifu-tool {
+    right: auto !important;
+    left: -35px !important; /* 核心修改：让按键弹出到板娘左边 */
+  }
+
+  /* (3) 对话框位置微调 */
+  .waifu-tips {
+    right: 10px !important;
+    left: auto !important;
+  }
+
+  /* (4) 音乐播放器极简美化 */
+  .aplayer.aplayer-fixed {
+    box-shadow: none !important; /* 去除阴影，更干净 */
+    background: rgba(255, 255, 255, 0.4) !important; /* 低透明度背景 */
+    border-radius: 8px !important;
+  }
+  
+  /* 移动端优化：隐藏看板娘 */
+  @media (max-width: 768px) {
+    #waifu { display: none !important; }
+  }
+</style>
+<meta name="generator" content="Hexo 8.1.1"><link rel="stylesheet" href="/css/prism.css" type="text/css"></head><body><div class="bg-animation" id="web_bg" style="background-image: url(/img/17.webp);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/16.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">62</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-comments-o"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/17.webp);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Zedward'Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">日期统计</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-archive"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-folder-open"></i><span> 归档</span></a></li></ul></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fas fa-list"></i><span> 生活</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-comments-o"></i><span> 分享</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/links/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/comment/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于笔者</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">日期统计</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2026-01-26T16:00:00.000Z" title="发表于 2026-01-27 00:00:00">2026-01-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-01-27T15:39:00.402Z" title="更新于 2026-01-27 23:39:00">2026-01-27</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/">算法学习</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/%E6%9E%9A%E4%B8%BE/">枚举</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0/%E6%9E%9A%E4%B8%BE/%E6%9E%9A%E4%B8%BE%E7%AE%97%E6%B3%95%E9%A2%98%E7%9B%AE/">枚举算法题目</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">562</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>2分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p>小蓝现在有一个长度为100的数组，数组中的每个元素的值都在0 到9 的范围之内。数组中的元素从左至右如下所示<br>5 6 8 6 9 1 6 1 2 4 9 1 9 8 2 3 6 4 7 7 5 9 5 0 3 8 7 5 8 1 5 8 6 1 8 3 0 3 7 9 2 7 0 5 8 8 5 7 0 9 9 1 9 4 4 6 8 6 3 3 8 5 1 6 3 4 6 7 0 7 8 2 7 6 8 9 5 6 5 6 1 4 0 1 0 0 9 4 8 0 9 1 2 8 5 0 2 5 3 3<br>现在他想要从这个数组中寻找一些满足以下条件的子序列：<br>子序列的长度为8；<br>这个子序列可以按照下标顺序组成一个yyyymmdd 格式的日期，并且要求这个日期是2023 年中的某一天的日期，例如20230902，20231223。yyyy 表示年份，mm 表示月份，dd 表示天数，当月份或者天数的长度只有一位时需要一个前导零补充。<br>请你帮小蓝计算下按上述条件一共能找到多少个不同的2023 年的日期。<br>对于相同的日期你只需要统计一次即可。</p>
+<p>枚举2023年的每一天进行子序列的匹配<br><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">daysmatch</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp;numbers,vector&lt;<span class="type">int</span>&gt;&amp;match)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="type">int</span> idx=<span class="number">0</span>;</span><br><span class="line">   <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;=<span class="number">99</span>;i++)</span><br><span class="line">   &#123;</span><br><span class="line">      <span class="keyword">if</span>(numbers[i]==match[idx])</span><br><span class="line">      idx++;</span><br><span class="line">      <span class="keyword">if</span>(idx==match.<span class="built_in">size</span>())</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"> vector &lt;<span class="type">int</span>&gt; numbers=&#123;<span class="number">5</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">6</span>, <span class="number">9</span>, <span class="number">1</span>, <span class="number">6</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">9</span>, <span class="number">1</span>, <span class="number">9</span>, <span class="number">8</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">6</span>, <span class="number">4</span>, <span class="number">7</span>, <span class="number">7</span>, <span class="number">5</span>, <span class="number">9</span>, <span class="number">5</span>, <span class="number">0</span>, <span class="number">3</span>, <span class="number">8</span>, <span class="number">7</span>, <span class="number">5</span>, <span class="number">8</span>, <span class="number">1</span>, <span class="number">5</span>,</span><br><span class="line"> <span class="number">8</span>, <span class="number">6</span>, <span class="number">1</span>, <span class="number">8</span>, <span class="number">3</span>, <span class="number">0</span>, <span class="number">3</span>, <span class="number">7</span>, <span class="number">9</span>, <span class="number">2</span>, <span class="number">7</span>, <span class="number">0</span>, <span class="number">5</span>, <span class="number">8</span>, <span class="number">8</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">0</span>, <span class="number">9</span>, <span class="number">9</span>, <span class="number">1</span>, <span class="number">9</span>, <span class="number">4</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">8</span>, <span class="number">5</span>,</span><br><span class="line"> <span class="number">1</span>, <span class="number">6</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">0</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">2</span>, <span class="number">7</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">9</span>, <span class="number">4</span>, <span class="number">8</span>, <span class="number">0</span>, <span class="number">9</span>, <span class="number">1</span>, <span class="number">2</span>,</span><br><span class="line"> <span class="number">8</span>, <span class="number">5</span>, <span class="number">0</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">3</span>&#125;;</span><br><span class="line"></span><br><span class="line"> <span class="type">int</span> MonthDay[<span class="number">12</span>]=&#123;<span class="number">31</span>,<span class="number">28</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> cnt=<span class="number">0</span>;</span><br><span class="line"> <span class="keyword">for</span>(<span class="type">int</span> month=<span class="number">1</span>;month&lt;=<span class="number">12</span>;month++)</span><br><span class="line"> &#123;</span><br><span class="line">   <span class="keyword">for</span>(<span class="type">int</span> day=<span class="number">1</span>;day&lt;=MonthDay[month<span class="number">-1</span>];day++)</span><br><span class="line">   &#123;</span><br><span class="line">      vector &lt;<span class="type">int</span>&gt; match=&#123;<span class="number">2</span>,<span class="number">0</span>,<span class="number">2</span>,<span class="number">3</span>,month/<span class="number">10</span>,month%<span class="number">10</span>,day/<span class="number">10</span>,day%<span class="number">10</span>&#125;;</span><br><span class="line">      cnt+=<span class="built_in">daysmatch</span>(numbers,match);</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> cout&lt;&lt;cnt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://zedward-0417.github.io">Zedward</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://zedward-0417.github.io/2026/01/27/%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/7.%E6%97%A5%E6%9C%9F%E7%BB%9F%E8%AE%A1/">https://zedward-0417.github.io/2026/01/27/%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/7.%E6%97%A5%E6%9C%9F%E7%BB%9F%E8%AE%A1/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://zedward-0417.github.io" target="_blank">Zedward'Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%AE%97%E6%B3%95/">算法</a><a class="post-meta__tags" href="/tags/%E7%BC%96%E7%A8%8B/">编程</a></div><div class="post-share"><div class="social-share" data-image="/img/16.png" data-sites="facebook,x,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2026/01/27/%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/5.%E5%B0%8F%E7%90%83%E5%8F%8D%E5%BC%B9/" title="小球反弹"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">小球反弹</div></div><div class="info-2"><div class="info-item-1">有一长方形，长为 343720 单位长度，宽为 233333 单位长度。 在其内部左上角顶点有一小球 (无视其体积)，其初速度如图所示且保持运动速率不变，分解到长宽两个方向上的速率之比为 dx:dy=15:17。 小球碰到长方形的边框时会发生反弹，每次反弹的入射角与反射角相等，因此小球会改变方向且保持速率不变（如果小球刚好射向角落，则按入射方向原路返回）。从小球出发到其第一次回到左上角顶点这段时间里，小球运动的路程为多少单位长度？答案四舍五入保留两位小数。![[Pasted image 20260119121851.png]]可以把小球每次反弹都投影到一个镜像世界里面假设lenth=343720,wide=233333![[未命名绘图.drawio.png]]我们可以观察到原点在镜像世界中的投影点满足x为2  lenth的整数倍数,y为2  wide的整数倍数。小球每时每刻沿直线运动在x和y轴上的分量都满足15:17。枚举t从1到正无穷,使得小球在t时刻的x和y运动分量满足到达原点所要求的条件。#include&lt;iostream&gt;#include&lt;cmath&g...</div></div></div></a><a class="pagination-related" href="/2026/01/27/%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/8.%E7%A5%9E%E5%A5%87%E9%97%B9%E9%92%9F/" title="神奇闹钟"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">神奇闹钟</div></div><div class="info-2"><div class="info-item-1">小蓝发现了一个神奇的闹钟, 从纪元时间（1970 年 1月 1日 00: 00: 00）开始, 每经过 x 分钟, 这个闹钟便会触发一次闹铃 (纪元时间也会响铃). 这引起了小蓝的兴趣, 他想要好好研究下这个闹钟.对于给出的时间一个格式为 yyyy-MM-dd HH:mm:ss 的时间, 小蓝想要知道在这个时间点之前(包含这个时间点)最近的一次闹铃是什么时间?注意,你不必考虑时区问题。输入格式输入的第一行包含一个整数 T , 表示每次输入包含 T 组数据.接下来依次描述 T 组数据.每组数据一行。包含一个时间（格式为 yyyy-MM-dd HH:mm:ss）和一个整数 x ，其中 x表示闹铃时间间隔（单位为分钟）.输出格式输出 T 行. 每行包含一个时间（格式为 yyyy-MM-dd HH:mm:ss），依次表示每组数据的答案。 首先把从1970年到输入时间之间的秒数long long res算出来,再计算出可以触发闹铃的次数n= (res / (x  60)) ,从而计算出从1970年开始到最后一次闹铃之间的秒数res= (res / (x60))  x  60,再把这个秒数转...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2026/02/08/%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/22.%E9%87%8D%E6%96%B0%E6%8E%92%E5%BA%8F/" title="重新排序"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-02-08</div><div class="info-item-2">重新排序</div></div><div class="info-2"><div class="info-item-1">题目：重新排序【问题描述】给定一个数组 $A$ 和一些查询 $L_i, R_i$，求数组中第 $L_i$ 至第 $R_i$ 个元素之和。小蓝觉得这个问题很无聊，于是他想重新排列一下数组，使得最终每个查询结果的和尽可能地大。小蓝想知道相比原数组，所有查询结果的总和最多可以增加多少？【输入格式】输入第一行包含一个整数 $n$。第二行包含 $n$ 个整数 $A_1, A_2, \cdots, A_n$。相邻两个整数之间用一个空格分隔。第三行包含一个整数 $m$ 表示查询的数目。接下来 $m$ 行，每行包含两个整数 $L_i, R_i$。相邻两个整数之间用一个空格分隔。【输出格式】输出一行包含一个整数表示答案。【样例输入】Plaintext51 2 3 4 521 32 5【样例输出】Plaintext4【样例说明】原来的和为 $6 + 14 = 20$，重新排列为 $(1, 4, 5, 2, 3)$ 后和为 $10 + 14 = 24$，增加了 4。【评测用例规模与约定】对于所有评测用例，$1 \le n, m \le 10^5, 1 \le A_i \le 10^6, 1 \le L...</div></div></div></a><a class="pagination-related" href="/2026/01/27/%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/6.%E7%89%B9%E6%AE%8A%E6%97%A5%E6%9C%9F/" title="特殊日期"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-01-27</div><div class="info-item-2">特殊日期</div></div><div class="info-2"><div class="info-item-1">记一个日期为 yy 年 mm 月 dd 日。统计从 2000 年 1 月 1 日（含）到 2000000 年 1 月 1 日（含），有多少个日期满足年份 yy 是月份 mm 的倍数，同时也是 dd 的倍数。当年份是 4 的倍数而不是 100 的倍数或者年份是 400 的倍数时，这一年是闰年，其他的年份都不是闰年。遍历每一年的每一个月的每一天。二月份天数最为特殊,闰年29，平年28我们可以先创建一个数组int  MonthDay[12]={31,28,31,30,31,30,31,31,30,31,30,31}在遍历年的循环中设置一个flag=((i%4 == 0 &amp;&amp; i%100!=0) || (i%400 == 0))更新MonthDay[1]=28+flag这样就解决二月份天数问题#include&lt;iostream&gt;using namespace std;int main()&#123;    int MonthDay[12]=&#123;31,28,31,30,31,30,31,31,30,31,30,31&#125;;    int count...</div></div></div></a><a class="pagination-related" href="/2026/02/01/%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/11.%E5%85%89%E9%AA%93%E8%80%85%E7%9A%84%E8%8D%A3%E8%80%80/" title="光骓者的荣耀"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-02-01</div><div class="info-item-2">光骓者的荣耀</div></div><div class="info-2"><div class="info-item-1">小 K 打下的江山一共有 $n$ 个城市，城市 $i$ 和城市 $i+1$ 有一条双向高速公路连接，走这条路要耗费时间 $a_i$。小 K 为了关心人民生活，决定定期进行走访。他每一次会从 $1$ 号城市到 $n$ 号城市并在经过的城市进行访问。其中终点必须为城市 $n$。不仅如此，他还有一个传送器，传送半径为 $k$，也就是说可以传送到 $i-k$ 和 $i+k$。如果目标城市编号小于 $1$ 则为 $1$，大于 $n$ 则为 $n$。但是他的传送器电量不足，只能传送一次，况且由于一些原因，他想尽量快地完成访问，于是就想问交通部部长您最快的时间是多少。注意： 他可以不访问所有的城市，使用传送器不耗费时间。  输入格式 两行：第一行包含两个整数 $n, k$。 第二行：包含 $n-1$ 个整数，第 $i$ 个整数表示 $a_i$（即城市 $i$ 到 $i+1$ 之间的耗时）。   输出格式 输出一个整数，表示从 $1$ 号城市到 $n$ 号城市的最短时间。  我们想要尽可能的少走,传送的距离尽可能的多用一个数组存储相邻两个城市之间的距离然后计算这个数组的前缀和,计算arr[i+k...</div></div></div></a><a class="pagination-related" href="/2026/02/05/%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/18.%E6%8B%94%E6%B2%B3/" title="拔河"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-02-05</div><div class="info-item-2">拔河</div></div><div class="info-2"><div class="info-item-1">问题描述小明是学校里的一名老师，他带的班级共有 $n$ 名同学，第 $i$ 名同学力量值为 $a_i$。在闲暇之余，小明决定在班级里组织一场拔河比赛。为了保证比赛双方实力尽可能相近，需要在这 $n$ 名同学中挑选出两个队伍，队伍内的同学编号连续：${a_{l_1}, a_{l_1+1}, \dots, a_{r_1}}$ 和 ${a_{l_2}, a_{l_2+1}, \dots, a_{r_2}}$，其中 $l_1 \le r_1 &lt; l_2 \le r_2$。两个队伍的人数不必相同，但是需要让队伍内的同学们的力量值之和尽可能相近。请计算出力量值之和差距最小的挑选队伍的方式。 输入格式输入共两行。第一行为一个正整数 $n$。第二行为 $n$ 个正整数 $a_i$。 输出格式输出共一行，一个非负整数，表示两个队伍力量值之和的最小差距。 样例输入510 9 8 12 14 样例输出1 样例说明其中一种最优选择方式：队伍 1：${a_1, a_2, a_3}$，队伍 2：${a_4, a_5}$，力量值和分别为 $10+9+8=27$，$12+14=26$，差距为 $|27-2...</div></div></div></a><a class="pagination-related" href="/2026/01/27/%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/5.%E5%B0%8F%E7%90%83%E5%8F%8D%E5%BC%B9/" title="小球反弹"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-01-27</div><div class="info-item-2">小球反弹</div></div><div class="info-2"><div class="info-item-1">有一长方形，长为 343720 单位长度，宽为 233333 单位长度。 在其内部左上角顶点有一小球 (无视其体积)，其初速度如图所示且保持运动速率不变，分解到长宽两个方向上的速率之比为 dx:dy=15:17。 小球碰到长方形的边框时会发生反弹，每次反弹的入射角与反射角相等，因此小球会改变方向且保持速率不变（如果小球刚好射向角落，则按入射方向原路返回）。从小球出发到其第一次回到左上角顶点这段时间里，小球运动的路程为多少单位长度？答案四舍五入保留两位小数。![[Pasted image 20260119121851.png]]可以把小球每次反弹都投影到一个镜像世界里面假设lenth=343720,wide=233333![[未命名绘图.drawio.png]]我们可以观察到原点在镜像世界中的投影点满足x为2  lenth的整数倍数,y为2  wide的整数倍数。小球每时每刻沿直线运动在x和y轴上的分量都满足15:17。枚举t从1到正无穷,使得小球在t时刻的x和y运动分量满足到达原点所要求的条件。#include&lt;iostream&gt;#include&lt;cmath&g...</div></div></div></a><a class="pagination-related" href="/2026/02/01/%E7%AE%97%E6%B3%95%E6%80%9D%E6%83%B3/13.%E6%8E%A5%E9%9B%A8%E6%B0%B4/" title="接雨水"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2026-02-01</div><div class="info-item-2">接雨水</div></div><div class="info-2"><div class="info-item-1">题目描述给定 $n$ 个非负整数表示每个柱子的高度，每个柱子的宽度为 1，计算按此排列的柱子，下雨之后能接多少雨水。输入格式  第一行包含一个整数 $n$，表示柱子的数量。 接下来的 $n$ 行（或一行内），每行一个非负整数，表示每个位置柱子的高度 $height[i]$。输出格式 输出一个整数，表示能够接住的雨水总量。  对于每一个单位的我们只需要找到它左边的最大值和右边的最大值,取二者的最小值,再减去这个单位的柱子长度。用前缀最大值数组存储左边最大值,后缀最大值数组存储右边最大值#include&lt;iostream&gt;using namespace std;int main()&#123;    int n,sum=0;    cin&gt;&gt;n;    int arr[n+1];    for(int i=1;i&lt;=n;i++)    cin&gt;&gt;arr[i];    int left_max[n+1];    int right_max[n+1];    for(int i=1;i&lt;=n;i++)    &#123;        if...</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="giscus-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/16.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Zedward</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">62</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/zedward-0417" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="http://wpa.qq.com/msgrd?v=3&amp;uin=3195990032&amp;site=qq&amp;menu=yes" target="_blank" title="QQ"><i class="fab fa-qq" style="color: #12B7F5;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎光临zedward的博客 <br> QQ：3195990032</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/02/09/Linux%E5%9F%BA%E7%A1%80/Linux%E5%AE%9E%E7%94%A8%E6%93%8D%E4%BD%9C/%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/" title="无标题">无标题</a><time datetime="2026-02-09T06:46:28.286Z" title="发表于 2026-02-09 14:46:28">2026-02-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/02/09/Linux%E5%9F%BA%E7%A1%80/Linux%E5%AE%9E%E7%94%A8%E6%93%8D%E4%BD%9C/%E8%BD%AF%E9%93%BE%E6%8E%A5/" title="无标题">无标题</a><time datetime="2026-02-09T06:46:28.284Z" title="发表于 2026-02-09 14:46:28">2026-02-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/02/09/Linux%E5%9F%BA%E7%A1%80/Linux%E5%AE%9E%E7%94%A8%E6%93%8D%E4%BD%9C/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85/" title="无标题">无标题</a><time datetime="2026-02-09T06:46:28.283Z" title="发表于 2026-02-09 14:46:28">2026-02-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/02/09/Linux%E5%9F%BA%E7%A1%80/Linux%E5%AE%9E%E7%94%A8%E6%93%8D%E4%BD%9C/%E7%AB%AF%E5%8F%A3/" title="无标题">无标题</a><time datetime="2026-02-09T06:46:28.282Z" title="发表于 2026-02-09 14:46:28">2026-02-09</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/02/09/Linux%E5%9F%BA%E7%A1%80/Linux%E5%AE%9E%E7%94%A8%E6%93%8D%E4%BD%9C/%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="无标题">无标题</a><time datetime="2026-02-09T06:46:28.281Z" title="发表于 2026-02-09 14:46:28">2026-02-09</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Zedward</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.4</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.4"></script><script src="/js/main.js?v=5.5.4"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@6.1.9/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        loader: {
+          load: [
+            // Four font extension packages (optional)
+            //- '[tex]/bbm',
+            //- '[tex]/bboldx',
+            //- '[tex]/dsfont',
+            '[tex]/mhchem'
+          ],
+          paths: {
+            'mathjax-newcm': '[mathjax]/../@mathjax/mathjax-newcm-font',
+
+            //- // Four font extension packages (optional)
+            //- 'mathjax-bbm-extension': '[mathjax]/../@mathjax/mathjax-bbm-font-extension',
+            //- 'mathjax-bboldx-extension': '[mathjax]/../@mathjax/mathjax-bboldx-font-extension',
+            //- 'mathjax-dsfont-extension': '[mathjax]/../@mathjax/mathjax-dsfont-font-extension',
+            'mathjax-mhchem-extension': '[mathjax]/../@mathjax/mathjax-mhchem-font-extension'
+          }
+        },
+        output: {
+          font: 'mathjax-newcm',
+        },
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+          packages: {
+            '[+]': [
+              'mhchem'
+            ]
+          }
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          menuOptions: {
+            settings: {
+              enrich: false  // Turn off Braille and voice narration text automatic generation
+            }
+          },
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@4.1.0/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+
+  const getGiscusTheme = theme => theme === 'dark' ? 'dark' : 'light'
+
+  const createScriptElement = config => {
+    const ele = document.createElement('script')
+    Object.entries(config).forEach(([key, value]) => {
+      ele.setAttribute(key, value)
+    })
+    return ele
+  }
+
+  const loadGiscus = (el = document, key) => {
+    const mappingConfig = isShuoshuo
+      ? { 'data-mapping': 'specific', 'data-term': key }
+      : { 'data-mapping': (option && option['data-mapping']) || 'pathname' }
+
+    const giscusConfig = {
+      src: 'https://giscus.app/client.js',
+      'data-repo': 'zedward-0417/zedward-0417.github.io',
+      'data-repo-id': 'R_kgDORCZa9Q',
+      'data-category-id': 'DIC_kwDORCZa9c4C1iNa',
+      'data-theme': getGiscusTheme(document.documentElement.getAttribute('data-theme')),
+      'data-reactions-enabled': '1',
+      crossorigin: 'anonymous',
+      async: true,
+      ...option,
+      ...mappingConfig
+    }
+
+    const scriptElement = createScriptElement(giscusConfig)
+
+    el.querySelector('#giscus-wrap').appendChild(scriptElement)
+
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyGiscus = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+  }
+
+  const changeGiscusTheme = theme => {
+    const iframe = document.querySelector('#giscus-wrap iframe')
+    if (iframe) {
+      const message = {
+        giscus: {
+          setConfig: {
+            theme: getGiscusTheme(theme)
+          }
+        }
+      }
+      iframe.contentWindow.postMessage(message, 'https://giscus.app')
+    }
+  }
+
+  btf.addGlobalFn('themeChange', changeGiscusTheme, 'giscus')
+
+  if (isShuoshuo) {
+    'Giscus' === 'Giscus'
+      ? window.shuoshuoComment = { loadComment: loadGiscus }
+      : window.loadOtherComment = loadGiscus
+    return
+  }
+
+  if ('Giscus' === 'Giscus' || !false) {
+    if (false) btf.loadComment(document.getElementById('giscus-wrap'), loadGiscus)
+    else loadGiscus()
+  } else {
+    window.loadOtherComment = loadGiscus
+  }
+})()</script></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/meting@2.0.1/dist/Meting.min.js"></script><meting-js 
+  server="netease"
+  type="playlist" 
+  id="3136952023"
+  fixed="true" 
+  mini="true"
+  list-folded="true"
+  order="random"
+  preload="auto"
+  volume="0.5"
+  mutex="true"
+  lrc-type="0">
+</meting-js>
+<div id="waifu"></div><script src="https://fastly.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/fireworks.min.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/canvas-fluttering-ribbon.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="Search Posts" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.4"></script></div></div></body></html>
