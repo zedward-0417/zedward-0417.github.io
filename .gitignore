@@ -1,0 +1,6 @@
+# Hugo 构建产物（由 GitHub Actions 生成，不提交）
+public/
+resources/_gen/
+
+# Hugo 构建锁
+.hugo_build.lock
