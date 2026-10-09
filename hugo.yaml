@@ -1,4 +1,103 @@
 baseURL: "https://zedward-0417.github.io/"
+defaultContentLanguage: "zh-cn"
+languageCode: "zh-cn"
 locale: "zh-cn"
-title: "My New Hugo Project"
+title: "zedward's Notes"
 theme: "PaperMod"
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+enableEmoji: true
+
+# 分页：首页每页显示的文章数
+pagination:
+  pagerSize: 8
+
+# 输出格式：RSS + 搜索用的 index.json
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
+
+menu:
+  main:
+    - name: 文章
+      url: /posts/
+      weight: 10
+    - name: 归档
+      url: /archives/
+      weight: 20
+    - name: 搜索
+      url: /search/
+      weight: 30
+    - name: 标签
+      url: /tags/
+      weight: 40
+    - name: 关于
+      url: /about/
+      weight: 50
+
+params:
+  env: production
+  author: "zedward"
+  description: "个人学习笔记与技术记录"
+  DateFormat: "2006-01-02"
+  defaultTheme: auto
+  ShowReadingTime: true
+  ShowWordCount: true
+  ShowShareButtons: true
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: true
+  ShowToc: true
+  TocOpen: false
+  ShowFullTextinRSS: true
+  disableSpecial1stPost: true
+  disableScrollToTop: false
+  hidemeta: false
+  comments: false
+  mainSections:
+    - posts
+
+  # 首页简介（homeInfoParams 模式下生效）
+  homeInfoParams:
+    Title: "你好，我是 zedward 👋"
+    Content: >
+      这里是我的个人笔记站，记录学习过程中的技术总结与踩坑记录。
+
+  socialIcons:
+    - name: github
+      title: GitHub
+      url: "https://github.com/zedward-0417"
+    - name: rss
+      title: RSS
+      url: "https://zedward-0417.github.io/index.xml"
+
+  # 代码高亮（Chroma）
+  assets:
+    disableHLJS: true
+  fuseOpts:
+    isCaseSensitive: false
+    shouldSort: true
+    location: 0
+    distance: 1000
+    threshold: 0.4
+    minMatchCharLength: 0
+    keys:
+      - title
+      - permalink
+      - summary
+      - content
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  highlight:
+    noClasses: false
+    codeFences: true
+    guessSyntax: true
+    lineNos: false
+    style: monokai
