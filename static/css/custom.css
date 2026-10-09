@@ -1,0 +1,23 @@
+/* ============================================================
+   自定义样式
+   改这里不会影响主题，升级 PaperMod 也不会丢失。
+   通过 layouts/_partials/extend_head.html 引入。
+   ============================================================ */
+
+/* 代码块字体：优先使用常见等宽字体，中文回退到系统字体 */
+.post-content code,
+.post-content pre,
+.highlight pre {
+    font-family: "JetBrains Mono", "Cascadia Code", Consolas,
+        "Microsoft YaHei", monospace;
+}
+
+/* 首页简介里的标题稍微小一点，避免过于抢眼 */
+.home-info .entry-header h1 {
+    font-size: 2rem;
+}
+
+/* 正文行高，中文排版更舒展 */
+.post-content {
+    line-height: 1.75;
+}
