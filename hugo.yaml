@@ -1,0 +1,7 @@
+baseURL = 'https://example.org/'
+locale = 'en-us'
+title = 'My New Hugo Project'
+theme = "PaperMod"
+baseURL: "https://zedward-0417.github.io/" 
+languageCode: "zh-cn"
+theme: "PaperMod"
